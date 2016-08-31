@@ -1,0 +1,437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Language" content="zh-CN"/> 
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<title></title>
+		<script language="javascript" src="../script/component/My97DatePicker/WdatePicker.js"></script>
+		<script language="javascript" src="../script/commonscript.js"></script>
+		<script language="javascript" src="../script/demo/infoeditpage.js"></script>
+		<link type="text/css" rel="stylesheet" href="../style/commonstyle.css"/>
+		<link type="text/css" rel="stylesheet" href="../style/demo/infoeditpage.css"/>
+		<style>
+			div.wiscogrid {
+				border-bottom: #99B0D0 1px solid;
+				border-left: #99B0D0 1px solid;
+				border-right: #99B0D0 1px solid;
+				width: 579px;
+				*width: 581px;
+			}
+			.wiscolink {
+				color: #196A99;
+			}
+			.wiscolink:hover {
+				text-decoration: underline;
+			}
+			td.value div.item {
+				display: inline-block;
+				color: #196A99;
+				margin-bottom: 10px;
+				margin-right: 10px;
+				width: 185px;
+				float: left;
+			}
+			td.value div.item img {
+				display: inline-block;
+				margin-bottom: 10px;
+				width: 185px;
+				height: 125px;
+			}
+			td.value div.item .wiscofile {
+				margin-top: 105px;
+				margin-bottom: 10px;
+				width: 185px;
+			}
+			td.value div.item .wiscofile input.file {
+				width: 165px;
+			}
+			td.value div.item .wiscofile a {
+				left: 165px;
+			}
+			#blank {
+				display: none;
+				*display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="infoeditpage">
+			<tr height="24px">
+				<td class="title">商品修改</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="info">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr height="10px">
+								<td colspan="6">&nbsp;</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">商品编码：</td>
+								<td width="240px" class="value">P2014120514040100001</td>
+								<td width="5px" class="sign">&nbsp;</td>
+								<td width="100px" class="label">&nbsp;</td>
+								<td width="240px" class="value">&nbsp;</td>
+								<td width=“5px” class="sign">&nbsp;</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">商品名称：</td>
+								<td width="240px" class="value"><input type="text" class="wiscoinput"/></td>
+								<td width=“5px” class="sign">*</td>
+								<td width="100px" class="label">商品类别：</td>
+								<td width="240px" class="value">
+									<div class="wiscoselect">
+										<select>
+											<option value="1" selected>医疗用品</option>
+											<option value="2">手机数码</option>
+											<option value="3">服装服饰</option>
+											<option value="4">装饰建材</option>
+											<option value="5">食品饮料</option>
+											<option value="6">床上用品</option>
+										</select>
+									</div>
+								</td>
+								<td width="5px" class="sign">*</td>
+							</tr>
+							<tr height="5px">
+								<td colspan="6" class="space">&nbsp;</td>
+							</tr>
+							<tr height="150px" class="area">
+								<td width="100px" class="label">规格型号：</td>
+								<td width="585px" colspan="4" class="value">
+									<div id="wiscogrid1" class="wiscogrid">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td class="head">
+													[<a href="#" class="wiscolink" onclick="showWiscoDialog('mall/modelEdit.html?type=add', 450, 300);">点击新增</a>]
+												</td>
+												<td class="head">序号</td>
+												<td width="100%" class="head">规格型号</td>
+												<td class="head">单位</td>
+												<td class="head">单价</td>
+												<td class="head">数量</td>
+											</tr>
+											<tr>
+												<td class="link">
+													<a href="#" onclick="showWiscoDialog('mall/modelEdit.html?type=edit', 450, 300);">修改</a>&nbsp;|
+													<a href="#">删除</a>
+												</td>
+												<td class="data">1</td>
+												<td class="data">深空灰色、16G、4.7英寸</td>
+												<td class="data">个</td>
+												<td class="data">4800</td>
+												<td class="data">50</td>
+											</tr>
+											<tr>
+												<td class="link">
+													<a href="#" onclick="showWiscoDialog('mall/modelEdit.html?type=edit', 450, 300);">修改</a>&nbsp;|
+													<a href="#">删除</a>
+												</td>
+												<td class="data">2</td>
+												<td class="data">金色、16G、4.7英寸</td>
+												<td class="data">个</td>
+												<td class="data">4800</td>
+												<td class="data">50</td>
+											</tr>
+											<tr>
+												<td class="link">
+													<a href="#" onclick="showWiscoDialog('mall/modelEdit.html?type=edit', 450, 300);">修改</a>&nbsp;|
+													<a href="#">删除</a>
+												</td>
+												<td class="data">3</td>
+												<td class="data">银色、16G、4.7英寸</td>
+												<td class="data">个</td>
+												<td class="data">4800</td>
+												<td class="data">50</td>
+											</tr>
+											<tr>
+												<td class="link">
+													<a href="#" onclick="showWiscoDialog('mall/modelEdit.html?type=edit', 450, 300);">修改</a>&nbsp;|
+													<a href="#">删除</a>
+												</td>
+												<td class="data">4</td>
+												<td class="data">银色、16G、5.5英寸</td>
+												<td class="data">个</td>
+												<td class="data">5500</td>
+												<td class="data">50</td>
+											</tr>
+										</table>
+									</div>
+								</td>
+								<td width=“5px” class="sign">*</td>
+							</tr>
+							<tr height="10px">
+								<td colspan="6" class="space">&nbsp;</td>
+							</tr>
+							<tr class="area">
+								<td width="100px" class="label">特色卖点：</td>
+								<td width="585px" colspan="4" class="value"><textarea class="wiscotextarea" style="width: 581px;"></textarea></td>
+								<td width=“5px” class="sign">&nbsp;</td>
+							</tr>
+							<tr height="10px">
+								<td colspan="6" class="space">&nbsp;</td>
+							</tr>
+							<tr class="area">
+								<td width="100px" class="label">商品描述：</td>
+								<td width="585px" colspan="4" class="value"><textarea class="wiscotextarea" style="width: 581px;"></textarea></td>
+								<td width=“5px” class="sign">&nbsp;</td>
+							</tr>
+							<tr height="5px">
+								<td colspan="6" class="space">&nbsp;</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">发布渠道：</td>
+								<td colspan="4" width="585px" class="value">
+									<div class="wiscocheckbox"><input type="checkbox" checked="checked"/><span>金币商城</span></div>
+								</td>
+								<td width="5px" class="sign">*</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">上架方式：</td>
+								<td colspan="4" width="585px" class="value">
+									<div class="wiscoradio" style="margin-right: 20px;"><input type="radio" name="radio1" checked="checked"/><span>审核通过立即上架</span></div>
+									<div class="wiscoradio" style="margin-right: 20px;"><input type="radio" name="radio1"/><span>指定上架时间</span></div>
+									<div id="wiscodate1" class="wiscodate" style="float: left;"><input type="text"/><a href="#"></a></div>
+								</td>
+								<td width=“5px” class="sign">*</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">下架方式：</td>
+								<td colspan="4" width="585px" class="value">
+									<div class="wiscoradio" style="margin-right: 68px;"><input type="radio" name="radio2" checked="checked"/><span>售完下架</span></div>
+									<div class="wiscoradio" style="margin-right: 20px;"><input type="radio" name="radio2"/><span>指定下架时间</span></div>
+									<div id="wiscodate2" class="wiscodate" style="float: left;"><input type="text"/><a href="#"></a></div>
+								</td>
+								<td width=“5px” class="sign">*</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">发货方式：</td>
+								<td colspan="4" width="585px" class="value">
+									<div class="wiscoradio" style="margin-right: 92px;"><input type="radio" name="radio3" checked="checked"/><span>快递</span></div>
+									<div class="wiscoradio"><input type="radio" name="radio3"/><span>现场交易</span></div>
+								</td>
+								<td width=“5px” class="sign">*</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">发布数量：</td>
+								<td width="240px" class="value">100个</td>
+								<td width="5px" class="sign">&nbsp;</td>
+								<td width="100px" class="label">&nbsp;</td>
+								<td width="240px" class="value">&nbsp;</td>
+								<td width=“5px” class="sign">&nbsp;</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">邮寄费用：</td>
+								<td width="240px" class="value"><input type="text" class="wiscoinput"/></td>
+								<td width=“5px” class="sign">*</td>
+								<td width="100px" class="label">&nbsp;</td>
+								<td width="240px" class="value">&nbsp;</td>
+								<td width=“5px” class="sign">&nbsp;</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">商家承诺：</td>
+								<td width="240px" class="value">同意<a href="#" class="wiscolink">《金币商城商家承诺》</a></td>
+								<td width="5px" class="sign">&nbsp;</td>
+								<td width="100px" class="label">&nbsp;</td>
+								<td width="240px" class="value">&nbsp;</td>
+								<td width=“5px” class="sign">&nbsp;</td>
+							</tr>
+							<tr height="5px">
+								<td colspan="6" class="space">&nbsp;</td>
+							</tr>
+							<tr class="area">
+								<td width="100px" class="label" style="line-height: 20px;">商品图片：</td>
+								<td width="590px" colspan="5" class="value">
+									<div class="item">
+										<span>
+											<img src="../upload/1.jpg" onclick="showWiscoDialog(this.src, 800, 500);"/><br/>
+											<a href="#" class="wiscolink" onclick="changeCurrentImage(this);">修改</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+										</span>
+										<span style="display: none;">
+											<div id="productImage1" class="wiscofile"><input type="text" class="file"/><a href="#"><input type="file" name="txtProductImage"/></a></div>
+											<a href="#" class="wiscolink" style="display: inline-block; margin-top: 30px; *margin-top: 0px; margin-left: -20px; *margin-left: 0px;" onclick="restoreCurrentImage(this);">取消</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+											<script> initWiscoFile("productImage1"); </script>
+										</span>
+									</div>
+									<div class="item">
+										<span>
+											<img src="../upload/2.jpg" onclick="showWiscoDialog(this.src, 800, 500);"/><br/>
+											<a href="#" class="wiscolink" onclick="changeCurrentImage(this);">修改</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+										</span>
+										<span style="display: none;">
+											<div id="productImage2" class="wiscofile"><input type="text" class="file"/><a href="#"><input type="file" name="txtProductImage"/></a></div>
+											<a href="#" class="wiscolink" style="display: inline-block; margin-top: 30px; *margin-top: 0px; margin-left: -20px; *margin-left: 0px;" onclick="restoreCurrentImage(this);">取消</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+											<script> initWiscoFile("productImage2"); </script>
+										</span>
+									</div>
+									<div class="item">
+										<span>
+											<img src="../upload/3.jpg" onclick="showWiscoDialog(this.src, 800, 500);"/><br/>
+											<a href="#" class="wiscolink" onclick="changeCurrentImage(this);">修改</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+										</span>
+										<span style="display: none;">
+											<div id="productImage3" class="wiscofile"><input type="text" class="file"/><a href="#"><input type="file" name="txtProductImage"/></a></div>
+											<a href="#" class="wiscolink" style="display: inline-block; margin-top: 30px; *margin-top: 0px; margin-left: -20px; *margin-left: 0px;" onclick="restoreCurrentImage(this);">取消</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+											<script> initWiscoFile("productImage3"); </script>
+										</span>
+									</div>
+									<div class="item">
+										<span>
+											<img src="../upload/4.jpg" onclick="showWiscoDialog(this.src, 800, 500);"/><br/>
+											<a href="#" class="wiscolink" onclick="changeCurrentImage(this);">修改</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+										</span>
+										<span style="display: none;">
+											<div id="productImage4" class="wiscofile"><input type="text" class="file"/><a href="#"><input type="file" name="txtProductImage"/></a></div>
+											<a href="#" class="wiscolink" style="display: inline-block; margin-top: 30px; *margin-top: 0px; margin-left: -20px; *margin-left: 0px;" onclick="restoreCurrentImage(this);">取消</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+											<script> initWiscoFile("productImage4"); </script>
+										</span>
+									</div>
+									<div class="item">
+										<span>
+											<img src="../upload/5.jpg" onclick="showWiscoDialog(this.src, 800, 500);"/><br/>
+											<a href="#" class="wiscolink" onclick="changeCurrentImage(this);">修改</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+										</span>
+										<span style="display: none;">
+											<div id="productImage5" class="wiscofile"><input type="text" class="file"/><a href="#"><input type="file" name="txtProductImage"/></a></div>
+											<a href="#" class="wiscolink" style="display: inline-block; margin-top: 30px; *margin-top: 0px; margin-left: -20px; *margin-left: 0px;" onclick="restoreCurrentImage(this);">取消</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+											<script> initWiscoFile("productImage5"); </script>
+										</span>
+									</div>
+									<div class="item">
+										<span>
+											<img src="../upload/6.jpg" onclick="showWiscoDialog(this.src, 800, 500);"/><br/>
+											<a href="#" class="wiscolink" onclick="changeCurrentImage(this);">修改</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+										</span>
+										<span style="display: none;">
+											<div id="productImage6" class="wiscofile"><input type="text" class="file"/><a href="#"><input type="file" name="txtProductImage"/></a></div>
+											<a href="#" class="wiscolink" style="display: inline-block; margin-top: 30px; *margin-top: 0px; margin-left: -20px; *margin-left: 0px;" onclick="restoreCurrentImage(this);">取消</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+											<script> initWiscoFile("productImage6"); </script>
+										</span>
+									</div>
+									<div class="item">
+										<span>
+											<img src="../upload/7.jpg" onclick="showWiscoDialog(this.src, 800, 500);"/><br/>
+											<a href="#" class="wiscolink" onclick="changeCurrentImage(this);">修改</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+										</span>
+										<span style="display: none;">
+											<div id="productImage7" class="wiscofile"><input type="text" class="file"/><a href="#"><input type="file" name="txtProductImage"/></a></div>
+											<a href="#" class="wiscolink" style="display: inline-block; margin-top: 30px; *margin-top: 0px; margin-left: -20px; *margin-left: 0px;" onclick="restoreCurrentImage(this);">取消</a>&nbsp;|
+											<a href="#" class="wiscolink" onclick="removeCurrentImage(this);">删除</a>
+											<script> initWiscoFile("productImage7"); </script>
+										</span>
+									</div>
+								</td>
+								<td width=“5px” class="sign">&nbsp;</td>
+							</tr>
+							<tr id="blank" height="10px">
+								<td colspan="6" class="space">&nbsp;</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">商品图片：</td>
+								<td width="240px" class="value">
+									<div id="wiscofile1" class="wiscofile"><input type="text" class="file"/><a href="#"><input type="file" name="txtProductImage"/></a></div>
+								</td>
+								<td colspan="4"><a href="#" class="wiscolink" onclick="addProductImage(this);">新增</a></td>
+							</tr>
+							<tr height="10px">
+								<td colspan="6">&nbsp;</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr height="36px">
+				<td class="handle">
+					<a href="#" class="wiscobutton" onclick="alert('商品修改成功！'); window.location.reload();"><span class="left"></span><span class="center">确定</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton" onclick="window.location.reload();"><span class="left"></span><span class="center">清空</span><span class="right"></span></a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script>
+	initWiscoGrid("wiscogrid1");
+	initWiscoDate("wiscodate1");
+	initWiscoDate("wiscodate2");
+	var index = 1;
+	// Add Product Image
+	var addProductImage = function(e) {
+		var table = e.parentNode.parentNode.parentNode;
+		var row = document.createElement("tr");
+		row.style.height = "30px";
+		index = index + 1;
+		// Add Cell Label
+		var cell = document.createElement("td");
+		cell.width = "100px";
+		cell.className = "label";
+		cell.innerHTML = "&nbsp;";
+		row.appendChild(cell);
+		// Add Cell Value
+		cell = document.createElement("td");
+		cell.width = "240px";
+		cell.className = "value";
+		cell.innerHTML = "<div id=\"wiscofile" + index + "\" class=\"wiscofile\"><input type=\"text\" class=\"file\"/>" 
+			+ "<a href=\"#\"><input type=\"file\" name=\"txtProductImage\"/></a></div>";
+		row.appendChild(cell);
+		// Add Cell Link
+		cell = document.createElement("td");
+		cell.colSpan = "4";
+		cell.style.color = "#196A99";
+		cell.innerHTML = "<a href=\"#\" class=\"wiscolink\" onclick=\"addProductImage(this);\">新增</a>" 
+			+ "&nbsp;|&nbsp;<a href=\"#\" class=\"wiscolink\" onclick=\"removeProductImage(this);\">删除</a>"
+		row.appendChild(cell);
+		var last = table.rows[table.rows.length - 1];
+		table.insertBefore(row, last);
+		initWiscoFile("wiscofile" + index);
+	};
+	// Remove Product Image
+	var removeProductImage = function(e) {
+		var row = e.parentNode.parentNode;
+		var table = row.parentNode;
+		table.removeChild(row);
+	};
+	// Change Product Image (Current)
+	var changeCurrentImage = function(e) {
+		var div = e.parentNode.parentNode;
+		div.children[0].style.display = "none";
+		div.children[1].style.display = "";
+	};
+	// Restore Product Image (Current)
+	var restoreCurrentImage = function(e) {
+		var div = e.parentNode.parentNode;
+		div.children[0].style.display = "";
+		div.children[1].style.display = "none";
+		var file = div.children[1].children[0];
+		file.innerHTML = "<input type=\"text\" class=\"file\"/><a href=\"#\">" 
+			+ "<input type=\"file\" name=\"txtProductImage\"/></a>";
+		initWiscoFile(file.id);
+	};
+	// Remove Product Image (Current)
+	var removeCurrentImage = function(e) {
+		var div = e.parentNode.parentNode;
+		var cell = div.parentNode;
+		var length = cell.children.length;
+		if(length > 1) cell.removeChild(div);
+		else {
+			var row = cell.parentNode;
+			var table = row.parentNode;
+			table.removeChild(row);
+			row = document.getElementById("blank");
+			table.removeChild(row);
+		}
+	};
+</script>

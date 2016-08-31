@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Language" content="zh-CN"/> 
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<title></title>
+		<script language="javascript" src="../script/component/My97DatePicker/WdatePicker.js"></script>
+		<script language="javascript" src="../script/commonscript.js"></script>
+		<script language="javascript" src="../script/demo/infoeditpage.js"></script>
+		<link type="text/css" rel="stylesheet" href="../style/commonstyle.css"/>
+		<link type="text/css" rel="stylesheet" href="../style/demo/infoeditpage.css"/>
+		<style>
+			table.infoeditpage td.value span.unit {
+				display: inline-block;
+				*margin-bottom: 2px;
+				margin-left: 5px;
+			}
+			.wiscocheckbox {
+				*margin-top: -1px;
+				margin-left: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="infoeditpage">
+			<tr height="24px">
+				<td class="title">推送新增</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="info">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr height="10px">
+								<td colspan="6">&nbsp;</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">推送标题：</td>
+								<td width="585px" colspan="4" class="value"><input type="text" class="wiscoinput" style="width: 581px;"/></td>
+								<td width="5px" class="sign">*</td>
+							</tr>
+							<tr height="5px">
+								<td colspan="6" class="space">&nbsp;</td>
+							</tr>
+							<tr class="area">
+								<td width="100px" class="label">推送内容：</td>
+								<td width="585px" colspan="4" class="value"><textarea class="wiscotextarea" style="width: 581px"></textarea></td>
+								<td width=“5px” class="sign">*</td>
+							</tr>
+							<tr height="5px">
+								<td colspan="6" class="space">&nbsp;</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">推送类型：</td>
+								<td width="240px" class="value">
+									<div class="wiscoselect">
+										<select id="wiscoselect1">
+											<option value="1">消息类</option>
+											<option value="2">一般类</option>
+											<option value="3">银元商品导购类</option>
+											<option value="4">金币商品导购类</option>
+											<option value="5">自推广统计类</option>
+											<option value="6">排行类</option>
+											<option value="7">商家推荐类</option>
+											<option value="6">用户VIP导购类</option>
+											<option value="6">商家VIP导购类</option>
+										</select>
+									</div>
+								</td>
+								<td width="5px" class="sign">*</td>
+								<td width="100px" class="label">推送平台：</td>
+								<td width="240px" class="value">
+									<div class="wiscoselect">
+										<select id="wiscoselect2">
+											<option value="0" selected>全部</option>
+											<option value="1">iOS</option>
+											<option value="2">Android</option>
+										</select>
+									</div>
+								</td>
+								<td width="5px" class="sign">*</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">推送模式：</td>
+								<td width="240px" class="value">
+									<div class="wiscoselect">
+										<select id="wiscoselect3" onchange="setPushMode(this);">
+											<option value="1">实时推送</option>
+											<option value="2">定时推送</option>
+										</select>
+									</div>
+								</td>
+								<td width="5px" class="sign">*</td>
+								<td width="100px" class="label">&nbsp;</td>
+								<td width="240px" class="value">&nbsp;</td>
+								<td width="5px" class="sign">&nbsp;</td>
+							</tr>
+							<tr id="row1" height="30px">
+								<td width="100px" class="label">推送时间：</td>
+								<td width="240px" class="value">
+									<div id="wiscodate1" class="wiscodate"><input type="text"/><a href="#"></a></div>
+								</td>
+								<td width="5px" class="sign">*</td>
+								<td width="100px" class="label">&nbsp;</td>
+								<td width="240px" class="value">&nbsp;</td>
+								<td width="5px" class="sign">&nbsp;</td>
+							</tr>
+							<tr id="row2" height="30px" style="display: none;">
+								<td width="100px" class="label">定时时间：</td>
+								<td width="240px" class="value">
+									<div id="wiscodate2" class="wiscodate"><input type="text"/><a href="#"></a></div>
+								</td>
+								<td width="5px" class="sign">*</td>
+								<td width="100px" class="label">定时时长：</td>
+								<td width="240px" class="value">
+									<input type="text" class="wiscoinput" style="width: 45px;"/><span class="unit">天</span>
+									<input type="text" class="wiscoinput" style="width: 45px;"/><span class="unit">小时</span>
+									<input type="text" class="wiscoinput" style="width: 45px;"/><span class="unit">分钟</span>
+								</td>
+								<td width="5px" class="sign">*</td>
+							</tr>
+							<tr id="row3" height="30px" style="display: none;">
+								<td width="100px" class="label">定时次数：</td>
+								<td width="240px" class="value">
+									<input type="text" class="wiscoinput" style="width: 150px; float: left;"/>
+									<div class="wiscocheckbox"><input type="checkbox" onclick="setUnlimitedTimes(this);"/><span>无限次</span></div>
+								</td>
+								<td width="5px" class="sign">*</td>
+								<td width="100px" class="label">下次推送：</td>
+								<td width="240px" class="value">2015-01-31 08:00:00</td>
+								<td width="5px" class="sign">&nbsp;</td>
+							</tr>
+							<tr height="10px">
+								<td colspan="6">&nbsp;</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr height="35px">
+				<td class="handle">
+					<a href="#" class="wiscobutton" onclick="hideWiscoDialog();"><span class="left"></span><span class="center">保存</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton" onclick="hideWiscoDialog();"><span class="left"></span><span class="center">取消</span><span class="right"></span></a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script>
+	initWiscoDate("wiscodate1");
+	initWiscoDate("wiscodate2");
+	var row1 = document.getElementById("row1");
+	var row2 = document.getElementById("row2");
+	var row3 = document.getElementById("row3");
+	var setPushMode = function(e) {
+		var index = e.selectedIndex;
+		if(index == 0) {
+			row1.style.display = "block";
+			row2.style.display = "none";
+			row3.style.display = "none";
+		}
+		else {
+			row1.style.display = "none";
+			row2.style.display = "block";
+			row3.style.display = "block";
+		}
+	};
+	var setUnlimitedTimes = function(e) {
+		var cell = e.parentNode.parentNode;
+		var input = cell.children[0];
+		if(e.checked) {
+			input.className = "wiscoinput_readonly";
+			input.readOnly = true;
+		}
+		else {
+			input.className = "wiscoinput";
+			input.readOnly = false;
+		}
+	};
+</script>

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Language" content="zh-CN"/> 
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<title></title>
+		<script language="javascript" src="../script/component/My97DatePicker/WdatePicker.js"></script>
+		<script language="javascript" src="../script/commonscript.js"></script>
+		<script language="javascript" src="../script/demo/listpage.js"></script>
+		<link type="text/css" rel="stylesheet" href="../style/commonstyle.css"/>
+		<link type="text/css" rel="stylesheet" href="../style/demo/listpage.css"/>
+		<style>
+			.wiscolink {
+				color: #196A99;
+			}
+			.wiscolink:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="listpage">
+			<tr height="24px">
+				<td class="title">推送管理<span class="arrowdown" onclick="foldSearchPanel(this);"></span></td>
+			</tr>
+			<!--One Row : 70px, Two Rows : 100px, Three Rows : 130px-->
+			<tr height="130px">
+				<td id="search1" class="search">
+					<span class="label">推送标题：</span><span class="value"><input type="text" class="wiscoinput"/></span>&nbsp;&nbsp;
+					<span class="label">推送内容：</span><span class="value"><input type="text" class="wiscoinput"/></span>&nbsp;&nbsp;
+					<span class="label">推送类型：</span><span class="value">
+						<div class="wiscoselect">
+							<select id="wiscoselect1">
+								<option value="0" selected>全部</option>
+								<option value="1">消息类</option>
+								<option value="2">一般类</option>
+								<option value="3">银元商品导购类</option>
+								<option value="4">金币商品导购类</option>
+								<option value="5">自推广统计类</option>
+								<option value="6">排行类</option>
+								<option value="7">商家推荐类</option>
+								<option value="6">用户VIP导购类</option>
+								<option value="6">商家VIP导购类</option>
+							</select>
+						</div>
+					</span><br/>
+					<span class="label">推送模式：</span><span class="value">
+						<div class="wiscoselect">
+							<select id="wiscoselect2">
+								<option value="0" selected>全部</option>
+								<option value="1">实时推送</option>
+								<option value="2">定时推送</option>
+							</select>
+						</div>
+					</span>&nbsp;&nbsp;
+					<span class="label">推送平台：</span><span class="value">
+						<div class="wiscoselect">
+							<select id="wiscoselect3">
+								<option value="0" selected>全部</option>
+								<option value="1">iOS</option>
+								<option value="2">Android</option>
+							</select>
+						</div>
+					</span>&nbsp;&nbsp;<br/>
+					<span class="label">开始时间：</span><span class="value">
+						<div id="wiscodate1" class="wiscodate"><input type="text"/><a href="#"></a></div>
+					</span>&nbsp;&nbsp;
+					<span class="label">结束时间：</span><span class="value">
+						<div id="wiscodate2" class="wiscodate"><input type="text"/><a href="#"></a></div>
+					</span>&nbsp;&nbsp;<br/>
+					<a href="#" class="wiscobutton" onclick="window.location.reload();"><span class="left"></span><span class="center">查询</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton"><span class="left"></span><span class="center">清空</span><span class="right"></span></a>
+				</td>
+			</tr>
+			<tr height="35px">
+				<td id="handle1" class="handle">
+					<a href="#" class="wiscobutton" onclick="showWiscoDialog('page/pushAdd.html', 800, 500);"><span class="left"></span><span class="center">新增</span><span class="right"></span></a>
+				</td>
+			</tr>
+			<tr>
+				<td class="grid">
+					<div id="wiscogrid1" class="wiscogrid">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td class="head">功能列</td>
+								<td class="head">推送标题</td>
+								<td width="100%" class="head">推送内容</td>
+								<td class="head">推送状态</td>
+								<td class="head">推送时间</td>
+								<td class="head">推送数</td>
+								<td class="head">到达数</td>
+								<td class="head">打开数</td>
+								<td class="head">推送类型</td>
+								<td class="head">推送模式</td>
+								<td class="head">推送平台</td>
+							</tr>
+							<tr>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('page/pushView.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('page/pushEdit.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">1元秒杀111元的备长炭黑面膜</td>
+								<td class="data">1片相当于普通面膜10片的效果，深层清洁紧致嫩肤，立即抢购>></td>
+								<td class="data">推送成功</td>
+								<td class="data">2015-03-06 10:02:01</td>
+								<td class="data">100000</td>
+								<td class="data">99000（99%）</td>
+								<td class="data">95000（95%）</td>
+								<td class="data">银元商品导购类</td>
+								<td class="data">定时推送（3/*）</td>
+								<td class="data">全部</td>
+							</tr>
+							<tr>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('page/pushView.html', 800, 500);">查看</a>&nbsp;|
+									<span class="disabled">修改</span>&nbsp;|
+									<span class="disabled">删除</span>
+								</td>
+								<td class="data">秒赚广告</td>
+								<td class="data">4800元的[天然翡翠]可兑换啦，数量有限，赶紧带着你的银元来兑换吧！</td>
+								<td class="data">推送中...</td>
+								<td class="data">2015-03-06 10:02:01</td>
+								<td class="data">-</td>
+								<td class="data">-</td>
+								<td class="data">-</td>
+								<td class="data">银元商品导购类</td>
+								<td class="data">定时推送（2/5）</td>
+								<td class="data">iOS</td>
+							</tr>
+							<tr>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('page/pushView.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('page/pushEdit.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">1元秒杀111元的备长炭黑面膜</td>
+								<td class="data">秒赚98元的纯棉T恤衫出炉啦，秒粉们赶紧抢先兑换吧>></td>
+								<td class="data">推送失败（<a href="#" class="wiscolink">重新推送</a>）</td>
+								<td class="data">2015-03-06 10:02:01</td>
+								<td class="data">-</td>
+								<td class="data">-</td>
+								<td class="data">-</td>
+								<td class="data">银元商品导购类</td>
+								<td class="data">实时推送</td>
+								<td class="data">Android</td>
+							</tr>
+							<tr>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('page/pushView.html', 800, 500);">查看</a>&nbsp;|
+									<span class="disabled">修改</span>&nbsp;|
+									<span class="disabled">删除</span>
+								</td>
+								<td class="data">秒赚广告</td>
+								<td class="data">有钱也别任性，秒赚商城新出炉了好多商品，赶紧来免费兑换吧。</td>
+								<td class="data">推送成功</td>
+								<td class="data">2015-03-06 10:02:01</td>
+								<td class="data">100000</td>
+								<td class="data">99000（99%）</td>
+								<td class="data">95000（95%）</td>
+								<td class="data">一般类</td>
+								<td class="data">实时推送</td>
+								<td class="data">全部</td>
+							</tr>
+							<tr>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('page/pushView.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('page/pushEdit.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">玩秒赚，秒赢iPhone6</td>
+								<td class="data">玩秒赚，测人品，不卖肾，也有机会赢取iPhone6>></td>
+								<td class="data">未推送</td>
+								<td class="data">-</td>
+								<td class="data">-</td>
+								<td class="data">-</td>
+								<td class="data">-</td>
+								<td class="data">消息类</td>
+								<td class="data">定时推送（0/1）</td>
+								<td class="data">iOS</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr height="30px">
+				<td>
+					<div class="wiscopaging">
+						<div class="label">第<span>1</span>页/共<span>20</span>页，本页<span>15</span>行/共<span>295</span>行<div>
+						<div class="button">
+							<a href="#" class="firstpage" title="首页"></a>&nbsp;
+							<a href="#" class="prevpage" title="上一页"></a>&nbsp;
+							<a href="#" class="nextpage" title="下一页"></a>&nbsp;
+							<a href="#" class="lastpage" title="末页"></a>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script>
+	initWiscoDate("wiscodate1");
+	initWiscoDate("wiscodate2");
+	initWiscoGrid("wiscogrid1");
+</script>

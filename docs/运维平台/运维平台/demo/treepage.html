@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Language" content="zh-CN"/> 
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<title></title>
+		<script language="javascript" src="../script/component/zTree/js/jquery-1.4.4.min.js"></script>
+		<script language="javascript" src="../script/component/zTree/js/jquery.ztree.core-3.5.js"></script>
+		<link type="text/css" rel="stylesheet" href="../script/component/zTree/css/zTreeStyle/zTreeStyle.css"/>
+		<script language="javascript" src="../script/commonscript.js"></script>
+		<script language="javascript" src="../script/demo/treepage.js"></script>
+		<link type="text/css" rel="stylesheet" href="../style/commonstyle.css"/>
+		<link type="text/css" rel="stylesheet" href="../style/demo/treepage.css"/>
+		<script>
+			<!--
+			var setting = {};
+
+			var zNodes = [
+				{ name : "父节点1 - 打开", open : true,
+					children : [
+						{ name : "父节点11 - 收起",
+							children : [
+								{ name : "叶子节点111" },
+								{ name : "叶子节点112" },
+								{ name : "叶子节点113" },
+								{ name : "叶子节点114" }
+							]
+						},
+						{ name : "父节点12 - 收起",
+							children : [
+								{ name : "叶子节点121" },
+								{ name : "叶子节点122" },
+								{ name : "叶子节点123" },
+								{ name : "叶子节点124" }
+							]
+						},
+						{ name : "父节点13 - 没有子节点", isParent : true }
+					]
+				},
+				{ name : "父节点2 - 收起",
+					children : [
+						{ name : "父节点21 - 打开", open : true,
+							children : [
+								{ name : "叶子节点211" },
+								{ name : "叶子节点212" },
+								{ name : "叶子节点213" },
+								{ name : "叶子节点214" }
+							]
+						},
+						{ name : "父节点22 - 收起",
+							children : [
+								{ name : "叶子节点221" },
+								{ name : "叶子节点222" },
+								{ name : "叶子节点223" },
+								{ name : "叶子节点224" }
+							]
+						},
+						{ name : "父节点23 - 收起",
+							children : [
+								{ name : "叶子节点231" },
+								{ name : "叶子节点232" },
+								{ name : "叶子节点233" },
+								{ name : "叶子节点234" }
+							]
+						}
+					]
+				},
+				{ name : "父节点3 - 没有子节点", isParent : true }
+			];
+			
+			$(document).ready(function() {
+				$.fn.zTree.init($("#wiscotree1"), setting, zNodes);
+			});
+			//-->
+		</script>
+	</head>
+	<body>
+		<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="treepage">
+			<tr height="24px">
+				<td class="title">控件页</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="info">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td><ul id="wiscotree1" class="ztree"></ul></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr height="35px">
+				<td class="handle">
+					<a href="#" class="wiscobutton" onclick="hideWiscoDialog();"><span class="left"></span><span class="center">功能按钮1</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton_disabled" disabled="disabled"><span class="left"></span><span class="center">功能按钮2</span><span class="right"></span></a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

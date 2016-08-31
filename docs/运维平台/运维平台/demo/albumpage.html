@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Language" content="zh-CN"/> 
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<title></title>
+		<script language="javascript" src="../script/component/WiscoAlbum.js"></script>
+		<script language="javascript" src="../script/commonscript.js"></script>
+		<script language="javascript" src="../script/demo/albumpage.js"></script>
+		<link type="text/css" rel="stylesheet" href="../style/commonstyle.css"/>
+		<link type="text/css" rel="stylesheet" href="../style/demo/albumpage.css"/>
+	</head>
+	<body>
+		<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="albumpage">
+			<tr height="24px">
+				<td class="title">控件页</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="info">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr height="10px">
+								<td colspan="4">&nbsp;</td>
+							</tr>
+							<tr class="area">
+								<td width="100px" class="label">&nbsp;</td>
+								<td width="590px" colspan="3" class="value">
+									<div id="wiscoalbum1" class="wiscoalbum">
+										<a href="#" class="left"></a>
+										<div class="center">
+											<div>
+												<span>
+													<img src="../upload/1.jpg" onclick="setAlbumPhoto('albumphoto1', this.src);"/>
+													<img src="../upload/2.jpg" onclick="setAlbumPhoto('albumphoto1', this.src);"/>
+													<img src="../upload/3.jpg" onclick="setAlbumPhoto('albumphoto1', this.src);"/>
+													<img src="../upload/4.jpg" onclick="setAlbumPhoto('albumphoto1', this.src);"/>
+													<img src="../upload/5.jpg" onclick="setAlbumPhoto('albumphoto1', this.src);"/>
+													<img src="../upload/6.jpg" onclick="setAlbumPhoto('albumphoto1', this.src);"/>
+													<img src="../upload/7.jpg" onclick="setAlbumPhoto('albumphoto1', this.src);"/>
+													<img src="../upload/8.jpg" onclick="setAlbumPhoto('albumphoto1', this.src);"/>
+												</span>
+												<span>&nbsp;</span>
+											</div>
+										</div>
+										<a href="#" class="right"></a>
+									<div>
+								</td>
+							</tr>
+							<tr height="10px">
+								<td colspan="4">&nbsp;</td>
+							</tr>
+							<tr class="area">
+								<td width="100px" class="label">&nbsp;</td>
+								<td width="590px" colspan="3" class="value">
+									<img src="../upload/1.jpg" id="albumphoto1" class="albumphoto" onclick="showWiscoDialog(this.src, 450, 300);"/>
+								</td>
+							</tr>
+							<tr height="10px">
+								<td colspan="4">&nbsp;</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr height="35px">
+				<td class="handle">
+					<a href="#" class="wiscobutton" onclick="hideWiscoDialog();"><span class="left"></span><span class="center">功能按钮1</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton"><span class="left"></span><span class="center">功能按钮2</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton_disabled" disabled="disabled"><span class="left"></span><span class="center">功能按钮3</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton_disabled" disabled="disabled"><span class="left"></span><span class="center">功能按钮4</span><span class="right"></span></a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script>
+	initWiscoAlbum("wiscoalbum1");
+</script>

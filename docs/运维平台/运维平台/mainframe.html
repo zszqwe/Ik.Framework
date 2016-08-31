@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Language" content="zh-CN"/> 
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<title></title>
+		<script language="javascript" src="script/component/WiscoView.js"></script>
+		<script language="javascript" src="script/component/WiscoLayer.js"></script>
+		<script language="javascript" src="script/commonscript.js"></script>
+		<script language="javascript" src="script/mainframe.js"></script>
+		<link type="text/css" rel="stylesheet" href="style/commonstyle.css"/>
+		<link type="text/css" rel="stylesheet" href="style/mainframe.css"/>
+	</head>
+	<body>
+		<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="mainframe">
+			<tr height="100px">
+				<td id="headpanel" class="headpanel">
+					<div class="logo"></div>
+					<div class="welcome">
+						[欢迎你，<span>系统管理员</span>]<br/>
+						<a href="#">修改密码</a>&nbsp;|&nbsp;<a href="#" onclick="#">帮助</a>&nbsp;|&nbsp;<a href="login.html">注销</a>&nbsp;|&nbsp;<a href="#" onclick="window.close();">退出</a>
+					</div>
+					<div class="menu">
+						<a href="#" onclick="menuItemClick(this, 'welcomepage.html');">
+							<span class="left"></span><span class="center">基础数据管理</span><span class="right"></span>
+							<iframe style="display: none;">
+								<div class="guide">
+									<div class="title"><span class="arrowdown" onclick="foldGuidePanel(this);"></span>基础数据管理</div>
+									<div class="item">
+										<a href="#" onclick="guideItemClick(this, 'page/industryFrame.html');">行业/资质管理</a>
+										<a href="#" onclick="guideItemClick(this, 'page/areaFrame.html');">区域管理</a>
+										<a href="#" onclick="guideItemClick(this, 'page/dictionaryFrame.html');">字典/短语管理</a>
+									</div>
+								</div>
+							</iframe>
+						</a>
+						<a href="#" onclick="menuItemClick(this, 'welcomepage.html');">
+							<span class="left"></span><span class="center">平台内容管理</span><span class="right"></span>
+							<iframe style="display: none;">
+								<div class="guide">
+									<div class="title"><span class="arrowdown" onclick="foldGuidePanel(this);"></span>平台内容管理</div>
+									<div class="item">
+										<a href="#" onclick="guideItemClick(this, 'page/categoryFrame.html');">分类/内容管理</a>
+										<a href="#" onclick="guideItemClick(this, 'page/messageList.html');">消息管理</a>
+										<a href="#" onclick="guideItemClick(this, 'page/pushList.html');">推送管理</a>
+										<a href="#" onclick="guideItemClick(this, 'page/fileList.html');">文件管理</a>
+										<a href="#" onclick="guideItemClick(this, 'page/codeList.html');">业务号管理</a>
+									</div>
+								</div>
+							</iframe>
+						</a>
+						<a href="#" onclick="menuItemClick(this, 'welcomepage.html');">
+							<span class="left"></span><span class="center">平台高级维护</span><span class="right"></span>
+							<iframe style="display: none;">
+								<div class="guide">
+									<div class="title"><span class="arrowdown" onclick="foldGuidePanel(this);"></span>平台高级维护</div>
+									<div class="item">
+										<a href="#" onclick="guideItemClick(this, 'page/recommendProductList.html');">推荐商品管理</a>
+										<a href="#" onclick="guideItemClick(this, 'page/dishonestEnterpriseList.html');">不诚信商家管理</a>
+									</div>
+								</div>
+							</iframe>
+						</a>
+					</div>
+					<div class="path">当前所在功能：<span>&nbsp;</span><span>&nbsp;</span></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="bodypanel">
+					<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="200px" id="leftpanel" class="leftpanel">&nbsp;</td>
+							<td width="5px" class="centerpanel"><span onclick="foldLeftPanel(this);" class="arrowleft"></span></td>
+							<td id="rightpanel" class="rightpanel">
+								<iframe src="" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script>
+	document.getElementById("headpanel").children[2].children[0].click();
+</script>

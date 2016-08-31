@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+body {
+	text-align: -moz-center !important;
+	text-align: center;
+	overflow: auto;
+}
+table.reportpage {
+	margin: 0px auto;
+	width: 210mm;
+}
+table.reportpage td.title {
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+}
+table.reportpage td.handle {
+	text-align: right;
+}
+table.reportpage td.info table {
+	border: #000000 2px solid;
+	border-collapse: collapse;
+}
+table.reportpage td.info tr.normal {
+	height: 45px;
+}
+table.reportpage td.info tr.image {
+	height: 250px;
+}
+table.reportpage td.info tr.area {
+	height: 45px;
+}
+table.reportpage td.info td {
+	border: #000000 1px solid;
+}
+table.reportpage td.info td.label {
+	text-align: center;
+}
+table.reportpage td.info td.value {
+	text-align: left;
+	padding-left: 5px;
+}
+table.reportpage td.info tr.image td.value {
+	text-align: center;
+	padding-left: 0px;
+}
+table.reportpage td.info tr.image img {
+	width: 250px;
+	height: 220px;
+}
+table.reportpage td.author {
+	text-align: right;
+}

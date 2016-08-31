@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Language" content="zh-CN"/> 
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<title></title>
+		<script language="javascript" src="../script/component/My97DatePicker/WdatePicker.js"></script>
+		<script language="javascript" src="../script/commonscript.js"></script>
+		<script language="javascript" src="../script/demo/listpage.js"></script>
+		<link type="text/css" rel="stylesheet" href="../style/commonstyle.css"/>
+		<link type="text/css" rel="stylesheet" href="../style/demo/listpage.css"/>
+	</head>
+	<body>
+		<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="listpage">
+			<tr height="24px">
+				<td class="title">列表页<span class="arrowdown" onclick="foldSearchPanel(this);"></span></td>
+			</tr>
+			<!--One Row : 70px, Two Rows : 100px, Three Rows : 130px-->
+			<tr height="100px">
+				<td id="search1" class="search">
+					<span class="label">查询条件1：</span><span class="value"><input type="text" id="wiscoinput1" class="wiscoinput"/></span>&nbsp;&nbsp;
+					<span class="label">查询条件2：</span><span class="value">
+						<div class="wiscoselect">
+							<select id="wiscoselect1">
+								<option value="0" selected>全部</option>
+								<option value="1">类型1</option>
+								<option value="2">类型2</option>
+								<option value="3">类型3</option>
+								<option value="4">类型4</option>
+								<option value="5">类型5</option>
+							</select>
+						</div>
+					</span>&nbsp;&nbsp;
+					<span class="label">查询条件3：</span><span class="value">
+						<div class="wiscoselect">
+							<select id="wiscoselect2">
+								<option value="0" selected>全部</option>
+								<option value="1">类型1</option>
+								<option value="2">类型2</option>
+								<option value="3">类型3</option>
+								<option value="4">类型4</option>
+								<option value="5">类型5</option>
+							</select>
+						</div>
+					</span><br/>
+					<span class="label">查询条件4：</span><span class="value">
+						<div id="wiscodate1" class="wiscodate"><input type="text" id="wiscoinput2"/><a href="#"></a></div>
+					</span>&nbsp;&nbsp;
+					<span class="label">查询条件5：</span><span class="value">
+						<div id="wiscotime1" class="wiscotime"><input type="text" id="wiscoinput3"/><a href="#"></a></div>
+					</span>&nbsp;&nbsp;
+					<span class="label">查询条件6：</span><span class="value">
+						<div id="wiscomore1" class="wiscomore"><input type="text" id="wiscoinput4"/><a href="#" onclick="showWiscoDialog('demo/treepage.html', 300, 400);"></a></div>
+					</span><br/>
+					<a href="#" class="wiscobutton" onclick="window.location.reload();"><span class="left"></span><span class="center">查询</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton"><span class="left"></span><span class="center">清空</span><span class="right"></span></a>
+				</td>
+			</tr>
+			<tr height="35px">
+				<td id="handle1" class="handle">
+					<a href="#" class="wiscobutton" onclick="showWiscoDialog('demo/tabpage.html', 800, 500);"><span class="left"></span><span class="center">功能按钮1</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton" onclick="showWiscoDialog('demo/workflowpage.html', 800, 500);"><span class="left"></span><span class="center">功能按钮2</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton" onclick="showWiscoDialog('demo/reportpage.html', 800, 500);"><span class="left"></span><span class="center">功能按钮3</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton_disabled" disabled="disabled"><span class="left"></span><span class="center">功能按钮4</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton_disabled" disabled="disabled"><span class="left"></span><span class="center">功能按钮5</span><span class="right"></span></a>
+				</td>
+			</tr>
+			<tr>
+				<td class="grid">
+					<div id="wiscogrid1" class="wiscogrid">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td class="head"><input type="checkbox"/></td>
+								<td class="head">功能列</td>
+								<td class="head">序号列</td>
+								<td class="head">数据列1</td>
+								<td class="head">数据列2</td>
+								<td class="head">数据列3</td>
+								<td class="head">数据列4</td>
+								<td class="head">数据列5</td>
+								<td class="head">数据列6</td>
+								<td class="head">数据列7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行1</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行2</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行3</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行4</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行5</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行6</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行7</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行8</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行9</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行10</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行11</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行12</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行13</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">文本内容7</td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行14</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data"><span class="trim" title="加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长文本内容7">加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长文本内容7</span></td>
+							</tr>
+							<tr>
+								<td class="check"><input type="checkbox"/></td>
+								<td class="link">
+									<a href="#" onclick="showWiscoDialog('demo/infoviewpage.html', 800, 500);">查看</a>&nbsp;|
+									<a href="#" onclick="showWiscoDialog('demo/infoeditpage.html', 800, 500);">修改</a>&nbsp;|
+									<a href="#">删除</a>
+								</td>
+								<td class="data">文本行15</td>
+								<td class="data">文本内容1</td>
+								<td class="data">文本内容2</td>
+								<td class="data">文本内容3</td>
+								<td class="data">文本内容4</td>
+								<td class="data">文本内容5</td>
+								<td class="data">文本内容6</td>
+								<td class="data">加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长加长文本内容7</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr height="30px">
+				<td>
+					<div class="wiscopaging">
+						<div class="label">第<span>1</span>页/共<span>20</span>页，本页<span>15</span>行/共<span>295</span>行<div>
+						<div class="button">
+							<a href="#" class="firstpage" title="首页"></a>&nbsp;
+							<a href="#" class="prevpage" title="上一页"></a>&nbsp;
+							<a href="#" class="nextpage" title="下一页"></a>&nbsp;
+							<a href="#" class="lastpage" title="末页"></a>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script>
+	initWiscoView("search1");
+	initWiscoDate("wiscodate1");
+	initWiscoTime("wiscotime1");
+	initWiscoMore("wiscomore1");
+	initWiscoGrid("wiscogrid1");
+</script>

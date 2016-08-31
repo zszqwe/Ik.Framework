@@ -1,0 +1,142 @@
+@CHARSET "UTF-8";
+table.workflowpage td.title {
+	background-image: url("../../image/demo/workflowpage/titlebg.gif");
+	border-bottom: #A0C6F3 1px solid;
+	font-weight: bold;
+	color: #193463;
+	padding-left: 10px;
+}
+table.workflowpage div.info {
+	overflow: auto;
+	width: 100%;
+	height: 100%;
+}
+table.workflowpage div.info table {
+	margin-bottom: -9999px;
+	margin-right: -9999px;
+}
+table.workflowpage div.info td.flow {
+	background-image: url("../../image/demo/workflowpage/flow.gif");
+	background-repeat: no-repeat;
+}
+table.workflowpage div.info a {
+	display: inline-block;
+	position: relative;
+	font-weight: bold;
+	color: #000000;
+	text-align: center;
+	line-height: 50px;
+	width: 80px;
+	height: 50px;
+}
+table.workflowpage div.info a.normal {
+	border: #6E6E6E 1px solid;
+	background-color: #F2F2F2;
+}
+table.workflowpage div.info a.inhand {
+	border: #FFB32D 1px solid;
+	background-color: #FFFF99;
+}
+table.workflowpage div.info a.finished {
+	border: #1E9018 1px solid;
+	background-color: #E2FD9B;
+}
+table.workflowpage div.info a#element1 {
+	top: -46px;
+	left: 135px;
+}
+table.workflowpage div.info a#element2 {
+	top: 84px;
+	left: 47px;
+	*left: 49px;
+}
+table.workflowpage div.info a#element3 {
+	top: -46px;
+	left: 129px;
+	*left: 133px;
+}
+table.workflowpage div.info a#element4 {
+	top: -46px;
+	left: 211px;
+	*left: 217px;
+}
+table.workflowpage div.info a#element5 {
+	top: -46px;
+	left: 293px;
+	*left: 301px;
+}
+table.workflowpage div.info a#element6 {
+	top: -46px;
+	left: 374px;
+	*left: 384px;
+}
+table.workflowpage div.info a#element7 {
+	top: 84px;
+	left: 286px;
+	*left: 298px;
+}
+table.workflowpage div.info a#element8 {
+	top: 84px;
+	left: 368px;
+	*left: 382px;
+}
+table.workflowpage div.info a#element9 {
+	top: -178px;
+	left: -59px;
+	*left: -43px;
+}
+table.workflowpage div.info a#element10 {
+	top: -178px;
+	left: -317px;
+	*left: -299px;
+}
+table.workflowpage div.info a#element11 {
+	top: 84px;
+	left: -235px;
+	*left: -215px;
+}
+table.workflowpage div.info a#element12 {
+	top: 84px;
+	left: -493px;
+	*left: -471px;
+}
+table.workflowpage div.info span.icon {
+	background-image: url("../../image/demo/workflowpage/user.gif");
+	background-repeat: no-repeat;
+	display: inline-block;
+	position: absolute;
+	cursor: pointer;
+	width: 12px;
+	height: 13px;
+	top: 2px;
+	left: 2px;
+}
+table.workflowpage div.info a.normal span.icon {
+	background-position: -24px 0px;
+}
+table.workflowpage div.info a.inhand span.icon {
+	background-position: -12px 0px;
+}
+table.workflowpage div.info a.finished span.icon {
+	background-position: 0px 0px;
+}
+table.workflowpage div.info span.text {
+	display: inline-block;
+	visibility: hidden;
+	position: relative;
+}
+table.workflowpage div.info span#text1 {
+	top: -90px;
+	left: 229px;
+}
+table.workflowpage div.info span#text2 {
+	top: 150px;
+	left: 289px;
+}
+table.workflowpage td.handle {
+	border-top: #A0C6F3 1px solid;
+	background-color: #F2FBFF;
+	text-align: center;
+	vertical-align: top;
+	padding-top: 7px;
+}

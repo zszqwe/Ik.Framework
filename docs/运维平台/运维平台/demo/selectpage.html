@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Language" content="zh-CN"/> 
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<title></title>
+		<script language="javascript" src="../script/component/zTree/js/jquery-1.4.4.min.js"></script>
+		<script language="javascript" src="../script/component/zTree/js/jquery.ztree.core-3.5.js"></script>
+		<link type="text/css" rel="stylesheet" href="../script/component/zTree/css/zTreeStyle/zTreeStyle.css"/>
+		<script language="javascript" src="../script/commonscript.js"></script>
+		<script language="javascript" src="../script/demo/selectpage.js"></script>
+		<link type="text/css" rel="stylesheet" href="../style/commonstyle.css"/>
+		<link type="text/css" rel="stylesheet" href="../style/demo/selectpage.css"/>
+		<script>
+			<!--
+			var setting = { };
+
+			var zNodes = [
+				{ name : "父部门1 - 打开", open : true,
+					children : [
+						{ name : "父部门11 - 收起",
+							children : [
+								{ name : "叶子部门111" },
+								{ name : "叶子部门112" },
+								{ name : "叶子部门113" },
+								{ name : "叶子部门114" }
+							]
+						},
+						{ name : "父部门12 - 收起",
+							children : [
+								{ name : "叶子部门121" },
+								{ name : "叶子部门122" },
+								{ name : "叶子部门123" },
+								{ name : "叶子部门124" }
+							]
+						},
+						{ name : "父部门13 - 没有子部门", isParent : true }
+					]
+				},
+				{ name : "父部门2 - 收起",
+					children : [
+						{ name : "父部门21 - 打开", open : true,
+							children : [
+								{ name : "叶子部门211" },
+								{ name : "叶子部门212" },
+								{ name : "叶子部门213" },
+								{ name : "叶子部门214" }
+							]
+						},
+						{ name : "父部门22 - 收起",
+							children : [
+								{ name : "叶子部门221" },
+								{ name : "叶子部门222" },
+								{ name : "叶子部门223" },
+								{ name : "叶子部门224" }
+							]
+						},
+						{ name : "父部门23 - 收起",
+							children : [
+								{ name : "叶子部门231" },
+								{ name : "叶子部门232" },
+								{ name : "叶子部门233" },
+								{ name : "叶子部门234" }
+							]
+						}
+					]
+				},
+				{ name : "父部门3 - 没有子部门", isParent : true }
+			];
+			
+			$(document).ready(function() {
+				$.fn.zTree.init($("#wiscotree1"), setting, zNodes);
+			});
+			//-->
+		</script>
+	</head>
+	<body>
+		<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="selectpage">
+			<tr height="24px" style="display: none;">
+				<td class="title">控件页</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="info">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr height="10px">
+								<td colspan="6">&nbsp;</td>
+							</tr>
+							<tr height="30px">
+								<td width="100px" class="label">所在组织：</td>
+								<td width="240px" class="value">
+									<div class="wiscoselect">
+										<select>
+											<option value="1" selected>组织1</option>
+											<option value="2">组织2</option>
+											<option value="3">组织3</option>
+											<option value="4">组织4</option>
+											<option value="5">组织5</option>
+											<option value="6">组织6</option>
+										</select>
+									</div>
+								</td>
+								<td width="5px" class="sign">*</td>
+								<td width="100px">&nbsp;</td>
+								<td colspan="2" class="label"><div>选定的人员：</div></td>
+							</tr>
+							<tr height="5px">
+								<td colspan="6" class="space">&nbsp;</td>
+							</tr>
+							<tr class="area">
+								<td width="100px" class="label">所在部门：</td>
+								<td width="240px" class="value">
+									<div class="wiscotree"><ul id="wiscotree1" class="ztree"></ul></div>
+								</td>
+								<td width="5px" class="sign">*</td>
+								<td rowspan="3" width="100px" class="button">
+									<a href="#" class="wiscobutton"><span class="left"></span><span class="center">&gt;&gt;</span><span class="right"></span></a><br/><br/>
+									<a href="#" class="wiscobutton"><span class="left"></span><span class="center">-&gt;</span><span class="right"></span></a><br/><br/>
+									<a href="#" class="wiscobutton"><span class="left"></span><span class="center">&lt;-</span><span class="right"></span></a><br/><br/>
+									<a href="#" class="wiscobutton"><span class="left"></span><span class="center">&lt;&lt;</span><span class="right"></span></a>
+								</td>
+								<td rowspan="3" width="240px">
+									<div class="wiscolistbox">
+										<select size="22" multiple="multiple">
+											<option value="1">人员1</option>
+											<option value="7">人员7</option>
+											<option value="8">人员8</option>
+											<option value="13">人员13</option>
+											<option value="14">人员14</option>
+											<option value="20">人员20</option>
+										</select>
+									</div>
+								<td>
+								<td rowspan="3" width="5px" class="sign">*</td>
+							</tr>
+							<tr height="10px">
+								<td colspan="3" class="space">&nbsp;</td>
+							</tr>
+							<tr class="area">
+								<td width="100px" class="label">所有人员：</td>
+								<td width="240px" class="value">
+									<div class="wiscolistbox">
+										<select size="10" multiple="multiple">
+											<option value="1">人员1</option>
+											<option value="2">人员2</option>
+											<option value="3">人员3</option>
+											<option value="4">人员4</option>
+											<option value="5">人员5</option>
+											<option value="6">人员6</option>
+											<option value="7">人员7</option>
+											<option value="8">人员8</option>
+											<option value="9">人员9</option>
+											<option value="10">人员10</option>
+											<option value="11">人员11</option>
+											<option value="12">人员12</option>
+											<option value="13">人员13</option>
+											<option value="14">人员14</option>
+											<option value="15">人员15</option>
+											<option value="16">人员16</option>
+											<option value="17">人员17</option>
+											<option value="18">人员18</option>
+											<option value="19">人员19</option>
+											<option value="20">人员20</option>
+										</select>
+									</div>
+								</td>
+								<td width="5px" class="sign">*</td>
+							</tr>
+							<tr height="10px">
+								<td colspan="6">&nbsp;</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr height="35px" style="display: none;">
+				<td class="handle">
+					<a href="#" class="wiscobutton" onclick="hideWiscoDialog();"><span class="left"></span><span class="center">功能按钮1</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton"><span class="left"></span><span class="center">功能按钮2</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton_disabled" disabled="disabled"><span class="left"></span><span class="center">功能按钮3</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton_disabled" disabled="disabled"><span class="left"></span><span class="center">功能按钮4</span><span class="right"></span></a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

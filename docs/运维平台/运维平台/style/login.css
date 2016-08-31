@@ -1,0 +1,85 @@
+@CHARSET "UTF-8";
+body {
+	background-color: #F2FBFF;
+}
+div.banner {
+	background-image: url("../image/login/bannerbg.gif");
+	position: fixed;
+	*position: relative;
+	width: 100%;
+	height: 270px;
+	top: 50%;
+}
+div.banner span.shadow {
+	background-image: url("../image/login/shadow.png");
+	*background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="image/login/shadow.png", sizingMethod="scale");
+	display: inline-block;
+	position: absolute;
+	width: 457px;
+	height: 271px;
+	bottom: 0px;
+	z-index: 10;
+}
+div.banner div.login {
+	background-image: url("../image/login/login.gif");
+	position: absolute;
+	width: 505px;
+	height: 460px;
+	z-index: 10;
+	bottom: 0px;
+	right: 5%;
+}
+div.login div.title {
+	font-family: Microsoft YaHei;
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFFFFF;
+	line-height: 50px;
+	padding-left: 20px;
+	height: 50px;
+}
+div.login div.item {
+	margin-top: 7px;
+}
+div.login div.item td.label {
+	color: #193463;
+	text-align: right;
+}
+div.login div.item td.value {
+	text-align: left;
+}
+div.login div.item td.value #wiscoinput3 {
+	width: 110px;
+}
+div.login div.item td.value img {
+	display: inline-block;
+	margin-bottom: -4px;
+	width: 60px;
+	height: 17px;
+}
+div.login div.item td.value a {
+	display: inline-block;
+	color: #FF0000;
+	vertical-align: top;
+	padding-top: 2px;
+	*padding-top: 5px;
+}
+div.login div.item td.handle,
+div.login div.item td.warning,
+div.login div.item td.copyright {
+	text-align: center;
+}
+div.login div.item td.handle {
+	padding-top: 10px;
+}
+div.login div.item td.warning {
+	color: #FF0000;
+	padding-top: 15px;
+	*padding-top: 18px;
+}
+div.login div.item td.copyright {
+	color: #193463;
+	padding-top: 38px;
+	*padding-top: 40px;
+}

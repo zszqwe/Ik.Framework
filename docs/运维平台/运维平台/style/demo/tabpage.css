@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+body {
+	background-color: #F2FBFF;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+table.tabpage td.tab {
+	border-bottom: #A0C6F3 1px solid;
+	padding-left: 5px;
+}
+table.tabpage td.tab .wiscotab,
+table.tabpage td.tab .wiscotab_current,
+table.tabpage td.tab .wiscotab_disabled {
+	position: relative;
+	margin-right: 5px;
+	top: 3px;
+}
+table.tabpage td.info {
+	border-left: #A0C6F3 1px solid;
+	border-right: #A0C6F3 1px solid;
+	background-color: #FFFFFF;
+	vertical-align: top;
+}
+table.tabpage td.handle {
+	border-top: #A0C6F3 1px solid;
+	background-color: #F2FBFF;
+	text-align: center;
+	vertical-align: top;
+	padding-top: 7px;
+}

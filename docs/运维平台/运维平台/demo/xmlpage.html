@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Language" content="zh-CN"/> 
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<title></title>
+		<script language="javascript" src="../script/component/zTree/js/jquery-1.4.4.min.js"></script>
+		<script language="javascript" src="../script/component/zTree/js/jquery.ztree.core-3.5.js"></script>
+		<link type="text/css" rel="stylesheet" href="../script/component/zTree/css/zTreeStyle/zTreeStyle.css"/>
+		<script language="javascript" src="../script/commonscript.js"></script>
+		<script language="javascript" src="../script/demo/xmlpage.js"></script>
+		<link type="text/css" rel="stylesheet" href="../style/commonstyle.css"/>
+		<link type="text/css" rel="stylesheet" href="../style/demo/xmlpage.css"/>
+	</head>
+	<body>
+		<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="xmlpage">
+			<tr height="35px">
+				<td width="200px" class="handle">
+					<a href="#" class="wiscobutton"><span class="left"></span><span class="center">导入XML</span><span class="right"></span></a>
+					<a href="#" class="wiscobutton"><span class="left"></span><span class="center">导出XML</span><span class="right"></span></a>
+				</td>
+				<td rowspan="2" id="panel" class="panel"><div></div>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="info">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td><ul id="wiscotree1" class="ztree"></ul></td>
+							</tr>
+						</table>
+					</div>&nbsp;
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script>
+	loadXML("rescenter.xml");
+</script>
