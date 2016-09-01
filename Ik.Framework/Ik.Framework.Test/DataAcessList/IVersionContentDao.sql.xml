@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+    <select id="GetVersionContentListByCategoryCode">
+      Select ca.category_code,
+      ca.category_name,
+      ca.category_version as category_version_value,
+      co.content_name,
+      co.content_desc,
+      co.content_type,
+      co.content_text,
+      co.content_created_time,
+      co.content_start_time,
+      co.content_end_time,
+      co.content_status ,
+      co.content_code,
+      co.content_sort_id,
+      co.content_version as content_version_value,
+      category_parent_code = (SELECT category_code FROM oss_category WHERE category_id =  ca.category_parent_id)
+      FROM oss_content co
+      JOIN oss_category ca ON co.category_id = ca.category_id
+      WHERE ca.category_code = #value# AND ca.category_status = 0 AND co.content_status = 0
+      AND co.content_start_time &lt;= getdate()
+      AND co.content_end_time >= getdate()
+      Order by co.content_sort_id
+    </select>
+
+	  <select id="GetVersionContentListByCategoryCode2">
+		  Select ca.category_code,
+		  ca.category_name,
+		  ca.category_version as category_version_value,
+		  co.content_name,
+		  co.content_desc,
+		  co.content_type,
+		  co.content_text,
+		  co.content_created_time,
+		  co.content_start_time,
+		  co.content_end_time,
+		  co.content_status ,
+		  co.content_code,
+		  co.content_sort_id,
+		  co.content_version as content_version_value,
+		  category_parent_code = (SELECT category_code FROM oss_category WHERE category_id =  ca.category_parent_id)
+		  FROM oss_content co
+		  JOIN oss_category ca ON co.category_id = ca.category_id
+		  WHERE ca.category_code = #value# AND ca.category_status = 0 AND co.content_status = 0
+		  AND co.content_start_time &lt;= getdate()
+		  AND co.content_end_time >= getdate()
+		  Order by co.content_sort_id
+	  </select>
+
+    <select id="GetVersionContentByCode">
+      Select ca.category_code,
+      ca.category_name,
+      ca.category_version as category_version_value,
+      co.content_name,
+      co.content_desc,
+      co.content_type,
+      co.content_text,
+      co.content_created_time,
+      co.content_start_time,
+      co.content_end_time,
+      co.content_status ,
+      co.content_code,
+      co.content_sort_id,
+      co.content_version as content_version_value,
+      category_parent_code = (SELECT category_code FROM oss_category WHERE category_id =  ca.category_parent_id)
+      FROM oss_content co
+      JOIN oss_category ca ON co.category_id = ca.category_id
+      WHERE co.content_code = #value# AND ca.category_status = 0 AND co.content_status = 0
+      AND co.content_start_time &lt;= getdate()
+      AND co.content_end_time >= getdate()
+      Order by co.content_sort_id
+    </select>
+
+	  <select id="GetVersionContentByPageList">
+		  Select ca.category_code,
+		  ca.category_name,
+		  ca.category_version as category_version_value,
+		  co.content_name,
+		  co.content_desc,
+		  co.content_type,
+		  co.content_text,
+		  co.content_created_time,
+		  co.content_start_time,
+		  co.content_end_time,
+		  co.content_status ,
+		  co.content_code,
+		  co.content_sort_id,
+		  co.content_version as content_version_value,
+		  category_parent_code = (SELECT category_code FROM oss_category WHERE category_id =  ca.category_parent_id)
+		  FROM oss_content co
+		  JOIN oss_category ca ON co.category_id = ca.category_id
+		  WHERE ca.category_code = #CategoryCode# AND ca.category_status = 0 AND co.content_status = 0
+		  AND co.content_start_time &lt;= getdate()
+		  AND co.content_end_time >= getdate()
+		  Order by co.content_sort_id
+	  </select>
+
+	  <select id="GetVersionContentByPageList_Count">
+		  Select Count(*)
+		  FROM oss_content co
+		  JOIN oss_category ca ON co.category_id = ca.category_id
+		  WHERE ca.category_code = #CategoryCode# AND ca.category_status = 0 AND co.content_status = 0
+		  AND co.content_start_time &lt;= getdate()
+		  AND co.content_end_time >= getdate()
+	  </select>
+  </statements>
+</sqlMap>

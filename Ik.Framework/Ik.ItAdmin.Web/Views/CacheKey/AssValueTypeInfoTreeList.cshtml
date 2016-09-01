@@ -1,0 +1,99 @@
+﻿@section headerScripts
+{
+<link href="~/Scripts/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+<script src="~/Scripts/plugins/zTree_v3/js/jquery.ztree.core-3.5.min.js"></script>
+    <style>
+	@("@")media screen and (-webkit-min-device-pixel-ratio: 0) {
+		.ztree { padding-top: 13px; }
+	}
+	span.wiscotreenode a {
+		display: inline-block;
+		color: #196A99;
+		margin-top: -1px;
+		*margin-top: 1px;
+		margin-left: 5px;
+	}
+	span.wiscotreenode a:hover {
+		text-decoration: underline;
+	}
+	span.wiscotreenode span.disabled {
+		display: inline-block;
+		color: #999999;
+		margin-left: 5px;
+	}
+    </style>
+
+<script>
+    $(document).ready(function () {
+        var setting = {
+            data: {
+                simpleData: {
+                    enable: true,
+                    idKey: "id",
+                    pIdKey: "pid"
+                }
+            },
+            async: {
+                //异步加载
+                enable: true,
+                contentType : "application/json",
+                url: "/CacheKey/GetAssValueTypeInfoManagerList",
+                dataFilter: function (treeId, parentNode, result) {
+                    var nodes = [];
+                    if (result) {
+                        for (var i = 0,len = result.length; i < len; i++) {
+                            var data = result[i];
+                            nodes.push({
+                                id: data.Id,
+                                pid: data.ParentId,
+                                name: data.Name + "(" + data.Code + ")",
+                                url: "/CacheKey/ValueTypeInfoManagerList?id=" + data.AssId,
+                                isParent: false,
+                                target: "siframe"
+                            });
+                        }
+                    }
+                    return nodes;
+                }
+            }
+        };
+        var zTreeObj = $.fn.zTree.init($("#wiscotree1"), setting, [{ id: "00000000-0000-0000-0000-000000000000", name: "所有程序集", isParent: true }]);
+        var rootNode = zTreeObj.getNodeByParam("id", "00000000-0000-0000-0000-000000000000");
+        zTreeObj.expandNode(rootNode, true);
+    });
+
+    function reLoadTree()
+    {
+        var zTreeObj = $.fn.zTree.getZTreeObj("wiscotree1");
+        var rootNode = zTreeObj.getNodeByParam("id", "00000000-0000-0000-0000-000000000000");
+        zTreeObj.reAsyncChildNodes(rootNode, "refresh");
+    }
+
+    function RetrunValue(argu) {
+        if (argu == "success") {
+            reLoadTree();
+        }
+    };
+</script>
+}
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="treeframe">
+    <tr height="35px">
+        <td width="230px" class="handle">
+            <a href="#" class="wiscobutton" onclick="showWiscoDialog('@Url.Content("~/CacheKey/CacheKeyAssInfoAdd")', 400, 300, null, null, null, RetrunValue);"><span class="left"></span><span class="center">新增缓存程序集</span><span class="right"></span></a>
+        </td>
+        <td rowspan="2" class="panel">
+            <iframe src="~/Home/Welcome" name="siframe" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="info">
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td><ul id="wiscotree1" class="ztree"></ul></td>
+                    </tr>
+                </table>
+            </div>&nbsp;
+        </td>
+    </tr>
+</table>

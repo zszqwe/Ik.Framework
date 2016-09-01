@@ -1,0 +1,114 @@
+﻿@using Ik.ItAdmin.Web.Infrastructure;
+@model IList<Ik.ItAdmin.Web.Models.RoleFunctionInfoTreeModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    <title>权限资源列表</title>
+    <link href="~/Content/css/commonstyle.css" rel="stylesheet" />
+    <link href="~/Content/css/pagestyle.css" rel="stylesheet" />
+    <link href="~/Content/themes/cupertino/jquery-ui.cupertino.min.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/JqGrid/css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/JqGrid/css/ui.jqgrid-bootstrap-ui.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/JqGrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.0.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.0.min.js"></script>
+    <script src="~/Scripts/plugins/JqGrid/js/i18n/grid.locale-cn.js"></script>
+    <script src="~/Scripts/plugins/JqGrid/src/jquery.jqGrid.js"></script>
+    <script src="~/Scripts/framework.js"></script>
+    <script src="~/Scripts/plugins/JqGrid/jqGrid.warp.js"></script>
+    <style>
+        #accordion .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+            border-image-source: initial;
+            border-image-slice: initial;
+            border-image-width: initial;
+            border-image-outset: initial;
+            border-image-repeat: initial;
+            font-weight: bold;
+            color: #000000;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #F7EBC5;
+            background: url("/Content/image/commonstyle/activetitle.png") repeat-x #F7EBC5;
+        }
+    </style>
+    <script>
+        var roleId = '@ViewBag.RoleId';
+        $(function () {
+            $("#accordion").accordion();
+        });
+
+        function checkAll(appId)
+        {
+            var $checks = $("#rtree_" + appId).find(".funcs_cls");
+            $checks.attr("checked", true);
+        }
+
+        function checkAllNo(appId) {
+            var $checks = $("#rtree_" + appId).find(".funcs_cls");
+            $checks.attr("checked", false);
+        }
+
+        function saveAll(appId,appName) {
+            var rtree = $("#rtree_" + appId);
+            var appId = rtree.attr("appId");
+            var $checks = rtree.find(".funcs_cls");
+            var funcs = [];
+            $checks.each(function () {
+                if (this.checked)
+                {
+                    funcs.push({ Id: this.value });
+                }
+            });
+            $.ajax({
+                type:"POST",
+                url: "/Auth/SaveFunctionInfoToRole",
+                data: { FunctionInfos: funcs, AppId: appId, RoleId: roleId },
+                cache: false
+            }).done(function (result) {
+                if (!result.IsSuccess) {
+                    if (result.Code == -101) {
+                        alert(result.Desc);
+                    }
+                    else {
+                        alert("权限资源保存错误");
+                    }
+                } else {
+                    alert(appName+",权限资源保存成功");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="listpage" style="">
+        <tr height="24px">
+            <td class="title">角色资源配置-(@ViewBag.RoleName)<span class="arrowdown" onclick="foldSearchPanel(this);"></span></td>
+        </tr>
+        <tr>
+            <td class="grid" valign="top">
+                <div id="accordion" style="margin-left:15px;margin-top:20px;margin-right:15px;">
+                    @foreach (var item in Model)
+                    {
+                        <div style="height:20px;padding-left:5px;padding-top:5px;">@item.Name<label>(权限资源列表)</label><div style="width:150px;float:right;position:relative;top:-2px;"><a href="#" class="wiscobutton" onclick="checkAll('@item.AppId');"><span class="left"></span><span class="center">全选</span><span class="right"></span></a><a href="#" class="wiscobutton" onclick="checkAllNo('@item.AppId');"><span class="left"></span><span class="center">取消</span><span class="right"></span></a><a href="#" class="wiscobutton" onclick="saveAll('@item.AppId','@item.Name');"><span class="left"></span><span class="center">保存</span><span class="right"></span></a></div></div>
+                    <div>
+                        <p>
+                           @Html.RoleTree(item)
+                        </p>
+                    </div>
+                    }
+                </div>
+                
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+

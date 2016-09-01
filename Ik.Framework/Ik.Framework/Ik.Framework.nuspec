@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Ik.Framework</id>
+    <version>$version$</version>
+    <title>Ik.Framework</title>
+    <authors>大叔</authors>
+    <owners>www.inkey.com</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>基础开发框架</summary>
+    <description>提供公共方法，日志，缓冲服务，缓存、数据访问、对象容器、事件通知框架</description>
+    <copyright>重庆秒银科技有限公司 Copyright 2015</copyright>
+  </metadata>
+</package>

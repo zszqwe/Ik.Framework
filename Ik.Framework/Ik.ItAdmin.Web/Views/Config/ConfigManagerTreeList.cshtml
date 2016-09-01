@@ -1,0 +1,160 @@
+﻿@section headerScripts
+{
+<link href="~/Scripts/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+<script src="~/Scripts/plugins/zTree_v3/js/jquery.ztree.core-3.5.min.js"></script>
+    <style>
+	@("@")media screen and (-webkit-min-device-pixel-ratio: 0) {
+		.ztree { padding-top: 13px; }
+	}
+	span.wiscotreenode a {
+		display: inline-block;
+		color: #196A99;
+		margin-top: -1px;
+		*margin-top: 1px;
+		margin-left: 5px;
+	}
+	span.wiscotreenode a:hover {
+		text-decoration: underline;
+	}
+	span.wiscotreenode span.disabled {
+		display: inline-block;
+		color: #999999;
+		margin-left: 5px;
+	}
+    </style>
+
+<script>
+    $(document).ready(function () {
+        var setting = {
+            view: {
+                addDiyDom: function (treeId, treeNode) {
+                    var aObj = $("#" + treeNode.tId + "_a");
+                    if (treeNode.id == "00000000-0000-0000-0000-000000000000") return;
+                    var viewUrl = treeNode.dataLevel == 1 ? "/Config/CfgDefinitionVersionView?id=" + treeNode.defVerId : "/Config/CfgDefinitionView?id=" + treeNode.defId;
+                    var editUrl = treeNode.dataLevel == 1 ? "/Config/CfgDefinitionVersionEdit?id=" + treeNode.defVerId : "/Config/CfgDefinitionEdit?id=" + treeNode.defId;
+                    var delOptString = treeNode.dataLevel == 1 ? "CfgDefinitionVersionDelete('" + treeNode.defVerId + "')" : "CfgDefinitionDelete('" + treeNode.defId + "')";
+                    var editStr = "<span class=\"wiscotreenode\">";
+                    if (treeNode.dataLevel == 0)
+                    {
+                        editStr += "<a href=\"#\" onclick=\"showWiscoDialog('/config/CfgDefinitionVersionAdd?defId=" + treeNode.defId + "', 400, 300, '', '', '', RetrunValue);\">添加版本</a>";
+                    }
+                    editStr += "<a href=\"#\" onclick=\"showWiscoDialog('" + viewUrl + "', 400, 300);\">查看</a>";
+                    editStr += "<a href=\"#\" onclick=\"showWiscoDialog('" + editUrl + "', 450, 300, '', '', '', RetrunValue);\">修改</a>";
+                    editStr += "<a href=\"#\" onclick=\"" + delOptString + ";\">删除</a>";
+                    editStr += "</span>";
+                    aObj.append(editStr);
+                }
+            },
+            data: {
+                simpleData: {
+                    enable: true,
+                    idKey: "id",
+                    pIdKey: "pid"
+                }
+            },
+            async: {
+                //异步加载
+                enable: true,
+                contentType : "application/json",
+                url: "/Config/GetConfigManagerList",
+                dataFilter: function (treeId, parentNode, result) {
+                    var nodes = [];
+                    if (result) {
+                        for (var i = 0,len = result.length; i < len; i++) {
+                            var data = result[i];
+                            nodes.push({
+                                id: data.Id,
+                                pid: data.ParentId,
+                                name: data.Name,
+                                url: data.Level == 0 ? "/Config/GetCfgDefinitionItemListById?id=" + data.DefId : "/Config/GetCfgDefinitionVersionItemListById?id=" + data.DefVerId,
+                                isParent: data.HasChild,
+                                target: "siframe",
+                                dataLevel: data.Level,
+                                defId: data.DefId,
+                                defVerId: data.DefVerId
+                            });
+                        }
+                    }
+                    return nodes;
+                }
+            }
+        };
+        var zTreeObj = $.fn.zTree.init($("#wiscotree1"), setting, [{ id: "00000000-0000-0000-0000-000000000000", name: "所有分类", isParent: true }]);
+        var rootNode = zTreeObj.getNodeByParam("id", "00000000-0000-0000-0000-000000000000");
+        zTreeObj.expandNode(rootNode, true);
+    });
+
+    //相关更新，保存后刷新页面
+    function RetrunValue(argu) {
+        if (argu == "success")
+        {
+            reLoadTree();
+        }
+    };
+
+    function reLoadTree()
+    {
+        var zTreeObj = $.fn.zTree.getZTreeObj("wiscotree1");
+        var rootNode = zTreeObj.getNodeByParam("id", "00000000-0000-0000-0000-000000000000");
+        zTreeObj.reAsyncChildNodes(rootNode, "refresh");
+    }
+
+    function CfgDefinitionVersionDelete(id) {
+        $.ajax({
+            url: "/Config/CfgDefinitionVersionDelete",
+            type: "get",
+            data: { id: id },
+            cache: false
+        }).done(function (result) {
+            if (result.IsSuccess) {
+                reLoadTree();
+                alert("版本删除成功");
+            }
+            else {
+                alert(result.Desc);
+            }
+        });
+    }
+
+    function CfgDefinitionDelete(id)
+    {
+        $.ajax({
+            url: "/Config/CfgDefinitionDelete",
+            type: "get",
+            data: { id: id },
+            cache: false
+        }).done(function (result) {
+            if (result.IsSuccess) {
+                reLoadTree();
+                alert("配置删除成功");
+            }
+            else {
+                alert(result.Desc);
+            }
+        });
+    }
+
+    
+</script>
+}
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="treeframe">
+            <tr height="35px">
+                <td width="300px" class="handle">
+                    <a href="#" class="wiscobutton" onclick="showWiscoDialog('/Config/CfgDefinitionAdd', 400, 250, '', '', '', RetrunValue);"><span class="left"></span><span class="center">新增配置</span><span class="right"></span></a>
+        </td>
+        <td rowspan="2" class="panel">
+            <iframe src="~/Home/Welcome" name="siframe" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="info">
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td><ul id="wiscotree1" class="ztree"></ul></td>
+                    </tr>
+                </table>
+            </div>&nbsp;
+        </td>
+    </tr>
+</table>

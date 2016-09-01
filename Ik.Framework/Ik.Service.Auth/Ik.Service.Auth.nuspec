@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Ik.Service.Auth</id>
+    <version>$version$</version>
+    <title>Ik.Service.Auth</title>
+    <authors>大叔</authors>
+    <owners>www.inkey.com</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>基础权限服务</summary>
+    <description>提供用户授权、用户权限检查</description>
+    <copyright>重庆秒银科技有限公司 Copyright 2015</copyright>
+    <dependencies> 
+       <dependency id="Ik.Framework" version="1.0.0.0"/>
+    </dependencies>
+  </metadata>
+</package>

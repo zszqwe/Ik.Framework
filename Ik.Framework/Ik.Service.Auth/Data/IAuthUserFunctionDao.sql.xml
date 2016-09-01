@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<sqlMap xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+    <select id="GetUserGroupFunctionListByRefUserCode">
+		SELECT aui.[user_id]
+		,agi.[name] as group_name
+		,agi.group_id
+		,ari.role_id
+		,ari.[name] as role_name
+		,afi.function_id
+		,afi.parent_function_id
+		,afi.code AS func_code
+		FROM [dbo].[auth_user_info] aui
+		INNER JOIN [dbo].[auth_user_group] aug
+		ON aug.[user_id] = aui.[user_id]
+		INNER JOIN [dbo].[auth_group_info] agi
+		ON agi.group_id = aug.group_id
+		INNER JOIN [dbo].[auth_group_role] agr
+		ON agr.group_id = agi.group_id
+		INNER JOIN [dbo].[auth_role_info] ari
+		ON ari.role_id = agr.role_id
+		INNER JOIN [dbo].[auth_role_function] arf
+		ON arf.role_id = agr.role_id
+		INNER JOIN [dbo].[auth_function_info] afi
+		ON afi.function_id = arf.function_id
+		WHERE aui.ref_org_user_code = #refUserCode#
+	</select>
+  
+	<select id="GetUserFunctionListByRefUserCode">
+		SELECT aui.[user_id]
+		,ari.role_id
+		,ari.[name] as role_name
+		,afi.function_id
+		,afi.parent_function_id
+		,afi.code AS func_code
+		FROM [dbo].[auth_user_info] aui
+		INNER JOIN [dbo].[auth_user_role] aur
+		ON aur.[user_id] = aui.[user_id]
+		INNER JOIN [dbo].[auth_role_info] ari
+		ON ari.role_id = aur.role_id
+		INNER JOIN [dbo].[auth_role_function] arf
+		ON arf.role_id = aur.role_id
+		INNER JOIN [dbo].[auth_function_info] afi
+		ON afi.function_id = arf.function_id
+		WHERE aui.ref_org_user_code = #refUserCode#
+	</select>
+	
+  </statements>
+</sqlMap>

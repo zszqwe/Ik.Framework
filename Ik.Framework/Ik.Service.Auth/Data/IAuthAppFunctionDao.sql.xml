@@ -1,0 +1,106 @@
+﻿<?xml version="1.0"?>
+<sqlMap xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+    <select id="GetAllAuthAppFunctionList">
+      ;WITH  func_all
+      AS ( SELECT   afi.[function_id]
+      ,afi.[parent_function_id]
+      ,afi.[app_id]
+      ,afi.[code] AS func_code
+      ,afi.[name] AS func_name
+      ,afi.[desc] AS func_desc
+      ,afi.[is_enable] AS func_is_enable
+      ,afi.[is_delete] AS func_is_delete
+      ,afi.[create_time] AS func_create_time
+      ,afi.[update_time] AS func_update_time
+      FROM     [auth_function_info] afi
+      INNER JOIN [dbo].[auth_app_info] aai
+      ON aai.app_id = aai.app_id
+      WHERE    afi.[code] = #funcCode# AND aai.code = #appCode#
+      UNION ALL
+      SELECT   afi.[function_id]
+      ,afi.[parent_function_id]
+      ,afi.[app_id]
+      ,afi.[code] AS func_code
+      ,afi.[name] AS func_name
+      ,afi.[desc] AS func_desc
+      ,afi.[is_enable] AS func_is_enable
+      ,afi.[is_delete] AS func_is_delete
+      ,afi.[create_time] AS func_create_time
+      ,afi.[update_time] AS func_update_time
+      FROM     func_all ,
+      [auth_function_info] afi
+      WHERE    func_all.[function_id] = afi.[parent_function_id]
+      )
+      SELECT  func_all.[function_id]
+      ,func_all.[parent_function_id]
+      ,func_all.[app_id]
+      ,func_all.func_code
+      ,func_all.func_name
+      ,func_all.func_desc
+      ,func_all.func_is_enable
+      ,func_all.func_is_delete
+      ,func_all.func_create_time
+      ,func_all.func_update_time
+      ,afi.[name] AS func_parent_name
+      ,afi.[code] AS func_parent_code
+      FROM    func_all
+      INNER JOIN [auth_function_info] afi
+      ON func_all.[parent_function_id] = afi.[function_id]
+    </select>
+  
+	<select id="GetSubAuthAppFunctionList">
+      SELECT   afi.[function_id]
+      ,afi.[parent_function_id]
+      ,afi.[app_id]
+      ,afi.[code] AS func_code
+      ,afi.[name] AS func_name
+      ,afi.[desc] AS func_desc
+      ,afi.[is_enable] AS func_is_enable
+      ,afi.[is_delete] AS func_is_delete
+      ,afi.[create_time] AS func_create_time
+      ,afi.[update_time] AS func_update_time
+      ,afi_parent.[name] AS func_parent_name
+      ,CASE WHEN afi_parent.function_id = '00000000-0000-0000-0000-000000000000' THEN 'func_root' ELSE  afi_parent.[code] END AS func_parent_code
+      FROM     [auth_function_info] afi
+      INNER JOIN [auth_function_info] afi_parent
+      ON afi.[parent_function_id] = afi_parent.[function_id]
+	  INNER JOIN [dbo].[auth_app_info] aai
+	  ON aai.app_id = afi.app_id
+      WHERE afi_parent.[code] = #funcParentCode# AND aai.code = #appCode#
+    </select>
+  
+	<select id="GetAuthAppRootFunctionList">
+        SELECT   afi.[function_id]
+      ,afi.[parent_function_id]
+      ,afi.[app_id]
+      ,afi.[code] AS func_code
+      ,afi.[name] AS func_name
+      ,afi.[desc] AS func_desc
+      ,afi.[is_enable] AS func_is_enable
+      ,afi.[is_delete] AS func_is_delete
+      ,afi.[create_time] AS func_create_time
+      ,afi.[update_time] AS func_update_time
+      FROM     [auth_function_info] afi
+	  INNER JOIN [dbo].[auth_app_info] aai
+	  ON aai.app_id = afi.app_id
+	  WHERE afi.parent_function_id = '00000000-0000-0000-0000-000000000000' AND aai.code = #value#
+    </select>
+    <select id="GetFunctionByCode">
+      SELECT   afi.[function_id]
+      ,afi.[parent_function_id]
+      ,afi.[app_id]
+      ,afi.[code] AS func_code
+      ,afi.[name] AS func_name
+      ,afi.[desc] AS func_desc
+      ,afi.[is_enable] AS func_is_enable
+      ,afi.[is_delete] AS func_is_delete
+      ,afi.[create_time] AS func_create_time
+      ,afi.[update_time] AS func_update_time
+      FROM     [auth_function_info] afi
+      INNER JOIN [dbo].[auth_app_info] aai
+      ON aai.app_id = afi.app_id
+      WHERE afi.[code] = #funcCode# AND aai.code = #appCode#
+    </select>
+  </statements>
+</sqlMap>

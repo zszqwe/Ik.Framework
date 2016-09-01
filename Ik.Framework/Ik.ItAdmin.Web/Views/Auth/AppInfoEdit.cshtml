@@ -1,0 +1,89 @@
+﻿@model Ik.ItAdmin.Web.Models.AuthAppInfoModel
+@{
+    ViewBag.Title = "权限应用修改";
+}
+@section headerScripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="infoeditpage">
+    @using (Ajax.BeginForm("SaveAuthAppInfo", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onSuccessSaveAuthAppInfoForm" }, new { @id = "SaveAuthAppInfoForm" }))
+    {
+         @Html.HiddenFor(m => m.AppId) 
+        <tr height="24px">
+            <td class="title">权限应用修改</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="info">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <tr height="10px">
+                            <td colspan="3">&nbsp;</td>
+                        </tr>
+                        <tr height="30px">
+                            <td width="100px" class="label">标识：</td>
+                            <td width="240px" class="value">
+                                @Html.TextBoxFor(d => d.Code, new { @class = "wiscoinput" })
+                            </td>
+                            <td width="5px" class="sign">*</td>
+                        </tr>
+                        <tr height="30px">
+                            <td width="100px" class="label">名称：</td>
+                            <td width="240px" class="value">
+                                @Html.TextBoxFor(d => d.Name, new { @class = "wiscoinput" })
+                            </td>
+                            <td width="5px" class="sign">*</td>
+                        </tr>
+                        <tr height="30px">
+                            <td width="100px" class="label">是否启用：</td>
+                            <td width="240px" class="value">
+                                @Html.CheckBoxFor(d => d.IsEnable, new { @class = "wiscocheckbox" })
+                            </td>
+                            <td width="5px" class="sign">*</td>
+                        </tr>        
+                        <tr height="10px">
+                            <td colspan="3">&nbsp;</td>
+                        </tr>
+                        <tr class="area">
+                            <td width="100px" class="label">描述：</td>
+                            <td width="240px" class="value">
+                                @Html.TextAreaFor(d => d.Desc, new { @class = "wiscotextarea", @style = "width: 235px;" })
+                            </td>
+                            <td width="5px" class="sign">&nbsp;</td>
+                        </tr>
+                        <tr height="10px">
+                            <td colspan="3">&nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr height="35px">
+            <td class="handle">
+                <a href="#" class="wiscobutton" onclick="$('#SaveAuthAppInfoForm').submit();"><span class="left"></span><span class="center">保存</span><span class="right"></span></a>
+                <a href="#" class="wiscobutton" onclick="hideWiscoDialog();"><span class="left"></span><span class="center">取消</span><span class="right"></span></a>
+            </td>
+        </tr>
+    }
+</table>
+<script>
+
+    function onSuccessSaveAuthAppInfoForm(result) {
+        if (result.IsSuccess) {
+            alert("权限应用信息保存成功");
+            var dialog = getWiscoDialog();
+            dialog.argu = "success";
+            hideWiscoDialog();
+        }
+        else if (result.Code == -101)
+        {
+            alert(result.Desc);
+        }
+        else {
+            alert("权限应用信息保存失败");
+        }
+    }
+</script>
+
+
+

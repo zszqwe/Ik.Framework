@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Ik.Framework.Redis</id>
+    <version>$version$</version>
+    <title>Ik.Framework.Redis</title>
+    <authors>大叔</authors>
+    <owners>www.inkey.com</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Redis缓存包装库</summary>
+    <description>提供基本对象操作，List操作，Set操作，SortSet操作，Hash操作的包装</description>
+    <copyright>重庆秒银科技有限公司 Copyright 2015</copyright>
+  </metadata>
+</package>

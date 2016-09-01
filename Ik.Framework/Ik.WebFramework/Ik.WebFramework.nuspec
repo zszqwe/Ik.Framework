@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Ik.WebFramework</id>
+    <version>$version$</version>
+    <title>Ik.WebFramework</title>
+    <authors>大叔</authors>
+    <owners>www.inkey.com</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>基础Web开发框架</summary>
+    <description>提供Mvc、Api容器管理、权限集成、请求管理</description>
+    <copyright>重庆秒银科技有限公司 Copyright 2015</copyright>
+    <dependencies> 
+       <dependency id="Ik.Framework" version="1.0.0.0"/>
+       <dependency id="Ik.Service.Auth" version="1.0.0.0"/>
+    </dependencies>
+  </metadata>
+</package>

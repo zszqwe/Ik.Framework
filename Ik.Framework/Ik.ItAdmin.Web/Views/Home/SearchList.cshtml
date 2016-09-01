@@ -1,0 +1,210 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    <title></title>
+    <link href="~/Content/css/commonstyle.css" rel="stylesheet" />
+    <link href="~/Content/css/pagestyle.css" rel="stylesheet" />
+    <link href="~/Content/themes/cupertino/jquery-ui.cupertino.min.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/JqGrid/css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/JqGrid/css/ui.jqgrid-bootstrap-ui.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/JqGrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.0.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.0.min.js"></script>
+    <script src="~/Scripts/plugins/JqGrid/js/i18n/grid.locale-cn.js"></script>
+    @*<script src="~/Scripts/plugins/JqGrid/js/jquery.jqGrid.min.js"></script>*@
+    <script src="~/Scripts/plugins/JqGrid/src/jquery.jqGrid.js"></script>
+    <script src="~/Scripts/framework.js"></script>
+    <script src="~/Scripts/plugins/JqGrid/jqGrid.warp.js"></script>
+    <script>
+
+
+        function setDatePickerZh() {
+            $.datepicker.regional['zh-CN'] = {
+                clearText: '清除',
+                clearStatus: '清除已选日期',
+                closeText: '关闭',
+                closeStatus: '不改变当前选择',
+                prevText: '<上月',
+                prevStatus: '显示上月',
+                prevBigText: '<<',
+                prevBigStatus: '显示上一年',
+                nextText: '下月>',
+                nextStatus: '显示下月',
+                nextBigText: '>>',
+                nextBigStatus: '显示下一年',
+                currentText: '今天',
+                currentStatus: '显示本月',
+                monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                monthStatus: '选择月份',
+                yearStatus: '选择年份',
+                weekHeader: '周',
+                weekStatus: '年内周次',
+                dayNames: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+                dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+                dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
+                dayStatus: '设置DD为一周起始',
+                dateStatus: '选择m月d日，DD',
+                dateFormat: 'yy-mm-dd',
+                firstDay: 1,
+                initStatus: '请选择日期',
+                isRTL: false
+            };
+            $.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+        }
+
+        $(document).ready(function () {
+            setDatePickerZh();
+            $.jqgridWarp.init("myTable", "/Home/GetSearchListData", 400, {
+                colModel: [
+                    { label: "操作", width: '200', align: "center", resizable: false, search: false, sortable: false, formatter: function (cellvalue, options, row) { return '<a href="#" class="wiscobutton" onclick="add(event,' + row.Id + ')"><span class="left"></span><span class="center">添加</span><span class="right"></span></a><a href="#" class="wiscobutton" onclick="add(event,' + row.Id + ')"><span class="left"></span><span class="center">修改</span><span class="right"></span></a><a href="#" class="wiscobutton" onclick="add(event,' + row.Id + ')"><span class="left"></span><span class="center">删除</span><span class="right"></span></a>' } },
+                    { label: "编号", name: 'Id', index: 'Id', key: true, width: '50', align: 'center' },
+                    {
+                        label: "添加日期", name: 'CreateDate', index: 'CreateDate', width: '200', align: 'center',
+                        searchoptions: {
+                            dataInit: function (element) {
+                                $(element).datepicker({
+                                    id: 'createDate_datePicker',
+                                    dateFormat: 'yy-mm-dd',
+                                    maxDate: new Date(2020, 0, 1),
+                                    showOn: 'focus',
+                                    autoSize: true
+                                });
+                            }
+                        }
+
+                    },
+                    {
+                        label: "手机号码", name: 'PhoneNo', index: 'PhoneNo', width: '200', align: 'center'
+                    },
+                    {
+                        label: "号码类型", name: 'PhoneType', index: 'PhoneType', width: '200', align: 'center',
+                        formatter: function (cellvalue, options, row) {
+                            if (cellvalue == "dianxin")
+                                return "中国电信";
+                            else if (cellvalue == "yidong")
+                                return "中国移动";
+                            else if (cellvalue == "liantong")
+                                return "中国联通";
+                        },
+                        stype: "select",
+                        searchoptions: {
+                            value: { "dianxin": "中国电信", "yidong": "中国移动", "liantong": "中国联通" },
+                            multiple: true
+                        }
+                    },
+
+                    { label: "银行卡号", name: 'CardNo', index: 'CardNo', width: '200', align: "center", formatter: "actions" },
+                    { label: "备注", name: 'Remark', index: 'Remark', width: '300', align: "left", sortable: false }
+                ]
+            });
+            //$("#myTable").jqGrid({
+            //    url: "/Home/GetSearchListData",
+            //    datatype: "json", //数据来源，本地数据
+            //    mtype: "POST",//提交方式
+            //    height: "400",//高度，表格高度。可为数值、百分比或'auto'
+            //    autowidth: true,//自动宽
+            //    postData: { "myp1": "myp1 value", "myp2": "myp2 value" },
+            //    colModel: [
+            //        { label: "操作", width: '200', align: "center",resizable :false, search: false, sortable: false, formatter: function (cellvalue, options, row) { return '<a href="#" class="wiscobutton" onclick="add(event,' + row.Id + ')"><span class="left"></span><span class="center">添加</span><span class="right"></span></a><a href="#" class="wiscobutton" onclick="add(event,' + row.Id + ')"><span class="left"></span><span class="center">修改</span><span class="right"></span></a><a href="#" class="wiscobutton" onclick="add(event,' + row.Id + ')"><span class="left"></span><span class="center">删除</span><span class="right"></span></a>' } },
+            //        { label: "编号", name: 'Id', index: 'Id', key: true, width: '50', align: 'center' },
+            //        {
+            //            label: "添加日期", name: 'CreateDate', index: 'CreateDate', width: '200', align: 'center',
+            //            searchoptions: {
+            //                dataInit: function (element) {
+            //                    $(element).datepicker({
+            //                        id: 'createDate_datePicker',
+            //                        dateFormat: 'yy-mm-dd',
+            //                        maxDate: new Date(2020, 0, 1),
+            //                        showOn: 'focus',
+            //                        autoSize: true
+            //                    });
+            //                }
+            //            }
+
+            //        },
+            //        {
+            //            label: "手机号码", name: 'PhoneNo', index: 'PhoneNo', width: '200', align: 'center'
+            //        },
+            //        {
+            //            label: "号码类型", name: 'PhoneType', index: 'PhoneType', width: '200', align: 'center',
+            //            formatter: function (cellvalue, options, row)
+            //            {
+            //                if (cellvalue == "dianxin")
+            //                    return "中国电信";
+            //                else if (cellvalue == "yidong")
+            //                    return "中国移动";
+            //                else if (cellvalue == "liantong")
+            //                    return "中国联通";
+            //            },
+            //            stype: "select",
+            //            searchoptions: {
+            //                value: { "dianxin": "中国电信", "yidong": "中国移动", "liantong": "中国联通" },
+            //                multiple:true
+            //            }
+            //        },
+
+            //        { label: "银行卡号", name: 'CardNo', index: 'CardNo', width: '200', align: "center" },
+            //        { label: "备注", name: 'Remark', index: 'Remark', width: '300', align: "left", sortable: false }
+            //    ],
+            //    shrinkToFit :false,
+            //    emptyrecords: "",
+            //    viewrecords: true,//是否在浏览导航栏显示记录总数
+            //    rowNum: 20,//每页显示记录数
+            //    rowList: [20, 50, 100],//用于改变显示行数的下拉列表框的元素数组。
+            //    pagerpos: "right",
+            //    recordpos: "center",
+            //    multiSort: true,
+            //    jsonReader: {
+            //        root: "dataList",
+            //        total: "totalPages",
+            //        page: "pageIndex",
+            //        records: "totalRecords",
+            //        repeatitems: false
+            //    },
+            //    pager: $('#gridPager')
+            //}).navGrid('#gridPager', { add: false, edit: false, del: false, search: true, refresh: true }, {}, {}, {}, { multipleSearch: true });
+
+            //autoGridHeight();
+        });
+
+        function add(event,id)
+        {
+            alert(id);
+            event.stopPropagation();
+        }
+
+        function GetId()
+        {
+            //debugger
+            //var ids = $.jqgridWarp.getSelectedRowIds('myTable');
+            //alert(ids);
+
+            $.jqgridWarp.refreshGrid('myTable')
+        }
+    </script>
+</head>
+<body>
+    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="listpage">
+        <tr height="24px">
+            <td class="title">全局数据项管理<span class="arrowdown" onclick="foldSearchPanel(this);"></span></td>
+        </tr>
+        <tr>
+            <td class="grid" valign="top" id="tableContainer" >
+                @*<button onclick="GetId();">ssss</button>*@
+                <table id="myTable"></table>
+                <!-- jqGrid 分页 div gridPager -->
+                @*<div id="gridPager"></div>*@
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+

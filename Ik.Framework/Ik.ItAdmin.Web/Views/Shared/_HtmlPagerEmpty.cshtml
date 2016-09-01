@@ -1,0 +1,18 @@
+﻿@{
+    string pagerId = ViewBag.PagerId;
+    if (string.IsNullOrEmpty(pagerId))
+    {
+        pagerId = "pagerContent";
+    }
+}
+<div class="wiscopaging" id="@pagerId">
+    <div class="label">
+        第<span>1</span>页/共<span>0</span>页，本页<span>0</span>行/共<span>0</span>行
+        <div class="button">
+            <a href="#" class="firstpage" title="首页"></a>&nbsp;
+            <a href="#" class="prevpage" title="上一页"></a>&nbsp;
+            <a href="#" class="nextpage" title="下一页"></a>&nbsp;
+            <a href="#" class="lastpage" title="末页"></a>
+        </div>
+    </div>
+</div>

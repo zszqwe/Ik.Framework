@@ -1,0 +1,34 @@
+﻿@model Ik.Framework.Common.Paging.IPagedList
+@{
+    if (Model == null)
+    {
+        return;
+    }
+    string innerPagerId = ViewBag.InnerPagerId;
+    if (string.IsNullOrEmpty(innerPagerId))
+    {
+        innerPagerId = "innerPager";
+    }
+
+    string pagerId = ViewBag.PagerId;
+    if (string.IsNullOrEmpty(pagerId))
+    {
+        pagerId = "pagerContent";
+    }
+}
+
+<div id="@innerPagerId" style="display:none">
+    <div class="label">第<span>@Model.PageIndex</span>页/共<span>@Model.TotalPages</span>页，本页<span>@Model.PageSize</span>行/共<span>@Model.TotalCount</span>行</div>
+    <div class="button pagerbuttondiv">
+        <a href="#" class="firstpage pagerbutton" actionvalid="@(Model.PageIndex> 1 ? 1: 0)" pindex="1" totalcount="@Model.TotalCount" title="首页"></a>&nbsp;
+        <a href="#" class="prevpage pagerbutton" actionvalid="@(Model.PageIndex> 1 ? 1: 0)" pindex="@(Model.HasPreviousPage ? Model.PageIndex -1 : 1)" totalcount="@Model.TotalCount" title="上一页"></a>&nbsp;
+        <a href="#" class="nextpage pagerbutton" actionvalid="@(Model.PageIndex < Model.TotalPages ? 1 : 0)" pindex="@(Model.HasNextPage ? Model.PageIndex + 1 : Model.TotalPages)" totalcount="@Model.TotalCount" title="下一页"></a>&nbsp;
+        <a href="#" class="lastpage pagerbutton" actionvalid="@(Model.PageIndex < Model.TotalPages ? 1 : 0)" pindex="@Model.TotalPages" totalcount="@Model.TotalCount" title="末页"></a>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#@pagerId").html($("#@innerPagerId").html());
+    });
+
+</script>

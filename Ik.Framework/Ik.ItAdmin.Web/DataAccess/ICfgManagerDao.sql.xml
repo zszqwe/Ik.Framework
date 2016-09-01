@@ -1,0 +1,671 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+    <select id="GetCfgDefinitionVersionList">
+		SELECT cd.[def_id]
+		,cd.[name]
+		,cd.[title]
+		,cd.[desc] AS def_desc
+		,cdv.def_ver_id
+		,cdv.value AS [version]
+		,cdv.[desc] AS def_ver_desc
+		FROM [cfg_definition] cd
+		LEFT JOIN dbo.cfg_definition_version cdv
+		ON cdv.def_id = cd.def_id
+	</select>
+	  <select id="GetCfgDefinitionById">
+		  SELECT cd.[def_id]
+		  ,cd.[name]
+		  ,cd.[title]
+		  ,cd.[desc] AS def_desc
+		  FROM [cfg_definition] cd
+		  WHERE cd.[def_id] = #value#
+	  </select>
+
+	  <select id="GetCfgDefinitionVersionById">
+		  SELECT cd.[def_id]
+		  ,cd.[name]
+		  ,cd.[title]
+		  ,cd.[desc] AS def_desc
+		  ,cdv.def_ver_id
+		  ,cdv.value AS [version]
+		  ,cdv.[desc] AS def_ver_desc
+		  FROM dbo.cfg_definition_version cdv
+		  INNER JOIN [cfg_definition] cd
+		  ON cdv.def_id = cd.def_id
+		  WHERE cdv.def_ver_id = #value#
+	  </select>
+
+	  <insert id="InsertCfgDefinition">
+		  INSERT INTO [dbo].[cfg_definition]
+		  (def_id
+		  ,[name]
+		  ,[title]
+		  ,[desc])
+		  VALUES
+		  (#DefId#,#Name#
+		  ,#Title#
+		  ,#DefDesc#)
+	  </insert>
+
+	  <update id="UpdateAllCfgDefinition">
+		  UPDATE [dbo].[cfg_definition]
+		  SET [name] = #Name#
+		  ,[title] = #Title#
+		  ,[desc] = #DefDesc#
+		  WHERE def_id = #DefId#
+	  </update>
+
+	  <insert id="InsertCfgDefinitionVersion">
+		  INSERT INTO [dbo].[cfg_definition_version]
+		  (def_ver_id
+		  ,def_id
+		  ,[value]
+		  ,[desc])
+		  VALUES
+		  (#DefVerId#
+		  ,#DefId#
+		  ,#Version#
+		  ,#DefVerDesc#)
+	  </insert>
+
+	  <update id="UpdateAllCfgDefinitionVersion">
+		  UPDATE [dbo].[cfg_definition_version]
+		  SET [def_id] = #DefId#
+		  ,[value] = #Version#
+		  ,[desc] = #DefVerDesc#
+		  WHERE def_ver_id = #DefVerId#
+	  </update>
+
+	  <select id="GetCfgEnvironmentList">
+		  SELECT ce.[env_id]
+		  ,ce.[name]
+		  ,ce.[key]
+		  ,ce.[desc]
+		  FROM [cfg_environment] ce
+	  </select>
+
+	  <select id="GetCfgEnvironmentById">
+		  SELECT ce.[env_id]
+		  ,ce.[name]
+		  ,ce.[key]
+		  ,ce.[desc]
+		  FROM [cfg_environment] ce
+		  WHERE ce.[env_id] = #value#
+	  </select>
+
+	  <insert id="InsertCfgEnvironment">
+		  INSERT INTO [dbo].[cfg_environment]
+		  (env_id,[name]
+		  ,[key]
+		  ,[desc])
+		  VALUES
+		  (#EnvId#,#Name#
+		  ,#Key#
+		  ,#Desc#)
+	  </insert>
+
+	  <update id="UpdateAllCfgEnvironment">
+		  UPDATE [dbo].[cfg_environment]
+		  SET [name] = #Name#
+		  ,[key] = #Key#
+		  ,[desc] = #Desc#
+		  WHERE env_id = #EnvId#
+	  </update>
+
+	  <select id="GetCfgItemListByPager">
+		  SELECT * FROM
+		  (
+		  SELECT ci.[item_id]
+		  ,ci.[key]
+		  ,ci.[item_type]
+		  ,ci.[desc] AS item_desc
+		  ,cvi.ver AS [version]
+		  ,cvi.item_ver_id
+		  ,cvi.[desc] AS item_ver_desc
+		  ,cvei.item_ver_env_val_id
+		  ,cvei.value
+		  ,cvei.[desc] AS item_ver_env_val_desc
+		  ,ce.env_id
+		  ,ce.name AS env_name
+		  ,ce.[key] AS env_key
+		  ,ROW_NUMBER() OVER(ORDER BY cvei.item_ver_env_val_id desc) AS rowNumber
+		  FROM [dbo].[cfg_item] ci
+		  LEFT JOIN [dbo].[cfg_version_item] cvi
+		  ON ci.item_id = cvi.item_id
+		  LEFT JOIN dbo.cfg_version_environment_item cvei
+		  ON cvei.item_ver_id = cvi.item_ver_id
+		  LEFT JOIN dbo.cfg_environment ce
+		  ON ce.env_id = cvei.env_id
+		  WHERE ci.item_type = 1
+		  <isNotEmpty prepend="AND" property="Key">
+      ci.[key] like '%' + #Key# + '%'
+    </isNotEmpty>
+	<isNotEmpty prepend="AND" property="Version">
+      cvi.ver like '%' + #Version# + '%'
+    </isNotEmpty>
+	<isNotEmpty prepend="AND" property="EnvName">
+      ce.name like '%' + #EnvName# + '%'
+    </isNotEmpty>
+  )AS T1
+      WHERE rowNumber between $StartIndex$ and $EndIndex$
+	  </select>
+	  
+  <select id="GetCfgItemListByPager_Count">
+	  SELECT COUNT(*) FROM
+	  (
+	  SELECT ci.[item_id]
+	  ,ci.[key]
+	  ,ci.[item_type]
+	  ,ci.[desc] AS item_desc
+	  ,cvi.ver AS [version]
+	  ,cvi.item_ver_id
+	  ,cvi.[desc] AS item_ver_desc
+	  ,cvei.item_ver_env_val_id
+	  ,cvei.value
+	  ,cvei.[desc] AS item_ver_env_val_desc
+	  ,ce.env_id
+	  ,ce.name AS env_name
+	  ,ce.[key] AS env_key
+	  ,ROW_NUMBER() OVER(ORDER BY cvei.item_ver_env_val_id desc) AS rowNumber
+	  FROM [dbo].[cfg_item] ci
+	  LEFT JOIN [dbo].[cfg_version_item] cvi
+	  ON ci.item_id = cvi.item_id
+	  LEFT JOIN dbo.cfg_version_environment_item cvei
+	  ON cvei.item_ver_id = cvi.item_ver_id
+	  LEFT JOIN dbo.cfg_environment ce
+	  ON ce.env_id = cvei.env_id
+	  WHERE ci.item_type = 1
+	  <isNotEmpty prepend="AND" property="Key">
+      ci.[key] like '%' + #Key# + '%'
+    </isNotEmpty>
+	<isNotEmpty prepend="AND" property="Version">
+      cvi.ver like '%' + #Version# + '%'
+    </isNotEmpty>
+	<isNotEmpty prepend="AND" property="EnvName">
+      ce.name like '%' + #EnvName# + '%'
+    </isNotEmpty>
+  ) AS T1
+	  </select>
+
+	  <select id="GetCfgItemById">
+		  SELECT ci.[item_id]
+		  ,ci.[key]
+		  ,ci.[desc] as item_desc
+		  FROM [dbo].[cfg_item] ci
+		  WHERE ci.[item_id] = #value#
+	  </select>
+
+	  <select id="GetCfgItemVersionById">
+		  SELECT ci.item_id
+		  ,ci.[key]
+		  ,ci.[desc] AS item_desc
+		  ,cvi.[item_ver_id]
+		  ,cvi.ver as [version]
+		  ,cvi.[desc] AS item_ver_desc
+		  FROM [dbo].[cfg_version_item] cvi
+		  INNER JOIN [dbo].[cfg_item] ci
+		  ON ci.item_id = cvi.item_id
+		  WHERE cvi.[item_ver_id] = #value#
+	  </select>
+
+	  <select id="GetCfgItemVersionList">
+		  SELECT ci.item_id
+		  ,ci.[key]
+		  ,ci.[desc] AS item_desc
+		  ,cvi.[item_ver_id]
+		  ,cvi.[item_id]
+		  ,cvi.[ver] as [version]
+		  ,cvi.[desc] AS item_ver_desc
+		  FROM [dbo].[cfg_version_item] cvi
+		  INNER JOIN [dbo].[cfg_item] ci
+		  ON ci.item_id = cvi.item_id
+		  WHERE cvi.item_id = #value#
+	  </select>
+
+	  <select id="GetCfgItemVersionEnvironmentById">
+		  SELECT ci.[item_id]
+		  ,ci.[key]
+		  ,ci.[desc] AS item_desc
+		  ,cvi.ver AS [version]
+		  ,cvi.item_ver_id
+		  ,cvi.[desc] AS item_ver_desc
+		  ,cvei.item_ver_env_val_id
+		  ,cvei.value
+		  ,cvei.[desc] AS item_ver_env_val_desc
+		  ,ce.env_id
+		  ,ce.name AS env_name
+		  ,ce.[key] AS env_key
+		  FROM [dbo].[cfg_item] ci
+		  LEFT JOIN [dbo].[cfg_version_item] cvi
+		  ON ci.item_id = cvi.item_id
+		  LEFT JOIN dbo.cfg_version_environment_item cvei
+		  ON cvei.item_ver_id = cvi.item_ver_id
+		  INNER JOIN dbo.cfg_environment ce
+		  ON ce.env_id = cvei.env_id
+		  WHERE cvei.item_ver_env_val_id = #value#
+	  </select>
+
+	  <insert id="InsertCfgItem">
+		  INSERT INTO [dbo].[cfg_item]
+		  (item_id,[key]
+		  ,[item_type]
+		  ,[def_id]
+		  ,[desc])
+		  VALUES
+		  (#ItemId#,#Key#
+		  ,#ItemType#
+		  ,#DefId#
+		  ,#ItemDesc#)
+	  </insert>
+
+	  <insert id="InsertCfgItemVersion">
+		  INSERT INTO [dbo].[cfg_version_item]
+		  (item_ver_id,[item_id]
+		  ,[ver]
+		  ,[desc])
+		  VALUES
+		  (#ItemVerId#,#ItemId#
+		  ,#Version#
+		  ,#ItemVerDesc#)
+	  </insert>
+
+	  <insert id="InsertCfgItemVersionEnvironment">
+		  INSERT INTO [dbo].[cfg_version_environment_item]
+		  (item_ver_env_val_id,[item_ver_id]
+		  ,[env_id]
+		  ,[value]
+		  ,[desc]
+		  ,[update_time])
+		  VALUES
+		  (#ItemVerEnvValId#,#ItemVerId#
+		  ,#EnvId#
+		  ,#Value#
+		  ,#ItemVerEnvValDesc#
+		  ,#UpdateTime#)
+	  </insert>
+	  
+  <update id="UpdateAllCfgItem">
+		  UPDATE [dbo].[cfg_item]
+			SET [key] = #Key#
+			,[desc] = #ItemDesc#
+		  WHERE item_id = #ItemId#
+	  </update>
+	  
+  <update id="UpdateAllCfgItemVersion">
+		  UPDATE [dbo].[cfg_version_item]
+   SET [item_id] = #ItemId#
+      ,[ver] = #Version#
+      ,[desc] = #ItemVerDesc#
+ WHERE item_ver_id = #ItemVerId#
+	  </update>
+	  
+  <update id="UpdateAllCfgItemVersionEnvironment">
+		  UPDATE [dbo].[cfg_version_environment_item]
+   SET [item_ver_id] = #ItemVerId#
+      ,[env_id] = #EnvId#
+      ,[value] = #Value#
+      ,[desc] = #ItemVerEnvValDesc#
+      ,[update_time] = #UpdateTime#
+ WHERE item_ver_env_val_id = #ItemVerEnvValId#
+	  </update>
+  
+<delete id="DeleteAllCfgItem">
+	
+  DELETE dbo.cfg_version_environment_item WHERE item_ver_id IN (SELECT item_ver_id FROM dbo.cfg_version_item WHERE item_id IN(SELECT item_id FROM dbo.cfg_item WHERE item_id IN(<iterate conjunction="," open="" close="">#[]#</iterate>)))
+
+  DELETE dbo.cfg_version_item WHERE item_id IN (SELECT item_id FROM dbo.cfg_item WHERE item_id IN(<iterate conjunction="," open="" close="">#[]#</iterate>))
+
+  DELETE dbo.cfg_item WHERE item_id IN(<iterate conjunction="," open="" close="">#[]#</iterate>)
+</delete>
+
+	  <delete id="DeleteAllCfgDefinitionItem">
+
+		  DELETE dbo.cfg_definition_item WHERE id IN(<iterate conjunction="," open="" close="">#[]#</iterate>)
+	  </delete>
+
+	  <delete id="DeleteAllCfgItemVersion">
+
+		  DELETE dbo.cfg_version_environment_item WHERE item_ver_id IN (<iterate conjunction="," open="" close="">#[]#</iterate>)
+
+		  DELETE dbo.cfg_version_item WHERE item_ver_id IN (<iterate conjunction="," open="" close="">#[]#</iterate>)
+	  </delete>
+
+	  <delete id="DeleteAllCfgItemVersionEnvironment">
+
+		  DELETE dbo.cfg_version_environment_item WHERE item_ver_env_val_id IN (<iterate conjunction="," open="" close="">#[]#</iterate>)
+
+	  </delete>
+
+	  <delete id="DeleteCfgDefinition">
+		  DELETE dbo.cfg_definition_item WHERE def_ver_id IN(SELECT def_ver_id FROM dbo.cfg_definition_version WHERE def_id = #value#)
+
+		  DELETE dbo.cfg_version_environment_item WHERE item_ver_id IN (SELECT item_ver_id FROM dbo.cfg_version_item WHERE item_id IN(SELECT item_id FROM dbo.cfg_item WHERE def_id = #value#))
+
+		  DELETE dbo.cfg_version_item WHERE item_id IN (SELECT item_id FROM dbo.cfg_item WHERE def_id = #value#)
+
+		  DELETE dbo.cfg_item WHERE def_id = #value#
+
+		  DELETE dbo.cfg_definition_version WHERE def_id = #value#
+
+		  DELETE [dbo].[cfg_definition] WHERE def_id = #value#
+	  </delete>
+
+	  <delete id="DeleteCfgDefinitionVersion">
+		  DELETE dbo.cfg_definition_item WHERE def_ver_id = #value#
+
+		  DELETE dbo.cfg_definition_version WHERE def_ver_id = #value#
+	  </delete>
+  
+<select id="GetCfgDefinitionItemListByPager">
+	SELECT *
+	FROM
+	(
+	SELECT null as def_item_id
+	,ci.[item_id]
+	,ci.[key]
+	,ci.[item_type]
+	,ci.[desc] AS item_desc
+	,cvi.ver AS [version]
+	,cvi.item_ver_id
+	,cvi.[desc] AS item_ver_desc
+	,cvei.item_ver_env_val_id
+	,cvei.value
+	,cvei.[desc] AS item_ver_env_val_desc
+	,ce.env_id
+	,ce.name AS env_name
+	,ce.[key] AS env_key
+	,ROW_NUMBER() OVER(ORDER BY item_ver_env_val_id desc) AS rowNumber
+	FROM [dbo].[cfg_item] ci
+	LEFT JOIN [dbo].[cfg_version_item] cvi
+	ON ci.item_id = cvi.item_id
+	LEFT JOIN dbo.cfg_version_environment_item cvei
+	ON cvei.item_ver_id = cvi.item_ver_id
+	LEFT JOIN dbo.cfg_environment ce
+	ON ce.env_id = cvei.env_id
+	WHERE ci.item_type = 0 AND ci.def_id = #DefId#
+	<isNotEmpty prepend="AND" property="Key">
+      ci.[key] like '%' + #Key# + '%'
+    </isNotEmpty>
+	<isNotEmpty prepend="AND" property="Version">
+      cvi.ver like '%' + #Version# + '%'
+    </isNotEmpty>
+	<isNotEmpty prepend="AND" property="EnvName">
+      ce.name like '%' + #EnvName# + '%'
+    </isNotEmpty>
+) AS t1
+      WHERE rowNumber between $StartIndex$ and $EndIndex$
+	  </select>
+  
+<select id="GetCfgDefinitionItemListByPager_Count">
+	SELECT COUNT(*)
+	FROM [dbo].[cfg_item] ci
+	LEFT JOIN [dbo].[cfg_version_item] cvi
+	ON ci.item_id = cvi.item_id
+	LEFT JOIN dbo.cfg_version_environment_item cvei
+	ON cvei.item_ver_id = cvi.item_ver_id
+	LEFT JOIN dbo.cfg_environment ce
+	ON ce.env_id = cvei.env_id
+	WHERE ci.item_type = 0 AND ci.def_id = #DefId#
+	<isNotEmpty prepend="AND" property="Key">
+      ci.[key] like '%' + #Key# + '%'
+    </isNotEmpty>
+	<isNotEmpty prepend="AND" property="Version">
+      cvi.ver like '%' + #Version# + '%'
+    </isNotEmpty>
+	<isNotEmpty prepend="AND" property="EnvName">
+      ce.name like '%' + #EnvName# + '%'
+    </isNotEmpty>
+	  </select>
+
+	  <select id="GetCfgDefinitionVersionItemListByPager">
+		  SELECT *
+		  FROM
+		  (
+		  SELECT cdi.id as def_item_id
+		  ,ci.[item_id]
+		  ,ci.[key]
+		  ,ci.[item_type]
+		  ,ci.[desc] AS item_desc
+		  ,cvi.ver AS [version]
+		  ,cvi.item_ver_id
+		  ,cvi.[desc] AS item_ver_desc
+		  ,cvei.item_ver_env_val_id
+		  ,cvei.value
+		  ,cvei.[desc] AS item_ver_env_val_desc
+		  ,ce.env_id
+		  ,ce.name AS env_name
+		  ,ce.[key] AS env_key
+		  ,ROW_NUMBER() OVER(ORDER BY cdi.id desc) AS rowNumber
+		  FROM cfg_definition_item cdi
+		  INNER JOIN dbo.cfg_version_environment_item cvei
+		  ON cvei.item_ver_env_val_id = cdi.item_ver_env_val_id
+		  INNER JOIN [dbo].[cfg_version_item] cvi
+		  ON cvei.item_ver_id = cvi.item_ver_id
+		  INNER JOIN [dbo].[cfg_item] ci
+		  ON ci.item_id = cvi.item_id
+		  INNER JOIN dbo.cfg_environment ce
+		  ON ce.env_id = cvei.env_id
+		  WHERE cdi.def_ver_id = #DefVerId#
+		  <isNotEmpty prepend="AND" property="Key">
+			  ci.[key] like '%' + #Key# + '%'
+		  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="Version">
+			  cvi.ver like '%' + #Version# + '%'
+		  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="EnvName">
+			  ce.name like '%' + #EnvName# + '%'
+		  </isNotEmpty>
+		  ) AS t1
+		  WHERE rowNumber between $StartIndex$ and $EndIndex$
+	  </select>
+
+	  <select id="GetCfgDefinitionVersionItemListByPager_Count">
+		  SELECT COUNT(*)
+		  FROM cfg_definition_item cdi
+		  INNER JOIN dbo.cfg_version_environment_item cvei
+		  ON cvei.item_ver_env_val_id = cdi.item_ver_env_val_id
+		  INNER JOIN [dbo].[cfg_version_item] cvi
+		  ON cvei.item_ver_id = cvi.item_ver_id
+		  INNER JOIN [dbo].[cfg_item] ci
+		  ON ci.item_id = cvi.item_id
+		  INNER JOIN dbo.cfg_environment ce
+		  ON ce.env_id = cvei.env_id
+		  WHERE cdi.def_ver_id = #DefVerId#
+		  <isNotEmpty prepend="AND" property="Key">
+			  ci.[key] like '%' + #Key# + '%'
+		  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="Version">
+			  cvi.ver like '%' + #Version# + '%'
+		  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="EnvName">
+			  ce.name like '%' + #EnvName# + '%'
+		  </isNotEmpty>
+	  </select>
+
+
+	  <select id="GetSelectCfgItemListByPager">
+		  SELECT * FROM
+		  (
+		  SELECT * ,ROW_NUMBER() OVER(ORDER BY item_ver_env_val_id desc) AS rowNumber
+		  FROM
+		  (
+		  SELECT ci.[item_id]
+		  ,ci.[key]
+		  ,ci.[item_type]
+		  ,ci.[desc] AS item_desc
+		  ,cvi.ver AS [version]
+		  ,cvi.item_ver_id
+		  ,cvi.[desc] AS item_ver_desc
+		  ,cvei.item_ver_env_val_id
+		  ,cvei.value
+		  ,cvei.[desc] AS item_ver_env_val_desc
+		  ,ce.env_id
+		  ,ce.name AS env_name
+		  ,ce.[key] AS env_key
+		  FROM [dbo].[cfg_item] ci
+		  INNER JOIN [dbo].[cfg_version_item] cvi
+		  ON ci.item_id = cvi.item_id
+		  INNER JOIN dbo.cfg_version_environment_item cvei
+		  ON cvei.item_ver_id = cvi.item_ver_id
+		  INNER JOIN dbo.cfg_environment ce
+		  ON ce.env_id = cvei.env_id
+		  WHERE ci.item_type = 0 AND ci.def_id = #DefId#
+	  <isNotEmpty prepend="AND" property="Key">
+		  ci.[key] like '%' + #Key# + '%'
+	  </isNotEmpty>
+	  <isNotEmpty prepend="AND" property="Version">
+		  cvi.ver like '%' + #Version# + '%'
+	  </isNotEmpty>
+	  <isNotEmpty prepend="AND" property="EnvName">
+		  ce.name like '%' + #EnvName# + '%'
+	  </isNotEmpty>
+
+		  UNION ALL
+
+
+		  SELECT ci.[item_id]
+		  ,ci.[key]
+		  ,ci.[item_type]
+		  ,ci.[desc] AS item_desc
+		  ,cvi.ver AS [version]
+		  ,cvi.item_ver_id
+		  ,cvi.[desc] AS item_ver_desc
+		  ,cvei.item_ver_env_val_id
+		  ,cvei.value
+		  ,cvei.[desc] AS item_ver_env_val_desc
+		  ,ce.env_id
+		  ,ce.name AS env_name
+		  ,ce.[key] AS env_key
+		  FROM [dbo].[cfg_item] ci
+		  INNER JOIN [dbo].[cfg_version_item] cvi
+		  ON ci.item_id = cvi.item_id
+		  INNER JOIN dbo.cfg_version_environment_item cvei
+		  ON cvei.item_ver_id = cvi.item_ver_id
+		  INNER JOIN dbo.cfg_environment ce
+		  ON ce.env_id = cvei.env_id
+		  WHERE ci.item_type = 1
+		  <isNotEmpty prepend="AND" property="Key">
+			  ci.[key] like '%' + #Key# + '%'
+		  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="Version">
+			  cvi.ver like '%' + #Version# + '%'
+		  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="EnvName">
+			  ce.name like '%' + #EnvName# + '%'
+		  </isNotEmpty>  
+		  ) AS t1
+		  ) AS t2
+		  WHERE rowNumber between $StartIndex$ and $EndIndex$
+	  </select>
+
+	  <select id="GetSelectCfgItemListByPager_Count">
+		  SELECT COUNT(*)
+		  FROM
+		  (
+		  SELECT ci.[item_id]
+		  ,ci.[key]
+		  ,ci.[item_type]
+		  ,ci.[desc] AS item_desc
+		  ,cvi.ver AS [version]
+		  ,cvi.item_ver_id
+		  ,cvi.[desc] AS item_ver_desc
+		  ,cvei.item_ver_env_val_id
+		  ,cvei.value
+		  ,cvei.[desc] AS item_ver_env_val_desc
+		  ,ce.env_id
+		  ,ce.name AS env_name
+		  ,ce.[key] AS env_key
+		  FROM [dbo].[cfg_item] ci
+		  INNER JOIN [dbo].[cfg_version_item] cvi
+		  ON ci.item_id = cvi.item_id
+		  INNER JOIN dbo.cfg_version_environment_item cvei
+		  ON cvei.item_ver_id = cvi.item_ver_id
+		  INNER JOIN dbo.cfg_environment ce
+		  ON ce.env_id = cvei.env_id
+		  WHERE ci.item_type = 0 AND ci.def_id = #DefId#
+		  <isNotEmpty prepend="AND" property="Key">
+			  ci.[key] like '%' + #Key# + '%'
+		  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="Version">
+			  cvi.ver like '%' + #Version# + '%'
+		  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="EnvName">
+			  ce.name like '%' + #EnvName# + '%'
+		  </isNotEmpty>
+
+		  UNION ALL
+
+
+		  SELECT ci.[item_id]
+		  ,ci.[key]
+		  ,ci.[item_type]
+		  ,ci.[desc] AS item_desc
+		  ,cvi.ver AS [version]
+		  ,cvi.item_ver_id
+		  ,cvi.[desc] AS item_ver_desc
+		  ,cvei.item_ver_env_val_id
+		  ,cvei.value
+		  ,cvei.[desc] AS item_ver_env_val_desc
+		  ,ce.env_id
+		  ,ce.name AS env_name
+		  ,ce.[key] AS env_key
+		  FROM [dbo].[cfg_item] ci
+		  INNER JOIN [dbo].[cfg_version_item] cvi
+		  ON ci.item_id = cvi.item_id
+		  INNER JOIN dbo.cfg_version_environment_item cvei
+		  ON cvei.item_ver_id = cvi.item_ver_id
+		  INNER JOIN dbo.cfg_environment ce
+		  ON ce.env_id = cvei.env_id
+		  WHERE ci.item_type = 1
+		  <isNotEmpty prepend="AND" property="Key">
+			  ci.[key] like '%' + #Key# + '%'
+		  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="Version">
+			  cvi.ver like '%' + #Version# + '%'
+		  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="EnvName">
+			  ce.name like '%' + #EnvName# + '%'
+		  </isNotEmpty>
+		  ) AS t1
+	  </select>
+
+	  <insert id="InsertCfgDefinitionItem">
+		  INSERT INTO [dbo].[cfg_definition_item]
+		  (id,[def_ver_id]
+		  ,[item_ver_env_val_id])
+		  VALUES
+		  (NEWID(),#defVerId#
+		  ,#id#)
+	  </insert>
+
+	  <select id="GetCfgDefinitionVersionItemList">
+		  SELECT cdi.id as def_item_id
+		  ,ci.[item_id]
+		  ,ci.[key]
+		  ,ci.[item_type]
+		  ,ci.[desc] AS item_desc
+		  ,cvi.ver AS [version]
+		  ,cvi.item_ver_id
+		  ,cvi.[desc] AS item_ver_desc
+		  ,cvei.item_ver_env_val_id
+		  ,cvei.value
+		  ,cvei.[desc] AS item_ver_env_val_desc
+		  ,ce.env_id
+		  ,ce.name AS env_name
+		  ,ce.[key] AS env_key
+		  ,ROW_NUMBER() OVER(ORDER BY cdi.id desc) AS rowNumber
+		  FROM cfg_definition_item cdi
+		  INNER JOIN dbo.cfg_version_environment_item cvei
+		  ON cvei.item_ver_env_val_id = cdi.item_ver_env_val_id
+		  INNER JOIN [dbo].[cfg_version_item] cvi
+		  ON cvei.item_ver_id = cvi.item_ver_id
+		  INNER JOIN [dbo].[cfg_item] ci
+		  ON ci.item_id = cvi.item_id
+		  INNER JOIN dbo.cfg_environment ce
+		  ON ce.env_id = cvei.env_id
+		  WHERE cdi.def_ver_id = #value#
+
+	  </select>
+  </statements>
+</sqlMap>

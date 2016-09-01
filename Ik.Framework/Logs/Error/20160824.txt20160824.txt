@@ -1,0 +1,372 @@
+
+Time: 2016-08-24 09:15:50,419 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:15:50，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:16:01,570 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:16:01，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:16:03,169 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:16:03，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:16:14,170 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:16:14，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:16:15,822 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:16:15，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:16:26,877 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:16:26，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:16:28,517 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:16:28，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:16:39,526 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:16:39，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:16:41,147 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:16:41，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:16:52,385 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:16:52，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:16:54,048 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:16:54，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:17:05,237 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:17:05，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:17:06,800 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:17:06，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:17:18,050 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:17:18，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:17:19,644 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:17:19，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:17:30,781 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:17:30，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:17:32,320 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:17:32，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:17:43,454 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:17:43，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:17:45,054 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:17:45，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:17:56,148 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:17:56，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:17:57,745 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:17:57，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:18:08,973 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:18:08，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:18:10,533 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:18:10，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:18:21,712 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:18:21，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:18:23,267 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:18:23，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:18:34,423 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:18:34，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:18:36,001 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:18:36，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:18:47,120 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:18:47，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:18:48,746 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:18:48，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215
+
+Time: 2016-08-24 09:19:02,292 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:19:02，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/ ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 311
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-24 09:19:08,689 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/24 9:19:08，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：心跳检查错误。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/event_topics ---> IkZooKeeperNet.KeeperException+ConnectionLossException: 引发类型为“IkZooKeeperNet.KeeperException+ConnectionLossException”的异常。
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, IWatcher watcher) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 603
+   在 IkZooKeeperNet.ZooKeeper.Exists(String path, Boolean watch) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\ZooKeeper.cs:行号 628
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 42
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 61
+   在 Ik.Framework.Events.DistributedSubscriptionService.GetConsumerTopics() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 445
+   在 Ik.Framework.Events.DistributedSubscriptionService.CheckTopicServerHeartbeat() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 215

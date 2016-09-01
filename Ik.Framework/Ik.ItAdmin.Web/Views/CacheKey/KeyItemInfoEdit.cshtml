@@ -1,0 +1,109 @@
+﻿@model Ik.ItAdmin.Web.Models.CacheKeyItemInfoModel
+@{
+    ViewBag.Title = "缓存项添加";
+}
+@section headerScripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="infoeditpage">
+    @using (Ajax.BeginForm("SaveCacheKeyItemInfo", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onSuccessSaveCacheKeyItemInfoForm" }, new { @id = "SaveCacheKeyItemInfoForm" }))
+    {
+         @Html.HiddenFor(m => m.ItemId) 
+        <tr height="24px">
+            <td class="title">缓存项添加</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="info">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <tr height="10px">
+                            <td colspan="3">&nbsp;</td>
+                        </tr>
+                        <tr height="30px">
+                            <td width="100px" class="label">标识：</td>
+                            <td width="240px" class="value">
+                                @Html.TextBoxFor(d => d.Code, new { @class = "wiscoinput" })
+                            </td>
+                            <td width="5px" class="sign">*</td>
+                        </tr>
+                        <tr height="30px">
+                            <td width="100px" class="label">名称：</td>
+                            <td width="240px" class="value">
+                                @Html.TextBoxFor(d => d.Name, new { @class = "wiscoinput" })
+                            </td>
+                            <td width="5px" class="sign">*</td>
+                        </tr>
+                        <tr height="30px">
+                            <td width="100px" class="label">范围：</td>
+                            <td width="240px" class="value">
+                                @Html.DropDownListFor(d => d.KeySocpe, new List<SelectListItem> { new SelectListItem { Text = "全局", Value = "1" }, new SelectListItem { Text = "项目", Value = "0" } }, new { @class = "wiscoselect" })
+                            </td>
+                            <td width="5px" class="sign">*</td>
+                        </tr>
+                        <tr height="30px">
+                            <td width="100px" class="label">缓存类型：</td>
+                            <td width="240px" class="value">
+                                @Html.DropDownListFor(d => d.CacheType, new List<SelectListItem> { new SelectListItem { Text = "Memcached", Value = "0" }, new SelectListItem { Text = "Redis", Value = "1" } }, new { @class = "wiscoselect" })
+                            </td>
+                            <td width="5px" class="sign">*</td>
+                        </tr>
+                        <tr height="30px">
+                            <td width="100px" class="label">所属模块：</td>
+                            <td width="240px" class="value">
+                                @Html.TextBoxFor(d => d.ModelName, new { @class = "wiscoinput" })
+                            </td>
+                            <td width="5px" class="sign">*</td>
+                        </tr>
+                        <tr height="30px">
+                            <td width="100px" class="label">值类型：</td>
+                            <td width="240px" class="value">
+                                @Html.TextBoxFor(d => d.RefValueType, new { @class = "wiscoinput" })
+                            </td>
+                            <td width="5px" class="sign">*</td>
+                        </tr>  
+                        <tr height="10px">
+                            <td colspan="3">&nbsp;</td>
+                        </tr>
+                        <tr class="area">
+                            <td width="100px" class="label">描述：</td>
+                            <td width="240px" class="value">
+                                @Html.TextAreaFor(d => d.Desc, new { @class = "wiscotextarea", @style = "width: 235px;" })
+                            </td>
+                            <td width="5px" class="sign">&nbsp;</td>
+                        </tr>
+                        <tr height="10px">
+                            <td colspan="3">&nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr height="35px">
+            <td class="handle">
+                <a href="#" class="wiscobutton" onclick="$('#SaveCacheKeyItemInfoForm').submit();"><span class="left"></span><span class="center">保存</span><span class="right"></span></a>
+                <a href="#" class="wiscobutton" onclick="hideWiscoDialog();"><span class="left"></span><span class="center">取消</span><span class="right"></span></a>
+            </td>
+        </tr>
+    }
+</table>
+<script>
+
+    function onSuccessSaveCacheKeyItemInfoForm(result) {
+        if (result.IsSuccess) {
+            alert("缓存项信息保存成功");
+            var dialog = getWiscoDialog();
+            dialog.argu = "success";
+            hideWiscoDialog();
+        }
+        else if (result.Code == -101) {
+            alert(result.Desc);
+        }
+        else {
+            alert("缓存项信息保存失败");
+        }
+    }
+</script>
+
+
+

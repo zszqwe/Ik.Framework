@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>WebAPI测试</title>
+    <!--
+
+            <link href="Content/Site.css" rel="stylesheet"  />
+    -->
+
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/json2.js"></script>
+    <script>
+        function getCookie(c_name) {
+            if (document.cookie.length > 0) {
+                c_start = document.cookie.indexOf(c_name + "=")
+                if (c_start != -1) {
+                    c_startc_start = c_start + c_name.length + 1;
+                    c_end = document.cookie.indexOf(";", c_start)
+                    if (c_end == -1) c_end = document.cookie.length
+                    return unescape(document.cookie.substring(c_startc_start, c_end))
+                }
+            }
+            return ""
+        }
+        $(document).ready(function () {
+            $("#doCall").click(function () {
+                $("#txtResult").html("");
+                var token = $("#txtToken").val();
+                if (token.trim() != "") {
+                    var expireTime = new Date().getTime() + 1000 * 36000;
+                    var da = new Date();
+                    da.setTime(expireTime);
+                    document.cookie = 'token=' + token + ';expires=' + da.toGMTString() + ';path=/';
+                }
+                try {
+                    $.ajax({
+                        headers: {
+                            "Compatible-LongType": "1"
+                        },
+                        url: $("#txtUrl").val(),
+                        data: $.parseJSON($("#txtData").val()),
+                        type: $("#ddlRequestType").val()
+                    }).done(function (result) {
+                        try {
+                            $("#txtToken").val(getCookie('token'));
+                            console.log(result);
+                        }
+                        catch (e) {
+                            e;
+                        }
+                        var str = JSON.stringify(result);
+                        $("#txtResult").html(str);
+
+                    }).fail(function (err) {
+                        $("#txtResult").html("服务器异常，状态码：" + err.status + "响应结果：" + err.responseText);
+                    });
+                }
+                catch (e) {
+                    alert(e);
+                }
+
+
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div style="padding-left:5px;">
+
+        <h2>ApiTest</h2>
+        地址：<input type="text" id="txtUrl" value="api/auth" style="width:500px;">&nbsp;&nbsp;<button id="doCall">调用</button>
+        <br />
+
+        请求类型：<select id="ddlRequestType"><option value="POST">Post</option><option value="GET">Get</option></select>
+        <br />
+        Token：<input id="txtToken" type="text" style="width:500px;" />
+        <br />
+        请求参数：<textarea id="txtData" rows="5" style="width: 600px; height: 300px;">{"UserAccount":"13990005936","Password":"123456"}</textarea>
+
+        <br />
+        <br />
+        请求结果：<div id="txtResult" style="width:1200px;overflow:auto;max-height:400px;word-break:break-all;white-space:normal;word-wrap:break-word">
+        </div>
+        <br />
+
+    </div>
+</body>
+</html>

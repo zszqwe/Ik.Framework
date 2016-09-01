@@ -1,0 +1,109 @@
+
+Time: 2016-08-15 11:02:45,051 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 11:02:45，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：清理通信通道错误，主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：
+
+Time: 2016-08-15 11:02:45,176 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 11:02:45，项目名称：It运维管理,模块名称：,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：数据缓冲服务初始化异常。
+详细内容：Ik.Framework.InkeyException: 数据缓冲服务监听消息错误 ---> System.InvalidOperationException: collection 参数为空并且已标记为完成添加。
+   在 System.Collections.Concurrent.BlockingCollection`1.Take()
+   在 Ik.Framework.BufferService.BufferService.Receive()
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Time: 2016-08-15 11:02:45,176 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 11:02:45，项目名称：It运维管理,模块名称：,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：数据缓冲服务初始化异常。
+详细内容：Ik.Framework.InkeyException: 数据缓冲服务监听消息错误 ---> System.InvalidOperationException: collection 参数为空并且已标记为完成添加。
+   在 System.Collections.Concurrent.BlockingCollection`1.Take()
+   在 Ik.Framework.BufferService.BufferService.Receive()
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Time: 2016-08-15 11:02:45,176 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 11:02:45，项目名称：It运维管理,模块名称：,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：数据缓冲服务初始化异常。
+详细内容：Ik.Framework.InkeyException: 数据缓冲服务监听消息错误 ---> System.InvalidOperationException: collection 参数为空并且已标记为完成添加。
+   在 System.Collections.Concurrent.BlockingCollection`1.Take()
+   在 Ik.Framework.BufferService.BufferService.Receive()
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Time: 2016-08-15 11:02:45,176 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 11:02:45，项目名称：It运维管理,模块名称：,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：数据缓冲服务初始化异常。
+详细内容：Ik.Framework.InkeyException: 数据缓冲服务监听消息错误 ---> System.InvalidOperationException: collection 参数为空并且已标记为完成添加。
+   在 System.Collections.Concurrent.BlockingCollection`1.Take()
+   在 Ik.Framework.BufferService.BufferService.Receive()
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Time: 2016-08-15 11:02:45,176 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 11:02:45，项目名称：It运维管理,模块名称：,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：数据缓冲服务初始化异常。
+详细内容：Ik.Framework.InkeyException: 数据缓冲服务监听消息错误 ---> System.InvalidOperationException: collection 参数为空并且已标记为完成添加。
+   在 System.Collections.Concurrent.BlockingCollection`1.Take()
+   在 Ik.Framework.BufferService.BufferService.Receive()
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Time: 2016-08-15 11:02:46,411 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 11:02:46，项目名称：It运维管理,模块名称：,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：数据缓冲服务初始化异常。
+详细内容：Ik.Framework.InkeyException: 数据缓冲服务监听消息错误 ---> System.InvalidOperationException: collection 参数为空并且已标记为完成添加。
+   在 System.Collections.Concurrent.BlockingCollection`1.Take()
+   在 Ik.Framework.BufferService.BufferService.Receive()
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Time: 2016-08-15 11:02:46,411 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 11:02:46，项目名称：It运维管理,模块名称：,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：数据缓冲服务初始化异常。
+详细内容：Ik.Framework.InkeyException: 数据缓冲服务监听消息错误 ---> System.InvalidOperationException: collection 参数为空并且已标记为完成添加。
+   在 System.Collections.Concurrent.BlockingCollection`1.Take()
+   在 Ik.Framework.BufferService.BufferService.Receive()
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Time: 2016-08-15 11:02:46,411 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 11:02:46，项目名称：It运维管理,模块名称：,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：数据缓冲服务初始化异常。
+详细内容：Ik.Framework.InkeyException: 数据缓冲服务监听消息错误 ---> System.InvalidOperationException: collection 参数为空并且已标记为完成添加。
+   在 System.Collections.Concurrent.BlockingCollection`1.Take()
+   在 Ik.Framework.BufferService.BufferService.Receive()
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Time: 2016-08-15 11:02:46,411 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 11:02:46，项目名称：It运维管理,模块名称：,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：数据缓冲服务初始化异常。
+详细内容：Ik.Framework.InkeyException: 数据缓冲服务监听消息错误 ---> System.InvalidOperationException: collection 参数为空并且已标记为完成添加。
+   在 System.Collections.Concurrent.BlockingCollection`1.Take()
+   在 Ik.Framework.BufferService.BufferService.Receive()
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Time: 2016-08-15 11:02:46,411 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 11:02:46，项目名称：It运维管理,模块名称：,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：数据缓冲服务初始化异常。
+详细内容：Ik.Framework.InkeyException: 数据缓冲服务监听消息错误 ---> System.InvalidOperationException: collection 参数为空并且已标记为完成添加。
+   在 System.Collections.Concurrent.BlockingCollection`1.Take()
+   在 Ik.Framework.BufferService.BufferService.Receive()
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Time: 2016-08-15 14:10:47,055 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 14:10:47，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 60
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 308
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-15 14:13:59,141 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 14:13:59，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 60
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 308
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133
+
+Time: 2016-08-15 14:17:45,100 - DefaultLogger_Error  
+ 日志级别：ERROR，日志时间：2016/8/15 14:17:42，项目名称：It运维管理,模块名称：事件发布订阅服务,业务名称：,机器名称：MY-7-56,日志标签：,日志码：0。
+日志消息：注册订阅主题错误,主题：Authorization_Operator，地址：10.10.7.56:9192。
+详细内容：Ik.Framework.ZooKeeperNet.ZookeepExtException: 检测节点状态失败：/
+   在 Ik.Framework.ZooKeeperNet.IkZooKeeperClient.EnsureExists(String path, Boolean isWatch, Int32 retry) 位置 e:\Ik.Framework\Ik.Framework\ZooKeeperNet\IkZooKeeperClient.cs:行号 60
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureZooKeeperPath(String topic, String address) 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 308
+   在 Ik.Framework.Events.DistributedSubscriptionService.EnsureSubscribe() 位置 e:\Ik.Framework\Ik.Framework\Events\DistributedSubscriptionService.cs:行号 133

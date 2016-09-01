@@ -1,0 +1,41 @@
+﻿@using Ik.Framework.Common.Extension;
+@model Ik.Framework.Common.Paging.IPagedList<Ik.ItAdmin.Web.Dtos.CfgItemVersionEnvironment>
+@{
+    Layout = "";
+}
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="head"><input type="checkbox" /></td>
+        <td class="head">数据项标识</td>
+        <td class="head">数据项类型</td>
+        <td class="head">版本</td>
+        <td class="head">环境名称</td>
+        <td class="head">环境标识</td>
+        <td width="100%" class="head">数据值</td>
+        <td class="head">修改时间</td>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td class="check"><input name="codeids" value="@item.OptId" type="checkbox" /></td>
+                <td class="data">@item.Key</td>
+                <td class="data">@(item.ItemType == Ik.ItAdmin.Web.Dtos.CfgItemType.Global?"全局":"配置定义")</td>
+                <td class="data">@item.Version</td>
+                <td class="data">@item.EnvName</td>
+                <td class="data">@item.EnvKey</td>
+                <td class="data">@(!string.IsNullOrEmpty(item.Value) && item.Value.Length > 50 ? item.Value.Substring(0, 50) + "..." : item.Value)</td>
+                <td class="data">@item.UpdateTime.ToCommonDateTimeString()</td>
+        </tr>
+        }
+    }
+</table>
+
+@Html.Partial("_HtmlPager", Model)
+
+<script>
+    initWiscoGrid("wiscogrid1");
+</script>
+

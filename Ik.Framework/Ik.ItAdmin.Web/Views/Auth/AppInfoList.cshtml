@@ -1,0 +1,136 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    <title></title>
+    <link href="~/Content/css/commonstyle.css" rel="stylesheet" />
+    <link href="~/Content/css/pagestyle.css" rel="stylesheet" />
+    <link href="~/Content/themes/cupertino/jquery-ui.cupertino.min.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/JqGrid/css/ui.jqgrid-bootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/JqGrid/css/ui.jqgrid-bootstrap-ui.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/JqGrid/css/ui.jqgrid.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.0.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.0.min.js"></script>
+    <script src="~/Scripts/plugins/JqGrid/js/i18n/grid.locale-cn.js"></script>
+    <script src="~/Scripts/plugins/JqGrid/src/jquery.jqGrid.js"></script>
+    <script src="~/Scripts/framework.js"></script>
+    <script src="~/Scripts/plugins/JqGrid/jqGrid.warp.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.jqgridWarp.init("auth_app_info_grid", "/Auth/GetAuthAppInfoListData", 500, {
+                multiselect: true,
+                searcher: false,
+                colModel: [
+                { label: "应用标识", name: 'Code', index: 'Code', width: '150', search: false, sortable: false, align: "center" },
+                { label: "应用名称", name: 'Name', index: 'Name', width: '150', search: false, sortable: false },
+                {
+                    label: "是否启用", name: 'IsEnable', index: 'IsEnable', width: '100', align: "center",
+                    formatter: function (cellvalue, options, row) { if (row.IsEnable) return "已启用"; else return "已禁用" }, search: false, resizable: false, sortable: false
+                },
+                { label: "创建时间", name: 'CreateTime', index: 'CreateTime', width: '200', search: false, resizable: false, sortable: false, align: "center" },
+                { label: "更新时间", name: 'UpdateTime', index: 'UpdateTime', width: '200', search: false, resizable: false, sortable: false, align: "center" },
+                { label: "说明", name: 'Desc', index: 'Desc', width: '300', search: false, sortable: false },
+                { label: "AppId", name: 'AppId', index: 'AppId', hidden: true, key: true, search: false, resizable: false, sortable: false }
+                ]
+            });
+        });
+
+        function getSelectId() {
+            var ids = [];
+            var selects = $.jqgridWarp.getMultiSelectedRowIds("auth_app_info_grid");
+            for (var i = 0; i < selects.length; i++) {
+                ids.push(selects[i]);
+            }
+            if (ids.length == 0) {
+                alert("请选择需要操作的数据项");
+                return;
+            }
+            if (ids.length > 1) {
+                alert("只能选择一个数据项");
+                return;
+            }
+
+            return ids[0];
+        }
+
+        function getAllSelectId() {
+            var ids = [];
+            var selects = $.jqgridWarp.getMultiSelectedRowIds("auth_app_info_grid");
+            for (var i = 0; i < selects.length; i++) {
+                ids.push(selects[i]);
+            }
+            if (ids.length == 0) {
+                alert("请选择需要操作的数据项");
+                return;
+            }
+            return ids;
+        }
+
+        function editAuthAppInfo() {
+            var id = getSelectId();
+            if (id == null) {
+                return;
+            }
+            showWiscoDialog('@Url.Content("~/Auth/AuthAppInfoEdit?id=")' + encodeURIComponent(id), 450, 400, null, null, null, RetrunValue);
+        }
+
+        function authAppInfoDeleteAll() {
+            var ids = getAllSelectId();
+            if (ids == null) {
+                return;
+            }
+            $.ajax({
+                url: "/Auth/AuthAppInfoDeleteAll",
+                data: { ids: ids.join(",") },
+                cache: false
+            }).done(function (result) {
+                if (!result.IsSuccess) {
+                    if (result.Code == -101) {
+                        alert(result.Desc);
+                    }
+                    else {
+                        alert("数据删除错误");
+                    }
+                } else {
+                    $.jqgridWarp.refreshGrid("auth_app_info_grid");
+                }
+            });
+        }
+
+        function RetrunValue(argu) {
+            if (argu == "success") {
+                $.jqgridWarp.refreshGrid("auth_app_info_grid");
+            }
+        };
+    </script>
+</head>
+<body>
+    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="listpage">
+        <tr height="24px">
+            <td class="title">权限项目注册<span class="arrowdown" onclick="foldSearchPanel(this);"></span></td>
+        </tr>
+        <tr height="30px">
+            <td class="search">
+                <div style="width: 200px; float: left;height:40px;">
+                    <a href="#" class="wiscobutton" onclick="showWiscoDialog('@Url.Content("~/Auth/AuthAppInfoAdd")', 400, 250,null,null,null,RetrunValue);"><span class="left"></span><span class="center">新增</span><span class="right"></span></a>
+                    <a href="#" class="wiscobutton" onclick="editAuthAppInfo();"><span class="left"></span><span class="center">修改</span><span class="right"></span></a>
+                    <a href="#" class="wiscobutton" onclick="authAppInfoDeleteAll();"><span class="left"></span><span class="center">删除</span><span class="right"></span></a>
+                </div>
+                <div style="clear:both;"></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="grid" valign="top">
+                <table id="auth_app_info_grid"></table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+

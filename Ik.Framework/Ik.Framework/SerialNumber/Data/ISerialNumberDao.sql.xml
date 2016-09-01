@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+<sqlMap xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+	  <select id="GetSerialNumberNextValueByKey">
+		  SELECT next_value FROM [dbo].[seq_number] WHERE [seq_key] = #value#
+	  </select>
+    <select id="GetSerialNumberConfigByKey">
+		SELECT [seq_key]
+		,[name]
+		,[next_value]
+		,[prefix_value]
+		,[format_length]
+		,[date_format]
+		,[apply_capacity]
+		,[check_threshold]
+		FROM [dbo].[seq_number]
+		WHERE seq_key = #value#
+	</select>
+  
+	<select id="GetIncrementSerialNumberByKey">
+		UPDATE [dbo].[seq_number] SET [next_value] = CASE WHEN  [next_value] + 1 > #lengthMaxValue# THEN 1 ELSE [next_value] + 1 END WHERE [seq_key] = #key#
+		SELECT [next_value] FROM [dbo].[seq_number] WHERE [seq_key] = #key#
+	</select>
+
+	  <select id="GetIncrementCountSerialNumberByKey">
+		  UPDATE [dbo].[seq_number] SET [next_value] = CASE WHEN  [next_value] + #count# > #lengthMaxValue# THEN 1 ELSE [next_value] + #count#  END WHERE [seq_key] = #key#
+		  SELECT [next_value] FROM [dbo].[seq_number] WHERE [seq_key] = #key#
+	  </select>
+  
+	<select id="GetApplyCacheSerialNumberCapacityByKey">
+		UPDATE [dbo].[seq_number] SET next_value = next_value + apply_capacity WHERE [seq_key] = #key# AND next_value = #serialNumber#
+		SELECT next_value,CASE WHEN @@ROWCOUNT>0 THEN 1 ELSE 0 END AS set_state FROM [dbo].[seq_number]  WHERE [seq_key] = #key#
+	</select>
+  </statements>
+</sqlMap>

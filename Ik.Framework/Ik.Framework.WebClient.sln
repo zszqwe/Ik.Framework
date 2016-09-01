@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ik.Framework", "Ik.Framework\Ik.Framework.csproj", "{FC039629-45D3-4BD4-8ECC-A3D18E842112}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ik.WebFramework", "Ik.WebFramework\Ik.WebFramework.csproj", "{02370197-673D-4DED-A164-714DFD60EC55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ik.Service.Auth", "Ik.Service.Auth\Ik.Service.Auth.csproj", "{D1D11345-EC64-4029-B408-2C234A2BA8E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{58294402-6C29-4979-B6DD-8C04DF602910}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ik.ItAdmin.Web", "Ik.ItAdmin.Web\Ik.ItAdmin.Web.csproj", "{5F28BD17-8F9F-41D6-B66E-893CABD330E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ik.Framework.Web", "Ik.Framework.Web\Ik.Framework.Web.csproj", "{887ED340-7677-432D-8A3A-6FA76E70EB61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ik.Framework.Redis", "Ik.Framework.Redis\Ik.Framework.Redis.csproj", "{A1DA30A3-ECA9-4171-86F0-AC379D7E6A58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC039629-45D3-4BD4-8ECC-A3D18E842112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC039629-45D3-4BD4-8ECC-A3D18E842112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC039629-45D3-4BD4-8ECC-A3D18E842112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC039629-45D3-4BD4-8ECC-A3D18E842112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02370197-673D-4DED-A164-714DFD60EC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02370197-673D-4DED-A164-714DFD60EC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02370197-673D-4DED-A164-714DFD60EC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02370197-673D-4DED-A164-714DFD60EC55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1D11345-EC64-4029-B408-2C234A2BA8E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1D11345-EC64-4029-B408-2C234A2BA8E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1D11345-EC64-4029-B408-2C234A2BA8E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1D11345-EC64-4029-B408-2C234A2BA8E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F28BD17-8F9F-41D6-B66E-893CABD330E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F28BD17-8F9F-41D6-B66E-893CABD330E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F28BD17-8F9F-41D6-B66E-893CABD330E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F28BD17-8F9F-41D6-B66E-893CABD330E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{887ED340-7677-432D-8A3A-6FA76E70EB61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887ED340-7677-432D-8A3A-6FA76E70EB61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887ED340-7677-432D-8A3A-6FA76E70EB61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887ED340-7677-432D-8A3A-6FA76E70EB61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1DA30A3-ECA9-4171-86F0-AC379D7E6A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1DA30A3-ECA9-4171-86F0-AC379D7E6A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1DA30A3-ECA9-4171-86F0-AC379D7E6A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1DA30A3-ECA9-4171-86F0-AC379D7E6A58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "数据项管理";
+    Guid defVerId = ViewBag.DefVerId;
+    Guid defId = ViewBag.DefId;
+}
+@section headerScripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="listpage">
+    <tr height="24px">
+        <td class="title">数据项管理<span class="arrowdown" onclick="foldSearchPanel(this);"></span></td>
+    </tr>
+    <!--One Row : 70px, Two Rows : 100px, Three Rows : 130px-->
+    <tr height="70px">
+        @using (Ajax.BeginForm("GetCfgDefinitionVersionItemList", null, new AjaxOptions { UpdateTargetId = "wiscogrid1" }, new { @id = "CfgDefinitionVersionItemListForm" }))
+        {
+            <td id="search1" class="search">
+                @Html.Hidden("DefVerId", defVerId, new { @id = "DefVerId" })
+                <span class="label">数据项标识：</span><span class="value"><input type="text" name="key" class="wiscoinput" /></span><span>&nbsp; &nbsp;</span>
+                <span class="label">版本：</span><span class="value"><input type="text" name="ver" class="wiscoinput" /></span><span>&nbsp; &nbsp;</span>
+                <span class="label">环境：</span><span class="value"><input type="text" name="env" class="wiscoinput" /></span><span>&nbsp; &nbsp;</span><br />
+                <a href="#" class="wiscobutton" onclick="$('#CfgDefinitionVersionItemListForm').submit();"><span class="left"></span><span class="center">查询</span><span class="right"></span></a>
+                <a href="#" class="wiscobutton" onclick="$('#CfgDefinitionVersionItemListForm')[0].reset();"><span class="left"></span><span class="center">清空</span><span class="right"></span></a>
+            </td>
+        }
+    </tr>
+    <tr height="35px">
+        <td id="handle1" class="handle">
+            <a href="#" class="wiscobutton" onclick="publishAllCfgDefinitonItem('@defVerId');"><span class="left"></span><span class="center">发布全部数据项配置</span><span class="right"></span></a>
+            <a href="#" class="wiscobutton" onclick="showWiscoDialog('@Url.Content("~/Config/SelectCfgItemList?defId=" + defId + "&defVerId=" + defVerId)', 800, 500,null,null,null,RetrunValue);"><span class="left"></span><span class="center">选择数据项</span><span class="right"></span></a>
+            <a href="#" class="wiscobutton" onclick="cfgItemDeleteAll();"><span class="left"></span><span class="center">删除数据项</span><span class="right"></span></a>
+        </td>
+    </tr>
+    <tr>
+        <td class="grid">
+            <div id="wiscogrid1" class="wiscogrid">
+                @Html.Action("GetCfgDefinitionVersionItemList", new { DefVerId = defVerId });
+            </div>
+        </td>
+    </tr>
+    <tr height="30px" id="pager1">
+        <td>
+            @Html.Partial("_HtmlPagerEmpty")
+        </td>
+    </tr>
+</table>
+
+<script>
+
+    var pager = new initInkeyPager($("#pager1"), $("#CfgDefinitionVersionItemListForm"), $("#wiscogrid1"));
+
+    function getSelectId()
+    {
+        var ids = [];
+        $("#wiscogrid1").find("input[name='codeids']").each(function () {
+            if (this.checked) {
+                ids.push(this.value);
+            }
+        });
+        if (ids.length == 0) {
+            alert("请选择需要添加版本的数据项");
+            return;
+        }
+        if (ids.length > 1) {
+            alert("只能选择一个数据项");
+            return;
+        }
+
+        return ids[0];
+    }
+
+    function getAllSelectId() {
+        var ids = [];
+        $("#wiscogrid1").find("input[name='codeids']").each(function () {
+            if (this.checked) {
+                ids.push(this.value);
+            }
+        });
+        if (ids.length == 0) {
+            alert("请选择需要操作的数据项");
+            return;
+        }
+
+        return ids;
+    }
+
+    function RetrunValue(argu) {
+        if (argu == "success") {
+            pager.reloadGrid();
+        }
+    };
+
+    function publishAllCfgDefinitonItem(id) {
+        $.ajax({
+            url: "/Config/CfgDefinitonItemPublishAll",
+            data: { id: id },
+            cache: false
+        }).done(function (result) {
+            if (!result.IsSuccess) {
+                alert(result.Desc);
+            } else {
+                alert("发布成功");
+            }
+        });
+    }
+
+    function cfgItemDeleteAll()
+    {
+        var ids = getAllSelectId();
+        if (ids == null) {
+            return;
+        }
+        $.ajax({
+            url: "/Config/CfgDefinitionItemDeleteAll",
+            data: { ids: ids.join(",") },
+            cache: false
+        }).done(function (result) {
+            if (!result.IsSuccess) {
+                alert(result.Desc);
+                if (result.Code == -101) {
+                    pager.reloadGrid();
+                }
+            } else {
+                pager.reloadGrid();
+            }
+        });
+    }
+</script>

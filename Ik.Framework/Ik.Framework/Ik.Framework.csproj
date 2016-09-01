@@ -1,0 +1,2403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC039629-45D3-4BD4-8ECC-A3D18E842112}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ik.Framework</RootNamespace>
+    <AssemblyName>Ik.Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging, Version=2.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.2.3.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BufferService\IBufferServiceRegistrar.cs" />
+    <Compile Include="Caching\CacheKeyManager\IKeyConfigRegistrar.cs" />
+    <Compile Include="Caching\CacheKeyManager\KeyConfigFormatObjcet.cs" />
+    <Compile Include="Caching\CacheKeyManager\KeyConfig.cs" />
+    <Compile Include="Caching\CacheKeyManager\FormatObjcet.cs" />
+    <Compile Include="Caching\CacheKeyManager\IKeyFormat.cs" />
+    <Compile Include="Caching\CacheKeyManager\KeyConfigManager.cs" />
+    <Compile Include="Caching\CacheKeyManager\DefaultKeyFormat.cs" />
+    <Compile Include="Caching\CacheKeyManager\KeyScope.cs" />
+    <Compile Include="Caching\CacheKeyManager\KeyFormatConfigurationSectionHandler.cs" />
+    <Compile Include="Caching\CachingException.cs" />
+    <Compile Include="Caching\LogMonitorMemcachedClient.cs" />
+    <Compile Include="Caching\MemcachedConfigurationSectionHandler.cs" />
+    <Compile Include="Caching\MemcachedConfig.cs" />
+    <Compile Include="Caching\MemcachedManager.cs" />
+    <Compile Include="Caching\MemoryCacheManager.cs" />
+    <Compile Include="Caching\PerRequestCacheManager.cs" />
+    <Compile Include="Caching\StateValue.cs" />
+    <Compile Include="DataAccess\AliasAttribute.cs" />
+    <Compile Include="AppDomainTypeFinder.cs" />
+    <Compile Include="BackgroundServiceBase.cs" />
+    <Compile Include="BufferService\BufferDispatcherService.cs" />
+    <Compile Include="BufferService\BufferServiceException.cs" />
+    <Compile Include="BufferService\BufferItem.cs" />
+    <Compile Include="BufferService\BufferItemEventArgs.cs" />
+    <Compile Include="BufferService\BufferService.cs" />
+    <Compile Include="BufferService\BufferProcessorService.cs" />
+    <Compile Include="BufferService\BufferServiceManager.cs" />
+    <Compile Include="BufferService\IBufferTransport.cs" />
+    <Compile Include="CastleCore\Compatibility\IntrospectionExtensions.cs" />
+    <Compile Include="CastleCore\Components.DictionaryAdapter\AbstractDictionaryAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\AbstractDictionaryAdapterVisitor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\ComponentAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\DictionaryAdapterAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\DictionaryBehaviorAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\FetchAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\GroupAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\IfExistsAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\KeyAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\KeyPrefixAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\KeySubstitutionAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\MultiLevelEditAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\NewGuidAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\OnDemandAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\ReferenceAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\RemoveIfAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\RemoveIfEmptyAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\StringFormatAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\StringListAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\StringStorageAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\StringValuesAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\SuppressNotificationsAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\TypeKeyPrefixAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\VolatileAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\XmlDefaultsAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\XmlNamespaceAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\XPathAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\XPathFunctionAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Attributes\XPathVariableAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\CascadingDictionaryAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DefaultPropertyGetter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryAdapterBase.Coerce.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryAdapterBase.Copy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryAdapterBase.Create.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryAdapterBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryAdapterBase.Edit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryAdapterBase.Notify.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryAdapterBase.Validate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryAdapterExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryAdapterFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryAdapterInstance.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryAdapterMeta.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DictionaryValidateGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\DynamicDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\GenericDictionaryAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryAdapterFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryAdapterVisitor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryBehavior.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryBehaviorBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryCoerceStrategy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryCopyStrategy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryCreate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryCreateStrategy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryEdit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryEqualityHashCodeStrategy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryKeyBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryMetaInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryNotify.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryPropertyGetter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryPropertySetter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryReferenceManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryValidate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IDictionaryValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\IPropertyDescriptorInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\MemberwiseEqualityHashCodeStrategy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\NameValueCollectionAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\PropertyChangedEventArgsEx.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\PropertyChangingEventArgsEx.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\PropertyDescriptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\BindingList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\BindingListInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\DynamicValue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\DynamicValueDelegate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\EditableBindingList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\EditableList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\IBindingList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\IBindingListSource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\ICollectionAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\ICollectionAdapterObserver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\ICollectionProjection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\ICondition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\IDynamicValue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\IValueInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\IVirtual.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\IVirtualSite.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\IVirtualTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\ListProjection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\ListProjectionDebugView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\SetProjection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\VirtualObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Util\VirtualSite.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Core\DefaultXmlReferenceFormat.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Core\IReferenceSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Core\IXmlReferenceFormat.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Core\XmlAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Core\XmlMetadata.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Core\XmlMetadataBehavior.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Core\XmlReferenceManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\IXmlAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\IXmlBehaviorSemantics.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\IXmlCollectionAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\IXmlPropertyAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\XmlAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\XmlAccessorFactory.cs" />
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\XmlArrayBehaviorAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\XmlAttributeBehaviorAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\XmlDefaultBehaviorAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\XmlElementBehaviorAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\XmlIgnoreBehaviorAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\XmlNodeAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\XmlSelfAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Accessors\XPathBehaviorAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Collections\XmlCollectionAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Collections\XmlCollectionItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Collections\XmlNodeList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Collections\XmlNodeSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\CursorFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\IXmlContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\IXmlCursor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\IXmlIterator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\IXmlNamespaceSource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\IXmlNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\IXmlNodeSource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\XmlContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\XmlContextBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\XmlExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\XmlName.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\XmlNameComparer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\XmlNodeBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\XmlPositionComparer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\Base\XmlSelfCursor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\SystemXml\SysXmlCursor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\SystemXml\SysXmlExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\SystemXml\SysXmlNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\SystemXml\SysXmlSubtreeIterator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\XPath\CompiledXPath.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\XPath\CompiledXPathNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\XPath\CompiledXPathStep.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\XPath\XPathBufferedNodeIterator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\XPath\XPathCompiler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\XPath\XPathContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\XPath\XPathExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\XPath\XPathMutableCursor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\XPath\XPathNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\XPath\XPathReadOnlyCursor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Namespaces\Wsdl.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Namespaces\Xmlns.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Namespaces\XRef.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Namespaces\Xsd.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Namespaces\Xsi.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlArraySerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlCollectionSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlComponentSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlCustomSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlDefaultSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlDynamicSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlEnumerationSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlListSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlSetSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlSimpleSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlStringSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlTypeKind.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlTypeSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlTypeSerializerCache.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Serializers\XmlXmlNodeSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Types\IXmlIdentity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Types\IXmlIncludedType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Types\IXmlIncludedTypeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Types\IXmlKnownType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Types\IXmlKnownTypeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Types\XmlIncludedType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Types\XmlIncludedTypeSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Types\XmlKnownType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Types\XmlKnownTypeSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Utilities\DictionaryAdapterExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Utilities\Error.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Utilities\IConfigurable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Utilities\IRealizable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Utilities\SingletonDispenser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Utilities\StringExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Utilities\Try.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Utilities\TypeExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Utilities\XmlSubtreeReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Utilities\XmlSubtreeWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Configuration\AbstractConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Configuration\ConfigurationAttributeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Configuration\ConfigurationCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Configuration\IConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Configuration\MutableConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Configuration\Xml\XmlConfigurationDeserializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Extensions\SilverlightExtensions.cs" />
+    <Compile Include="CastleCore\Core\Extensions\SimpleConverter.cs" />
+    <Compile Include="CastleCore\Core\Internal\AttributesUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\CollectionExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\ExceptionMessageBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\ILockHolder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\InterfaceAttributeUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\InternalsVisible.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\IUpgradeableLockHolder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\Lock.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\MonitorLock.cs" />
+    <Compile Include="CastleCore\Core\Internal\MonitorLockHolder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\MonitorUpgradeableLockHolder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\NoOpLock.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\NoOpUpgradeableLock.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\PermissionUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\SlimReadLockHolder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\SlimReadWriteLock.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\SlimUpgradeableReadLockHolder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\SlimWriteLockHolder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\TypeExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\WeakKey.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\WeakKeyComparer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Internal\WeakKeyDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\IServiceEnabledComponent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\IServiceProviderEx.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\IServiceProviderExAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\AbstractExtendedLoggerFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\AbstractLoggerFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\ConsoleFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\ConsoleLogger.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\DiagnosticsLogger.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\DiagnosticsLoggerFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\IContextProperties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\IContextStack.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\IContextStacks.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\IExtendedLogger.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\IExtendedLoggerFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\ILogger.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\ILoggerFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\LevelFilteredLogger.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\LoggerException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\LoggerLevel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\NullLogFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\NullLogger.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\StreamLogger.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\StreamLoggerFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\TraceLogger.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Logging\TraceLoggerFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Pair.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\ProxyServices.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\ReferenceEqualityComparer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\ReflectionBasedDictionaryAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\AbstractResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\AbstractStreamResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\AssemblyBundleResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\AssemblyResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\AssemblyResourceFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\ConfigResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\ConfigResourceFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\CustomUri.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\FileResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\FileResourceFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\IResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\IResourceFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\ResourceException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\StaticContentResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\UncResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Resource\UncResourceFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Smtp\DefaultSmtpSender.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\Smtp\IEmailSender.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\Core\StringObjectDictionaryAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\AbstractInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\AllMethodsHook.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\ClassMembersCollector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\ClassProxyInstanceContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\ClassProxyTargetContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\ClassProxyWithTargetInstanceContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\ClassProxyWithTargetTargetContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\CompositeTypeContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\DelegateProxyTargetContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\Delegates.cs" />
+    <Compile Include="CastleCore\DynamicProxy\Contributors\DelegateTypeGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\ForwardingMethodGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\InterfaceMembersCollector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\InterfaceMembersOnClassCollector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\InterfaceProxyInstanceContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\InterfaceProxyTargetContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\InterfaceProxyWithOptionalTargetContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\InterfaceProxyWithoutTargetContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\InterfaceProxyWithTargetInterfaceTargetContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\InvocationWithDelegateContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\InvocationWithGenericDelegateContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\ITypeContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\MembersCollector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\MinimialisticMethodGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\MixinContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\OptionallyForwardingMethodGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\ProxyInstanceContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Contributors\WrappedClassMembersCollector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\DefaultProxyBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\AttributeDisassembler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\AttributesToAvoidReplicating.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\BaseProxyGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\CacheKey.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\ClassProxyGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\ClassProxyWithTargetGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\CompositionInvocationTypeGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\DelegateMembersCollector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\DelegateProxyGenerationHook.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\DelegateProxyGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\AbstractTypeEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\ArgumentsUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\ClassEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\CodeBuilders\AbstractCodeBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\CodeBuilders\ConstructorCodeBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\CodeBuilders\MethodCodeBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\ConstructorCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\ConstructorEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\EventCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\EventEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\GenericUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\IMemberEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\LdcOpCodesDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\LdindOpCodesDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\MethodCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\MethodEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\NestedClassCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\NestedClassEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\OpCodeUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\PropertiesCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\PropertyEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\AddressOfReferenceExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\ArgumentReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\AssignArgumentStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\AssignArrayStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\AssignStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\AsTypeReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\BindDelegateExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\ByRefReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\ConstReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\ConstructorInvocationStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\ConvertExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\DefaultValueExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\EndExceptionBlockStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\Expression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\ExpressionStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\FieldReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\FinallyStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\IfNullExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\IILEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\IndirectReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\LiteralIntExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\LoadArrayElementExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\LoadRefArrayElementExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\LocalReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\MethodInvocationExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\MethodTokenExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\MultiStatementExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\NewArrayExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\NewInstanceExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\NopStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\NullCoalescingOperatorExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\NullExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\Reference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\ReferenceExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\ReferencesToObjectArrayExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\ReturnStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\SelfReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\Statement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\ThrowStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\TryStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\TypeReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\SimpleAST\TypeTokenExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\StindOpCodesDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\StrongNameUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\Emitters\TypeConstructorEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\GeneratorException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\GeneratorUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\IGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\IInvocationCreationContributor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\INamingScope.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\InheritanceInvocationTypeGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\InterfaceProxyWithoutTargetGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\InterfaceProxyWithTargetGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\InterfaceProxyWithTargetInterfaceGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\InvocationTypeGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\MetaEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\MetaMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\MetaProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\MetaType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\MetaTypeElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\MethodFinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\MethodGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\MethodSignatureComparer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\MethodWithInvocationGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\NamingScope.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Generators\TypeElementCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\IAttributeDisassembler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\IChangeProxyTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\IInterceptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\IInterceptorSelector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\IInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Internal\AttributeUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Internal\CompositionInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Internal\InheritanceInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Internal\InternalsUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Internal\InvocationHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Internal\TypeUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\InvalidMixinConfigurationException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\InvalidProxyConstructorArgumentsException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\IProxyBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\IProxyGenerationHook.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\IProxyTargetAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\MixinData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\ModuleScope.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\PersistentProxyBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\ProxyGenerationException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\ProxyGenerationOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\ProxyGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\ProxyUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Serialization\CacheMappingsAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Serialization\ProxyObjectReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Serialization\ProxyTypeConstants.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\StandardInterceptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Tokens\DelegateMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Tokens\FormatterServicesMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Tokens\InterceptorSelectorMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Tokens\InvocationMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Tokens\MethodBaseMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Tokens\SerializationInfoMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Tokens\TypeBuilderMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Tokens\TypeMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\DynamicProxy\Tokens\TypeUtilMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CastleCore\SecurityAssemblyInfo.cs" />
+    <Compile Include="Common\Extension\CollectionExtension.cs" />
+    <Compile Include="Common\Extension\DateTimeExtension.cs" />
+    <Compile Include="Common\Extension\DictionaryExtension.cs" />
+    <Compile Include="Common\Extension\EnumExtension.cs" />
+    <Compile Include="Common\Extension\HexExtension.cs" />
+    <Compile Include="Common\Extension\JsonExtension.cs" />
+    <Compile Include="Common\Extension\NumberExtension.cs" />
+    <Compile Include="Common\Extension\PagedListExtension.cs" />
+    <Compile Include="Common\Extension\RegexExtensions.cs" />
+    <Compile Include="Common\Extension\StringExtension.cs" />
+    <Compile Include="Common\JsonConverters\LongToStringConverter.cs" />
+    <Compile Include="Common\Paging\IPagedList.cs" />
+    <Compile Include="Common\Paging\IPageParameter.cs" />
+    <Compile Include="Common\Paging\PagedList.cs" />
+    <Compile Include="Common\Paging\PagedListDto.cs" />
+    <Compile Include="Common\Paging\PageParameter.cs" />
+    <Compile Include="Common\Security\AESHelper.cs" />
+    <Compile Include="Common\Security\HashCryptoType.cs" />
+    <Compile Include="Common\Security\HashHelper.cs" />
+    <Compile Include="Common\Security\RSAHelper.cs" />
+    <Compile Include="Common\Security\RSAKey.cs" />
+    <Compile Include="Common\Security\RSASecurity.cs" />
+    <Compile Include="Common\Security\StringBytesTransType.cs" />
+    <Compile Include="Common\Serialization\BinarySerializerManager.cs" />
+    <Compile Include="Common\Serialization\EnforceStringConverter.cs" />
+    <Compile Include="Common\Serialization\JsonSerializerManager.cs" />
+    <Compile Include="Common\Serialization\XmlSerializerManager.cs" />
+    <Compile Include="Common\Utilities\ChineseCharacters.cs" />
+    <Compile Include="Common\Utilities\ChineseConvert.cs" />
+    <Compile Include="Common\Utilities\EnumHelper.cs" />
+    <Compile Include="Common\Utilities\GeographyHelper.cs" />
+    <Compile Include="Common\Utilities\IdGen.cs" />
+    <Compile Include="Common\Utilities\ImageHelper.cs" />
+    <Compile Include="Common\Utilities\MaskHelper.cs" />
+    <Compile Include="Common\Utilities\UrlHelper.cs" />
+    <Compile Include="Common\Utilities\VersionHelper.cs" />
+    <Compile Include="Configuration\ConfigInfo.cs" />
+    <Compile Include="Configuration\ConfigException.cs" />
+    <Compile Include="Configuration\RemoteConfigManagerService.cs" />
+    <Compile Include="Configuration\DeployInfo.cs" />
+    <Compile Include="Configuration\ConfigManager.cs" />
+    <Compile Include="Configuration\IConfigManager.cs" />
+    <Compile Include="Configuration\LocalConfigSectionHandler.cs" />
+    <Compile Include="Configuration\LocalConfigManager.cs" />
+    <Compile Include="Configuration\RemoteConfigManager.cs" />
+    <Compile Include="DataAccess\DataAccessConfigManager.cs" />
+    <Compile Include="DataAccess\DataAccessException.cs" />
+    <Compile Include="DataAccess\DataAccessType.cs" />
+    <Compile Include="DataAccess\DataMapping\AutoDataAccessFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\AssertUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\AbstractCodeBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\AbstractEasyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\ConstructorCodeBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\ConstructorCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\EasyCallable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\EasyConstructor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\EasyDefaultConstructor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\EasyEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\EasyMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\EasyNested.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\EasyProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\EasyRuntimeConstructor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\EasyRuntimeMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\EasyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\EventsCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\IEasyMember.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\MethodCodeBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\MethodCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\NestedTypeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\PropertiesCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\AddressOfReferenceExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\ArgumentReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\AssignArrayStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\AssignStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\BinaryExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\ConditionExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\ConstructorInvocationExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\ConvertExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\Expression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\ExpressionStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\FieldReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\FixedReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\GotoStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\IEmitter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\IndirectReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\LabelReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\LoadRefArrayElementExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\LocalReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\LockBlockExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\MarkBranchStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\MethodInvocationExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\MethodPointerExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\MethodTokenExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\NewArrayExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\NewInstanceExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\NopStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\NullExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\PopValueFromStackStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\Reference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\ReferenceExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\ReferencesToObjectArrayExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\ReturnReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\ReturnStatement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\SelfReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\Statement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\TypeReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\TypeTokenExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\SimpleAST\VirtualMethodInvocationExpression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\Utils\ArgumentsUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\Utils\OpCodesDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeBuilder\Utils\OpCodeUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeGenerators\BaseCodeGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeGenerators\ClassProxyGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeGenerators\InterfaceProxyGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeGenerators\ModuleScope.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeGenerators\ProxyGenerationException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\CodeGenerators\Utils\Set.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\DefaultProxyBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\GeneratorContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Builder\IProxyBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\ICallable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\IInterceptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\IInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Invocation\AbstractInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Invocation\InterfaceInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Invocation\SameClassInvocation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\IProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\ProxyGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\Serialization\ProxyObjectReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\Castle.DynamicProxy\StandardInterceptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataMapping\DataAccess.cs" />
+    <Compile Include="DataAccess\DataMapping\DataAccessContext.cs" />
+    <Compile Include="DataAccess\DataMapping\DataAccessFactory.cs" />
+    <Compile Include="DataAccess\DataAccessTypeAttribute.cs" />
+    <Compile Include="DataAccess\DataMapping\DataMappingContext.cs" />
+    <Compile Include="DataAccess\DataMappingOutSqlTextAttribute.cs" />
+    <Compile Include="DataAccess\DataMapping\DataMappingTransactionScope.cs" />
+    <Compile Include="DataAccess\DataMapping\DataMappingTransaction.cs" />
+    <Compile Include="DataAccess\DataMapping\SqlMapLoader.cs" />
+    <Compile Include="DataAccess\DataSourcesConfig.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\DataSource.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\DataSourceDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\DbProvider.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Exceptions\ConfigurationException.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Exceptions\ForeignKeyException.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Exceptions\IBatisNetException.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Exceptions\ProbeException.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\IDalSession.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\IDataSource.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\IDbProvider.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\ConfigurationSectionHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\ILog.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\ILoggerFactoryAdapter.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\Impl\AbstractLogger.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\Impl\ConsoleOutLogger.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\Impl\ConsoleOutLoggerFA.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\Impl\NoOpLogger.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\Impl\NoOpLoggerFA.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\Impl\TraceLogger.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\Impl\TraceLoggerFA.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\LogManager.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Logging\LogSetting.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Pagination\IPaginatedList.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Pagination\PaginatedArrayList.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\ProviderDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Transaction\IsolationLevel.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Transaction\TransactionOptions.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Transaction\TransactionScope.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Transaction\TransactionScopeOptions.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\ConfigWatcherHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\DBHelperParameterCache.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\HashCodeProvider.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\AbstractFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\ActivatorFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\ActivatorObjectFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\BoxingOpCodes.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\DelegateFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\DelegateObjectFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\EmitObjectFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\FactoryBuilder.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\FactoryLogAdapter.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\IFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\IObjectFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\AccessorFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\BaseAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\DelegateGetFieldAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\DelegatePropertyGetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\DelegatePropertySetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\DelegateSetFieldAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\EmitFieldGetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\EmitFieldSetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\EmitPropertyGetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\EmitPropertySetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\GetAccessorFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\IAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\IGet.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\IGetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\IGetAccessorFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\ISet.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\ISetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\ISetAccessorFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\ReflectionFieldGetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\ReflectionFieldSetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\ReflectionPropertyGetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\ReflectionPropertySetAccessor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\Members\SetAccessorFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\ObjectFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\ObjectProbe.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Objects\ReflectionInfo.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Proxy\CachedProxyGenerator.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Proxy\IProxyGenerator.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Proxy\ProxyGeneratorFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\Resources.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\ScriptRunner.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\StringTokenizer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\TypesResolver\CachedTypeResolver.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\TypesResolver\ITypeResolver.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\TypesResolver\TypeRegistry.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\TypesResolver\TypeResolver.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Utilities\TypeUtils.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.Common\Xml\NodeUtils.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Commands\DataReaderDecorator.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Commands\DataReaderTransformer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Commands\DbCommandDecorator.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Commands\DefaultPreparedCommand.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Commands\IDbDataParameterCollection.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Commands\InMemoryDataReader.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Commands\IPreparedCommand.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Commands\PreparedCommandFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Alias\TypeAlias.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Alias\TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Cache\CacheKey.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Cache\CacheModel.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Cache\Fifo\FifoCacheController.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Cache\FlushInterval.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Cache\ICacheController.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Cache\Lru\LruCacheController.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Cache\Memory\MemoryCacheControler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Cache\Memory\MemoryCacheLevel.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\DomSqlMapBuilder.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ParameterMapping\InlineParameterMapParser.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ParameterMapping\ParameterMap.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ParameterMapping\ParameterProperty.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ParameterMapping\ParameterPropertyCollection.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ResultMapping\ArgumentProperty.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ResultMapping\AutoResultMap.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ResultMapping\Discriminator.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ResultMapping\IResultMap.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ResultMapping\NullResultMap.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ResultMapping\ResultMap.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ResultMapping\ResultMapCollection.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ResultMapping\ResultProperty.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ResultMapping\ResultPropertyCollection.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\ResultMapping\SubMap.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\ArgumentPropertyDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\CacheModelDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\DeleteDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\DeSerializerFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\DiscriminatorDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\DynamicDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\InsertDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsEmptyDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsEqualDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsGreaterEqualDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsGreaterThanDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsLessEqualDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsLessThanDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsNotEmptyDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsNotEqualDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsNotNullDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsNotParameterPresentDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsNotPropertyAvailableDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsNullDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsParameterPresentDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IsPropertyAvailableDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\IterateSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\ParameterMapDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\ParameterPropertyDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\ProcedureDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\ResultMapDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\ResultPropertyDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\SelectDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\SqlDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\StatementDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\SubMapDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\TypeAliasDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\TypeHandlerDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Serializers\UpdateDeSerializer.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\DynamicSql.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\BaseTag.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\Conditional.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\Dynamic.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IDynamicParent.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsEmpty.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsEqual.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsGreaterEqual.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsGreaterThan.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsLessEqual.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsLessThan.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsNotEmpty.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsNotEqual.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsNotNull.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsNotParameterPresent.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsNotPropertyAvailable.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsNull.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsParameterPresent.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\IsPropertyAvailable.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\Iterate.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Elements\SqlTag.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\BaseTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\ConditionalTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\DynamicTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsEmptyTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsEqualTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsGreaterEqualTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsGreaterThanTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsLessEqualTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsLessThanTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsNotEmptyTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsNotEqualTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsNotNullTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsNotParameterPresentTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsNotPropertyAvailableTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsNullTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsParameterPresentTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IsPropertyAvailableTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\ISqlTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IterateContext.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\IterateTagHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\Handlers\SqlTagContext.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\ISqlChild.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Dynamic\SqlText.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\ISql.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\SimpleDynamic\SimpleDynamicSql.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Static\ProcedureSql.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Sql\Static\StaticSql.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\Delete.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\Generate.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\Insert.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\IStatement.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\PreparedStatement.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\PreparedStatementFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\Procedure.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\Select.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\SelectKey.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\SqlGenerator.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\Statement.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Configuration\Statements\Update.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\DataExchange\BaseDataExchange.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\DataExchange\ComplexDataExchange.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\DataExchange\DataExchangeFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\DataExchange\DictionaryDataExchange.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\DataExchange\DotNetObjectDataExchange.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\DataExchange\IDataExchange.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\DataExchange\ListDataExchange.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\DataExchange\PrimitiveDataExchange.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Delegates.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Enumeration.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Exceptions\DataMapperException.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\ExecuteEventArgs.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\ISqlMapper.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\ISqlMapSession.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ArgumentStrategy\ArgumentStrategyFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ArgumentStrategy\DefaultStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ArgumentStrategy\IArgumentStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ArgumentStrategy\ResultMapStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ArgumentStrategy\SelectArrayStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ArgumentStrategy\SelectGenericListStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ArgumentStrategy\SelectListStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ArgumentStrategy\SelectObjectStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ArgumentStrategy\SelectStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\BaseStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\CachingStatement.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\DeleteMappedStatement.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\IMappedStatement.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\InsertMappedStatement.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\MappedStatement.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PaginatedList.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PostBindind.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PostSelectStrategy\ArrayStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PostSelectStrategy\GenericListStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PostSelectStrategy\IPostSelectStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PostSelectStrategy\ListStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PostSelectStrategy\ObjectStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PostSelectStrategy\PostSelectStrategyFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PostSelectStrategy\StrongTypedListStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PropertStrategy\DefaultStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PropertStrategy\GroupByStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PropertStrategy\IPropertyStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PropertStrategy\PropertyStrategyFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PropertStrategy\ResultMapStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PropertStrategy\SelectArrayStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PropertStrategy\SelectGenericListStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PropertStrategy\SelectListStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PropertStrategy\SelectObjectStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\PropertStrategy\SelectStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ReaderAutoMapper.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\AutoMapStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\DictionaryStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\GroupByStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\IResultStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\ListStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\MapStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\ObjectStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\ResultClassStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\ResultMapStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\ResultStrategyFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\SimpleTypeStrategy.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\SelectMappedStatement.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\UpdateMappedStatement.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Mapper.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Proxy\ILazyFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Proxy\LazyFactoryBuilder.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Proxy\LazyList.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Proxy\LazyListFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Proxy\LazyListGeneric.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Proxy\LazyListGenericFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Proxy\LazyLoadInterceptor.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Proxy\LazyLoadProxyFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Scope\ConfigurationScope.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Scope\ErrorContext.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Scope\IScope.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\Scope\RequestScope.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\SessionStore\AbstractSessionStore.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\SessionStore\CallContextSessionStore.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\SessionStore\HybridWebThreadSessionStore.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\SessionStore\ISessionStore.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\SessionStore\SessionStoreFactory .cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\SessionStore\WebSessionStore.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\SqlMapper.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\SqlMapSession.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\AnsiStringTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\BaseTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\BooleanTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\ByteArrayTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\ByteTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\CharTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\CustomTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\DateTimeTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\DbGeographyTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\DBNullTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\DecimalTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\DoubleTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\EnumTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\GuidTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Int16TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Int32TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Int64TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\IParameterSetter.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\IResultGetter.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\ITypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\ITypeHandlerCallback.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableBooleanTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableByteTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableCharTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableDateTimeTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableDecimalTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableDoubleTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableGuidTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableInt16TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableInt32TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableInt64TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableSByteTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableSingleTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableTimeSpanTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableUInt16TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableUInt32TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\Nullables\NullableUInt64TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\ObjectTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\ParameterSetterImpl.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\ResultGetterImpl.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\SByteTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\SingleTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\StringTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\TimeSpanTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\TypeHandlerFactory.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\UInt16TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\UInt32TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\UInt64TypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IBatisNet.DataMapper\TypeHandlers\UnknownTypeHandler.cs" />
+    <Compile Include="DataAccess\DataMapping\IDataAccessFactory.cs" />
+    <Compile Include="DataAccess\DataSourcesConfigurationSectionHandler.cs" />
+    <Compile Include="DataAccess\EF\AutoEfRepositoryFactory.cs" />
+    <Compile Include="DataAccess\EF\BaseEntity.cs" />
+    <Compile Include="DataAccess\EF\DataAccessEfContext.cs" />
+    <Compile Include="DataAccess\EF\EfRepository.cs" />
+    <Compile Include="DataAccess\EF\IDbContext.cs" />
+    <Compile Include="DataAccess\EF\IEfRepositoryFactory.cs" />
+    <Compile Include="DataAccess\EF\IkEntityTypeConfiguration.cs" />
+    <Compile Include="DataAccess\EF\IkObjectContext.cs" />
+    <Compile Include="DataAccess\EF\EfRepositoryFactory.cs" />
+    <Compile Include="DataAccess\EF\IRepository.cs" />
+    <Compile Include="DataAccess\OutSqlTextType.cs" />
+    <Compile Include="DependencyManagement\AutoDataServiceAttribute.cs" />
+    <Compile Include="DependencyManagement\AutoBizServiceAttribute.cs" />
+    <Compile Include="DependencyManagement\ContainerManager.cs" />
+    <Compile Include="DependencyManagement\ObjectEngineContext.cs" />
+    <Compile Include="DependencyManagement\IDependencyRegistrar.cs" />
+    <Compile Include="DependencyManagement\IEngine.cs" />
+    <Compile Include="DependencyManagement\IkEngine.cs" />
+    <Compile Include="DependencyManagement\IocException.cs" />
+    <Compile Include="EnyimMemcached\Configuration\AuthenticationConfiguration.cs" />
+    <Compile Include="EnyimMemcached\Configuration\AuthenticationElement.cs" />
+    <Compile Include="EnyimMemcached\Configuration\ConfigurationElementException.cs" />
+    <Compile Include="EnyimMemcached\Configuration\ConfigurationHelper.cs" />
+    <Compile Include="EnyimMemcached\Configuration\EndPointElement.cs" />
+    <Compile Include="EnyimMemcached\Configuration\EndPointElementCollection.cs" />
+    <Compile Include="EnyimMemcached\Configuration\FactoryElement.cs" />
+    <Compile Include="EnyimMemcached\Configuration\IAuthenticationConfiguration.cs" />
+    <Compile Include="EnyimMemcached\Configuration\IMemcachedClientConfiguration.cs" />
+    <Compile Include="EnyimMemcached\Configuration\InterfaceValidator.cs" />
+    <Compile Include="EnyimMemcached\Configuration\ISocketPoolConfiguration.cs" />
+    <Compile Include="EnyimMemcached\Configuration\IVBucketConfiguration.cs" />
+    <Compile Include="EnyimMemcached\Configuration\JsonVBucketConfig.cs" />
+    <Compile Include="EnyimMemcached\Configuration\LoggerSection.cs" />
+    <Compile Include="EnyimMemcached\Configuration\MemcachedClientConfiguration.cs" />
+    <Compile Include="EnyimMemcached\Configuration\MemcachedClientSection.cs" />
+    <Compile Include="EnyimMemcached\Configuration\ProviderElement.cs" />
+    <Compile Include="EnyimMemcached\Configuration\SocketPoolConfiguration.cs" />
+    <Compile Include="EnyimMemcached\Configuration\SocketPoolElement.cs" />
+    <Compile Include="EnyimMemcached\Configuration\TextElement.cs" />
+    <Compile Include="EnyimMemcached\CountdownEvent.cs" />
+    <Compile Include="EnyimMemcached\FastActivator.cs" />
+    <Compile Include="EnyimMemcached\FnvHash.cs" />
+    <Compile Include="EnyimMemcached\HashCodeCombiner.cs" />
+    <Compile Include="EnyimMemcached\HashkitCrc32.cs" />
+    <Compile Include="EnyimMemcached\HashkitMurmur.cs" />
+    <Compile Include="EnyimMemcached\HashkitOneAtATime.cs" />
+    <Compile Include="EnyimMemcached\IFastObjectFacory.cs" />
+    <Compile Include="EnyimMemcached\IMemcachedClient.cs" />
+    <Compile Include="EnyimMemcached\IMemcachedResultsClient.cs" />
+    <Compile Include="EnyimMemcached\InterlockedQueue.cs" />
+    <Compile Include="EnyimMemcached\InterlockedStack.cs" />
+    <Compile Include="EnyimMemcached\IUIntHashAlgorithm.cs" />
+    <Compile Include="EnyimMemcached\Logging\DiagnosticsLog.cs" />
+    <Compile Include="EnyimMemcached\Logging\ILog.cs" />
+    <Compile Include="EnyimMemcached\Logging\ILogFactory.cs" />
+    <Compile Include="EnyimMemcached\Logging\LogManager.cs" />
+    <Compile Include="EnyimMemcached\Logging\NullLog.cs" />
+    <Compile Include="EnyimMemcached\MemcachedClient.cs" />
+    <Compile Include="EnyimMemcached\MemcachedClient.Results.cs" />
+    <Compile Include="EnyimMemcached\Memcached\AsyncIOArgs.cs" />
+    <Compile Include="EnyimMemcached\Memcached\AsyncSocketHelper.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Authentication\PlainTextAuthenticator.cs" />
+    <Compile Include="EnyimMemcached\Memcached\BasicNetworkStream.cs" />
+    <Compile Include="EnyimMemcached\Memcached\CommandNotSupportedException.cs" />
+    <Compile Include="EnyimMemcached\Memcached\DefaultServerPool.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Enums.cs" />
+    <Compile Include="EnyimMemcached\Memcached\FailurePolicy\FailImmediatelyPolicy.cs" />
+    <Compile Include="EnyimMemcached\Memcached\FailurePolicy\INodeFailurePolicy.cs" />
+    <Compile Include="EnyimMemcached\Memcached\FailurePolicy\ThrottlingFailurePolicy.cs" />
+    <Compile Include="EnyimMemcached\Memcached\IAuthenticator.cs" />
+    <Compile Include="EnyimMemcached\Memcached\IMemcachedKeyTransformer.cs" />
+    <Compile Include="EnyimMemcached\Memcached\IMemcachedNode.cs" />
+    <Compile Include="EnyimMemcached\Memcached\IMemcachedNodeLocator.cs" />
+    <Compile Include="EnyimMemcached\Memcached\IOperationFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\IProviderFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\ISaslAuthenticationProvider.cs" />
+    <Compile Include="EnyimMemcached\Memcached\IServerPool.cs" />
+    <Compile Include="EnyimMemcached\Memcached\KeyTransformers\Base64KeyTransformer.cs" />
+    <Compile Include="EnyimMemcached\Memcached\KeyTransformers\DefaultKeyTransformer.cs" />
+    <Compile Include="EnyimMemcached\Memcached\KeyTransformers\KeyTransformerBase.cs" />
+    <Compile Include="EnyimMemcached\Memcached\KeyTransformers\SHA1KeyTransformer.cs" />
+    <Compile Include="EnyimMemcached\Memcached\KeyTransformers\TigerHashKeyTransformer.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Locators\DefaultNodeLocator.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Locators\KetamaNodeLocator.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Locators\KetamaNodeLocatorFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Locators\SingleNodeLocator.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Locators\VBucketNodeLocator.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Locators\VBucketNodeLocatorFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\MemcachedClientException.cs" />
+    <Compile Include="EnyimMemcached\Memcached\MemcachedException.cs" />
+    <Compile Include="EnyimMemcached\Memcached\MemcachedNode.cs" />
+    <Compile Include="EnyimMemcached\Memcached\OperationInterfaces.cs" />
+    <Compile Include="EnyimMemcached\Memcached\PerformanceMonitor\DefaultPerformanceMonitor.cs" />
+    <Compile Include="EnyimMemcached\Memcached\PerformanceMonitor\DefaultPerformanceMonitorFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\PerformanceMonitor\IPerformanceMonitor.cs" />
+    <Compile Include="EnyimMemcached\Memcached\PerformanceMonitor\PerformanceCounterInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EnyimMemcached\Memcached\PooledSocket.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\BinaryConverter.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\BinaryMultiItemOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\BinaryNode.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\BinaryOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\BinaryOperationFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\BinaryPool.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\BinaryRequest.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\BinaryResponse.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\BinarySingleItemOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\ConcatOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\DeleteOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\FlushOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\GetOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\MultiGetOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\MutatorOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\OpCode.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\SaslContinue.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\SaslStart.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\SaslStep.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\StatsOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Binary\StoreOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\ItemOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\MultiItemOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Operation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\CasOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\ConcateOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\DeleteOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\FlushOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\GetHelper.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\GetOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\MultiGetOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\MutatorOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\StatsOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\StoreOperation.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\StoreOperationBase.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\TextOperationFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Protocol\Text\TextSocketHelper.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\BinaryOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\ConcatOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Extensions\OperationResultExtensions.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\DefaultConcatOperationResultFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\DefaultGetOperationResultFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\DefaultGetOperationResultFactory`1.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\DefaultMutateOperationResultFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\DefaultRemoveOperationResultFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\DefaultStoreOperationResultFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\IConcatOperationResultFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\IGetOperationResultFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\IGetOperationResultFactory`1.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\IMutateOperationResultFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\IRemoveOperationResultFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Factories\IStoreOperationResultFactory.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\GetOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\GetOperationResult`1.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\Helpers\ResultHelper.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\ICasOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\IConcatOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\IGetOperationResults.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\IGetOperationResult`1.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\IMutateOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\INullableOperationResult`1.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\IOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\IPooledSocketResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\IRemoveOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\IStoreOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\MutateOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\OperationResultBase.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\PooledSocketResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\RemoveOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\StatusCodes\StatusCodeEnums.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\StatusCodes\StatusCodeMessages.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\StoreOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Results\TextOperationResult.cs" />
+    <Compile Include="EnyimMemcached\Memcached\ServerStats.cs" />
+    <Compile Include="EnyimMemcached\Memcached\SlidingBuffer.cs" />
+    <Compile Include="EnyimMemcached\Memcached\StatItem.cs" />
+    <Compile Include="EnyimMemcached\Memcached\StoreMode.cs" />
+    <Compile Include="EnyimMemcached\Memcached\ThrowHelper.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Transcoders\CacheItem.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Transcoders\DataContractTranscoder.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Transcoders\DefaultTranscoder.cs" />
+    <Compile Include="EnyimMemcached\Memcached\Transcoders\ITranscoder.cs" />
+    <Compile Include="EnyimMemcached\TigerHash.cs" />
+    <Compile Include="EnyimMemcached\UIntEqualityComparer.cs" />
+    <Compile Include="ErrorEventArgs.cs" />
+    <Compile Include="Events\DistributedConsumerType.cs" />
+    <Compile Include="Events\DistributedEvent.cs" />
+    <Compile Include="Events\DistributedEventAttribute.cs" />
+    <Compile Include="Events\DistributedEventConsumer.cs" />
+    <Compile Include="Events\DistributedEventPublisher.cs" />
+    <Compile Include="Events\DistributedObjectNameAttribute.cs" />
+    <Compile Include="Events\DistributedSubscriptionService.cs" />
+    <Compile Include="Events\EntityDeleted.cs" />
+    <Compile Include="Events\EntityInserted.cs" />
+    <Compile Include="Events\EntityUpdated.cs" />
+    <Compile Include="Events\EventAutoSubscribeAttribute.cs" />
+    <Compile Include="Events\IEventTrack.cs" />
+    <Compile Include="Events\EventException.cs" />
+    <Compile Include="Events\EventPublisher.cs" />
+    <Compile Include="Events\EventPublisherExtensions.cs" />
+    <Compile Include="Events\IConsumer.cs" />
+    <Compile Include="Events\IDistributedEventPublisher.cs" />
+    <Compile Include="Events\IEventPublisher.cs" />
+    <Compile Include="Events\IEventTransport.cs" />
+    <Compile Include="Events\ISubscriptionService.cs" />
+    <Compile Include="Events\LocalPublisherContext.cs" />
+    <Compile Include="Events\LocalSubscribeContext.cs" />
+    <Compile Include="Events\SubscriptionManager.cs" />
+    <Compile Include="Events\SubscriptionService.cs" />
+    <Compile Include="IBackgroundService.cs" />
+    <Compile Include="IKCacheFactory.cs" />
+    <Compile Include="InkeyErrorCodes.cs" />
+    <Compile Include="InkeyException.cs" />
+    <Compile Include="InkeyResult.cs" />
+    <Compile Include="ITypeFinder.cs" />
+    <Compile Include="Logging\DefaultLogger.cs" />
+    <Compile Include="Logging\ILog.cs" />
+    <Compile Include="Logging\LogConfig.cs" />
+    <Compile Include="Logging\LogConfigurationSectionHandler.cs" />
+    <Compile Include="Logging\LogEntity.cs" />
+    <Compile Include="Logging\LoggingInitException.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Logging\LogManager.cs" />
+    <Compile Include="Logging\LogToDataBaseProcessorService.cs" />
+    <Compile Include="Logging\LogWorkType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialNumber\Data\ISerialNumberDao.cs" />
+    <Compile Include="SerialNumber\ISerialNumberService.cs" />
+    <Compile Include="SerialNumber\SerialNumberStateDto.cs" />
+    <Compile Include="SerialNumber\SerialNumberDto.cs" />
+    <Compile Include="SerialNumber\SerialNumberService.cs" />
+    <Compile Include="Singleton.cs" />
+    <Compile Include="TimerWorkerThread.cs" />
+    <Compile Include="VersionRoute.cs" />
+    <Compile Include="WorkerThread.cs" />
+    <Compile Include="ZooKeeperNet\ClientConnection.cs" />
+    <Compile Include="ZooKeeperNet\ClientConnectionEventConsumer.cs" />
+    <Compile Include="ZooKeeperNet\ClientConnectionRequestProducer.cs" />
+    <Compile Include="ZooKeeperNet\ClientWatchManager.cs" />
+    <Compile Include="ZooKeeperNet\CreateMode.cs" />
+    <Compile Include="ZooKeeperNet\DataTree.cs" />
+    <Compile Include="ZooKeeperNet\EventType.cs" />
+    <Compile Include="ZooKeeperNet\Generated\ACL.cs" />
+    <Compile Include="ZooKeeperNet\Generated\AuthPacket.cs" />
+    <Compile Include="ZooKeeperNet\Generated\CheckVersionRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\CheckVersionTxn.cs" />
+    <Compile Include="ZooKeeperNet\Generated\ConnectRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\ConnectResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\CreateRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\CreateResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\CreateSessionTxn.cs" />
+    <Compile Include="ZooKeeperNet\Generated\CreateTxn.cs" />
+    <Compile Include="ZooKeeperNet\Generated\CreateTxnV0.cs" />
+    <Compile Include="ZooKeeperNet\Generated\DeleteRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\DeleteTxn.cs" />
+    <Compile Include="ZooKeeperNet\Generated\ErrorResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\ErrorTxn.cs" />
+    <Compile Include="ZooKeeperNet\Generated\ExistsRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\ExistsResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\FileHeader.cs" />
+    <Compile Include="ZooKeeperNet\Generated\GetACLRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\GetACLResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\GetChildren2Request.cs" />
+    <Compile Include="ZooKeeperNet\Generated\GetChildren2Response.cs" />
+    <Compile Include="ZooKeeperNet\Generated\GetChildrenRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\GetChildrenResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\GetDataRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\GetDataResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\GetMaxChildrenRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\GetMaxChildrenResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\GetSASLRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\Id.cs" />
+    <Compile Include="ZooKeeperNet\Generated\LearnerInfo.cs" />
+    <Compile Include="ZooKeeperNet\Generated\MultiHeader.cs" />
+    <Compile Include="ZooKeeperNet\Generated\MultiTxn.cs" />
+    <Compile Include="ZooKeeperNet\Generated\op_result_t.cs" />
+    <Compile Include="ZooKeeperNet\Generated\QuorumPacket.cs" />
+    <Compile Include="ZooKeeperNet\Generated\ReplyHeader.cs" />
+    <Compile Include="ZooKeeperNet\Generated\RequestHeader.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SetACLRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SetACLResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SetACLTxn.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SetDataRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SetDataResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SetDataTxn.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SetMaxChildrenRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SetMaxChildrenTxn.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SetSASLRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SetSASLResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SetWatches.cs" />
+    <Compile Include="ZooKeeperNet\Generated\Stat.cs" />
+    <Compile Include="ZooKeeperNet\Generated\StatPersisted.cs" />
+    <Compile Include="ZooKeeperNet\Generated\StatPersistedV1.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SyncRequest.cs" />
+    <Compile Include="ZooKeeperNet\Generated\SyncResponse.cs" />
+    <Compile Include="ZooKeeperNet\Generated\Txn.cs" />
+    <Compile Include="ZooKeeperNet\Generated\TxnHeader.cs" />
+    <Compile Include="ZooKeeperNet\Generated\WatcherEvent.cs" />
+    <Compile Include="ZooKeeperNet\IClientConnection.cs" />
+    <Compile Include="ZooKeeperNet\Ids.cs" />
+    <Compile Include="ZooKeeperNet\IkZooKeeperClient.cs" />
+    <Compile Include="ZooKeeperNet\IO\BigEndianBitConverter.cs" />
+    <Compile Include="ZooKeeperNet\IO\EndianBinaryReader.cs" />
+    <Compile Include="ZooKeeperNet\IO\EndianBinaryWriter.cs" />
+    <Compile Include="ZooKeeperNet\IO\EndianBitConverter.cs" />
+    <Compile Include="ZooKeeperNet\IO\Endianness.cs" />
+    <Compile Include="ZooKeeperNet\IO\LittleEndianBitConverter.cs" />
+    <Compile Include="ZooKeeperNet\IStartable.cs" />
+    <Compile Include="ZooKeeperNet\IWatcher.cs" />
+    <Compile Include="ZooKeeperNet\IZooKeeper.cs" />
+    <Compile Include="ZooKeeperNet\Jute\BinaryInputArchive.cs" />
+    <Compile Include="ZooKeeperNet\Jute\BinaryOutputArchive.cs" />
+    <Compile Include="ZooKeeperNet\Jute\IIndex.cs" />
+    <Compile Include="ZooKeeperNet\Jute\IInputArchive.cs" />
+    <Compile Include="ZooKeeperNet\Jute\IOutputArchive.cs" />
+    <Compile Include="ZooKeeperNet\Jute\IRecord.cs" />
+    <Compile Include="ZooKeeperNet\Jute\JuteEx.cs" />
+    <Compile Include="ZooKeeperNet\Jute\RecordReader.cs" />
+    <Compile Include="ZooKeeperNet\Jute\RecordWriter.cs" />
+    <Compile Include="ZooKeeperNet\KeeperException.cs" />
+    <Compile Include="ZooKeeperNet\KeeperState.cs" />
+    <Compile Include="ZooKeeperNet\OpCode.cs" />
+    <Compile Include="ZooKeeperNet\Packet.cs" />
+    <Compile Include="ZooKeeperNet\PathUtils.cs" />
+    <Compile Include="ZooKeeperNet\Perms.cs" />
+    <Compile Include="ZooKeeperNet\Quotas.cs" />
+    <Compile Include="ZooKeeperNet\RetryPolicy.cs" />
+    <Compile Include="ZooKeeperNet\SafeThreadStart.cs" />
+    <Compile Include="ZooKeeperNet\SessionExpiredException.cs" />
+    <Compile Include="ZooKeeperNet\SessionTimeoutException.cs" />
+    <Compile Include="ZooKeeperNet\WatchedEvent.cs" />
+    <Compile Include="ZooKeeperNet\ZKPaths.cs" />
+    <Compile Include="ZooKeeperNet\ZKWatchManager.cs" />
+    <Compile Include="ZooKeeperNet\ZooKeeper.cs" />
+    <Compile Include="ZooKeeperNet\ZooKeeperEndpoint.cs" />
+    <Compile Include="ZooKeeperNet\ZooKeeperEndpoints.cs" />
+    <Compile Include="ZooKeeperNet\ZooKeeperEx.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CastleCore\Components.DictionaryAdapter\Xml\Internal\Cursors\XLinq\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataAccess\DataMapping\IBatisNet.Common\provider.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataAccess\DataMapping\IBatisNet.DataMapper\MappedStatements\ResultStrategy\ClassDiagram.cd" />
+    <None Include="DataAccess\DataMapping\IBatisNet.DataMapper\SqlMap.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataAccess\DataMapping\IBatisNet.DataMapper\SqlMapConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="DataAccess\DataMapping\Map.MySQL.config" />
+    <EmbeddedResource Include="DataAccess\DataMapping\Providers.MySQL.config" />
+    <EmbeddedResource Include="DataAccess\DataMapping\Map.SQLServer.config" />
+    <EmbeddedResource Include="DataAccess\DataMapping\Providers.SQLServer.config" />
+    <EmbeddedResource Include="keyManager.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SerialNumber\Data\ISerialNumberDao.sql.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>if not  $(ConfigurationName) == Release exit
+cd $(SolutionDir).nuget\
+del *.nupkg
+pg-common.bat
+del *.nupkg</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

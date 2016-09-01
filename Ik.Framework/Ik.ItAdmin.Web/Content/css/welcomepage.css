@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+body {
+	background-color: #E8F9FF;
+}
+div.welcomepage {
+	background-image: url("../image/commonstyle/welcome.gif");
+	position: absolute;
+	width: 600px;
+	height: 300px;
+	bottom: 0px;
+	right: 0px;
+}

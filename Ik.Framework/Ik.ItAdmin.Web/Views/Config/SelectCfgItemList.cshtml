@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "全局数据项选择";
+    Guid defId = ViewBag.DefId;
+    Guid defVerId = ViewBag.DefVerId;
+}
+@section headerScripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="listpage">
+    <tr height="24px">
+        <td class="title">全局数据项选择<span class="arrowdown" onclick="foldSearchPanel(this);"></span></td>
+    </tr>
+    <!--One Row : 70px, Two Rows : 100px, Three Rows : 130px-->
+    <tr height="70px">
+        @using (Ajax.BeginForm("GetSelectCfgItemList", null, new AjaxOptions { UpdateTargetId = "wiscogrid1" }, new { @id = "SelectCfgItemListForm" }))
+        {
+            @Html.Hidden("DefId", defId, new { @id = "DefId" })
+            <td id="search1" class="search">
+                <span class="label">数据项标识：</span><span class="value"><input type="text" name="key" class="wiscoinput" /></span><span>&nbsp; &nbsp;</span>
+                <span class="label">版本：</span><span class="value"><input type="text"  name="ver" class="wiscoinput" /></span><span>&nbsp; &nbsp;</span>
+                <span class="label">环境：</span><span class="value"><input type="text"  name="env" class="wiscoinput" /></span><span>&nbsp; &nbsp;</span><br />
+                <a href="#" class="wiscobutton" onclick="$('#SelectCfgItemListForm').submit();"><span class="left"></span><span class="center">查询</span><span class="right"></span></a>
+                <a href="#" class="wiscobutton" onclick="$('#SelectCfgItemListForm')[0].reset();"><span class="left"></span><span class="center">清空</span><span class="right"></span></a>
+                <a href="#" class="wiscobutton" onclick="selectCfgItem();"><span class="left"></span><span class="center">选择数据项</span><span class="right"></span></a>
+            </td>
+        }
+    </tr>
+    <tr>
+        <td class="grid">
+            <div id="wiscogrid1" class="wiscogrid">
+                @Html.Action("GetSelectCfgItemList", new { DefId = defId });
+            </div>
+        </td>
+    </tr>
+    <tr height="30px" id="pager1">
+        <td>
+            @Html.Partial("_HtmlPagerEmpty")
+        </td>
+    </tr>
+</table>
+
+<script>
+    var pager = new initInkeyPager($("#pager1"), $("#CfgItemListForm"), $("#wiscogrid1"));
+
+    function getSelectId()
+    {
+        var ids = [];
+        $("#wiscogrid1").find("input[name='codeids']").each(function () {
+            if (this.checked) {
+                ids.push(this.value);
+            }
+        });
+        if (ids.length == 0) {
+            alert("请选择需要添加版本的数据项");
+            return;
+        }
+        if (ids.length > 1) {
+            alert("只能选择一个数据项");
+            return;
+        }
+
+        return ids[0];
+    }
+
+    function selectCfgItem()
+    {
+        var ids = getSelectId();
+        if(ids == null)
+        {
+            return;
+        }
+        $.ajax({
+            url: "/Config/SelectCfgDefinitionItem",
+            type: "get",
+            data: { ids: ids, defVerId :'@defVerId' },
+            cache: false
+        }).done(function (result) {
+            if (result.IsSuccess) {
+                alert("全局数据项添加成功");
+                var dialog = getWiscoDialog();
+                dialog.argu = "success";
+                hideWiscoDialog();
+            }
+            else {
+                alert(result.Desc);
+            }
+        });
+    }
+</script>

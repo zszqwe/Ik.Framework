@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D1D11345-EC64-4029-B408-2C234A2BA8E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ik.Service.Auth</RootNamespace>
+    <AssemblyName>Ik.Service.Auth</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthorizationEventTopics.cs" />
+    <Compile Include="AuthServiceCacheFactory.cs" />
+    <Compile Include="AuthUserService.cs" />
+    <Compile Include="AuthAppService.cs" />
+    <Compile Include="Data\IAuthUserFunctionDao.cs" />
+    <Compile Include="Dtos\AuthFunction.cs" />
+    <Compile Include="Dtos\AuthGroupInfo.cs" />
+    <Compile Include="Dtos\AuthRoleInfo.cs" />
+    <Compile Include="Dtos\AuthUserInfo.cs" />
+    <Compile Include="AuthUpdatedEvent.cs" />
+    <Compile Include="IdentityInfo.cs" />
+    <Compile Include="IkAuthorizationContext.cs" />
+    <Compile Include="Data\AuthDataAccessFactory.cs" />
+    <Compile Include="Data\DataSources.cs" />
+    <Compile Include="Data\IAuthAppFunctionDao.cs" />
+    <Compile Include="Dtos\AuthAppInfo.cs" />
+    <Compile Include="AuthException.cs" />
+    <Compile Include="IIkAuthorization.cs" />
+    <Compile Include="IkAuthorization.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleInfo.cs" />
+    <Compile Include="TokenHelper.cs" />
+    <Compile Include="TokenInfo.cs" />
+    <Compile Include="UserGroupInfo.cs" />
+    <Compile Include="UserPermission.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ik.Framework\Ik.Framework.csproj">
+      <Project>{fc039629-45d3-4bd4-8ecc-a3d18e842112}</Project>
+      <Name>Ik.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\IAuthAppFunctionDao.sql.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\IAuthUserFunctionDao.sql.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="keyManager.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if not  $(ConfigurationName) == Release exit
+cd $(SolutionDir).nuget\
+del *.nupkg
+pg-auth.bat
+del *.nupkg</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

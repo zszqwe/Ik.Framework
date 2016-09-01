@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5F28BD17-8F9F-41D6-B66E-893CABD330E0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ik.ItAdmin.Web</RootNamespace>
+    <AssemblyName>Ik.ItAdmin.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.3\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging, Version=2.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.2.3.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net1211, Version=2.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Log4Net1211.2.3.1\lib\net40\Common.Logging.Log4Net1211.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\commonstyle.css" />
+    <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\mainframe.css" />
+    <Content Include="Content\css\pagestyle.css" />
+    <Content Include="Content\css\welcomepage.css" />
+    <Content Include="Content\image\commonstyle\activetitle.png" />
+    <Content Include="Content\image\commonstyle\bannerbg.gif" />
+    <Content Include="Content\image\commonstyle\captcha.gif" />
+    <Content Include="Content\image\commonstyle\centerarrow.gif" />
+    <Content Include="Content\image\commonstyle\guidetitlebg.gif" />
+    <Content Include="Content\image\commonstyle\headpanelbg.gif" />
+    <Content Include="Content\image\commonstyle\login.gif" />
+    <Content Include="Content\image\commonstyle\login.png" />
+    <Content Include="Content\image\commonstyle\logo.gif" />
+    <Content Include="Content\image\commonstyle\menu.gif" />
+    <Content Include="Content\image\commonstyle\shadow.png" />
+    <Content Include="Content\image\commonstyle\titlearrow.gif" />
+    <Content Include="Content\image\commonstyle\titlebg.gif" />
+    <Content Include="Content\image\commonstyle\welcome.gif" />
+    <Content Include="Content\image\commonstyle\wiscoalbum.gif" />
+    <Content Include="Content\image\commonstyle\wiscobutton.gif" />
+    <Content Include="Content\image\commonstyle\wiscocustom.gif" />
+    <Content Include="Content\image\commonstyle\wiscodate.gif" />
+    <Content Include="Content\image\commonstyle\wiscodialog.gif" />
+    <Content Include="Content\image\commonstyle\wiscofile.gif" />
+    <Content Include="Content\image\commonstyle\wiscogridheadbg.gif" />
+    <Content Include="Content\image\commonstyle\wiscoloading.gif" />
+    <Content Include="Content\image\commonstyle\wiscopaging.gif" />
+    <Content Include="Content\image\commonstyle\wiscoselect.gif" />
+    <Content Include="Content\image\commonstyle\wiscoswitch.gif" />
+    <Content Include="Content\image\commonstyle\wiscotab.gif" />
+    <Content Include="Content\image\commonstyle\wiscotime.gif" />
+    <Content Include="Content\image\commonstyle\wiscowarning.png" />
+    <EmbeddedResource Include="DataAccess\ICfgManagerDao.sql.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Content\themes\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Content\themes\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Content\themes\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Content\themes\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Content\themes\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\cupertino\jquery-ui.cupertino.css" />
+    <Content Include="Content\themes\cupertino\jquery-ui.cupertino.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\framework.js" />
+    <None Include="Scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="Scripts\plugins\JqGrid\jqGrid.warp.js" />
+    <Content Include="Scripts\jquery-3.1.0.js" />
+    <Content Include="Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.0.js" />
+    <Content Include="Scripts\jquery-ui-1.12.0.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.0.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\plugins\JqGrid\css\ui.jqgrid-bootstrap-ui.css" />
+    <Content Include="Scripts\plugins\JqGrid\css\ui.jqgrid-bootstrap.css" />
+    <Content Include="Scripts\plugins\JqGrid\css\ui.jqgrid.css" />
+    <Content Include="Scripts\plugins\JqGrid\js\Changes.txt" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-ar.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-bg.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-ca.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-cn.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-cs.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-de.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-dk.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-el.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-en.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-es.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-fa.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-fi.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-fr.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-gl.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-he.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-hr.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-hu.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-id.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-is.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-it.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-ja.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-kr.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-lt.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-me.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-nl.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-no.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-pl.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-pt-br.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-pt.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-ro.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-ru.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-sk.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-sq.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-sr-latin.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-sr.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-sv.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-th.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-tr.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-tw.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-uk.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\i18n\grid.locale-vi.js" />
+    <Content Include="Scripts\plugins\JqGrid\js\install.txt" />
+    <Content Include="Scripts\plugins\JqGrid\js\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\plugins\JqGrid\plugins\grid.addons.js" />
+    <Content Include="Scripts\plugins\JqGrid\plugins\grid.postext.js" />
+    <Content Include="Scripts\plugins\JqGrid\plugins\grid.setcolumns.js" />
+    <Content Include="Scripts\plugins\JqGrid\plugins\jquery.contextmenu.js" />
+    <Content Include="Scripts\plugins\JqGrid\plugins\jquery.searchFilter.js" />
+    <Content Include="Scripts\plugins\JqGrid\plugins\jquery.tablednd.js" />
+    <Content Include="Scripts\plugins\JqGrid\plugins\searchFilter.css" />
+    <Content Include="Scripts\plugins\JqGrid\plugins\ui.multiselect.css" />
+    <Content Include="Scripts\plugins\JqGrid\plugins\ui.multiselect.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\css\ui.jqgrid-bootstrap-ui.css" />
+    <Content Include="Scripts\plugins\JqGrid\src\css\ui.jqgrid-bootstrap.css" />
+    <Content Include="Scripts\plugins\JqGrid\src\css\ui.jqgrid.css" />
+    <Content Include="Scripts\plugins\JqGrid\src\css\ui.multiselect.css" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.base.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.celledit.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.common.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.filter.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.formedit.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.grouping.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.import.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.inlinedit.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.jqueryui.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.pivot.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.subgrid.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.treegrid.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\grid.utils.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-ar.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-bg.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-ca.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-cn.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-cs.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-de.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-dk.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-el.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-en.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-es.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-fa.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-fi.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-fr.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-gl.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-he.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-hr.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-hu.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-id.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-is.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-it.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-ja.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-kr.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-lt.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-me.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-nl.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-no.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-pl.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-pt-br.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-pt.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-ro.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-ru.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-sk.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-sq.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-sr-latin.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-sr.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-sv.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-th.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-tr.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-tw.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-uk.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\i18n\grid.locale-vi.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\jqDnR.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\jqModal.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\jquery.fmatter.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\jquery.jqGrid.js" />
+    <Content Include="Scripts\plugins\JqGrid\src\jquery.sortable.js" />
+    <Content Include="Scripts\plugins\My97DatePicker\calendar.js" />
+    <Content Include="Scripts\plugins\My97DatePicker\lang\en.js" />
+    <Content Include="Scripts\plugins\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Scripts\plugins\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Scripts\plugins\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Scripts\plugins\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Scripts\plugins\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Scripts\plugins\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Scripts\plugins\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\plugins\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\plugins\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\plugins\My97DatePicker\WdatePicker.js" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\diy\1_close.png" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\diy\1_open.png" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\diy\2.png" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\diy\3.png" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\diy\4.png" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\diy\5.png" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\diy\6.png" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\diy\7.png" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\diy\8.png" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\diy\9.png" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\line_conn.gif" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\loading.gif" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\zTreeStandard.gif" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\img\zTreeStandard.png" />
+    <Content Include="Scripts\plugins\zTree_v3\css\zTreeStyle\zTreeStyle.css" />
+    <Content Include="Scripts\plugins\zTree_v3\js\jquery.ztree.all-3.5.js" />
+    <Content Include="Scripts\plugins\zTree_v3\js\jquery.ztree.all-3.5.min.js" />
+    <Content Include="Scripts\plugins\zTree_v3\js\jquery.ztree.core-3.5.js" />
+    <Content Include="Scripts\plugins\zTree_v3\js\jquery.ztree.core-3.5.min.js" />
+    <Content Include="Scripts\plugins\zTree_v3\js\jquery.ztree.excheck-3.5.js" />
+    <Content Include="Scripts\plugins\zTree_v3\js\jquery.ztree.excheck-3.5.min.js" />
+    <Content Include="Scripts\plugins\zTree_v3\js\jquery.ztree.exedit-3.5.js" />
+    <Content Include="Scripts\plugins\zTree_v3\js\jquery.ztree.exedit-3.5.min.js" />
+    <Content Include="Scripts\plugins\zTree_v3\js\jquery.ztree.exedit.js" />
+    <Content Include="Scripts\plugins\zTree_v3\js\jquery.ztree.exhide-3.5.js" />
+    <Content Include="Scripts\plugins\zTree_v3\js\jquery.ztree.exhide-3.5.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\SerialController.cs" />
+    <Compile Include="Controllers\CacheKeyController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ConfigController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DataAccess\DataSources.cs" />
+    <Compile Include="DataAccess\EF\SerialDefineInfoMap.cs" />
+    <Compile Include="DataAccess\EF\SerialDefineInfoEntity.cs" />
+    <Compile Include="DataAccess\EF\CacheKeyAssInfoMap.cs" />
+    <Compile Include="DataAccess\EF\CacheKeyAssInfoEntity.cs" />
+    <Compile Include="DataAccess\EF\CacheValueTypeMap.cs" />
+    <Compile Include="DataAccess\EF\CacheValueTypeEntity.cs" />
+    <Compile Include="DataAccess\EF\CacheKeyItemInfoMap.cs" />
+    <Compile Include="DataAccess\EF\CacheKeyItemInfoEntity.cs" />
+    <Compile Include="DataAccess\EF\CacheKeyAppInfoMap.cs" />
+    <Compile Include="DataAccess\EF\CacheKeyAppInfoEntity.cs" />
+    <Compile Include="DataAccess\EF\AuthRoleInfoEntity.cs" />
+    <Compile Include="DataAccess\EF\AuthRoleInfoMap.cs" />
+    <Compile Include="DataAccess\EF\AuthUserInfoMap.cs" />
+    <Compile Include="DataAccess\EF\AuthGroupInfoMap.cs" />
+    <Compile Include="DataAccess\EF\AuthFunctionInfoMap.cs" />
+    <Compile Include="DataAccess\EF\AuthAppInfoMap.cs" />
+    <Compile Include="DataAccess\EF\AuthAppInfoEntity.cs" />
+    <Compile Include="DataAccess\EF\AuthFunctionInfoEntity.cs" />
+    <Compile Include="DataAccess\EF\AuthGroupInfoEntity.cs" />
+    <Compile Include="DataAccess\EF\AuthUserInfoEntity.cs" />
+    <Compile Include="DataAccess\ICfgManagerDao.cs" />
+    <Compile Include="Dtos\CfgDefinitionItem.cs" />
+    <Compile Include="Dtos\CfgDefinitionVersionTreeNode.cs" />
+    <Compile Include="Dtos\CfgEnvironment.cs" />
+    <Compile Include="Dtos\CfgItemVersionEnvironment.cs" />
+    <Compile Include="Dtos\CfgItemVersionEnvironmentParam.cs" />
+    <Compile Include="Infrastructure\AccountInfo.cs" />
+    <Compile Include="Infrastructure\ItAdminIkAuthorization.cs" />
+    <Compile Include="Infrastructure\RoleTreeExtensions.cs" />
+    <Compile Include="Models\AssValueTypeInfoTreeNode.cs" />
+    <Compile Include="Models\AppKeyItemInfoTreeNode.cs" />
+    <Compile Include="Models\CacheKeyAssInfoModel.cs" />
+    <Compile Include="Models\CacheKeyValueTypeInfoModel.cs" />
+    <Compile Include="Models\CacheKeyItemInfoModel.cs" />
+    <Compile Include="Models\CacheKeyAppInfoModel.cs" />
+    <Compile Include="Models\GroupRoleInfoTreeNode.cs" />
+    <Compile Include="Models\RoleFunctionInfoTreeModel.cs" />
+    <Compile Include="Models\RoleFunctionInfoTreeNode.cs" />
+    <Compile Include="Models\RoleUserInfoTreeNode.cs" />
+    <Compile Include="Models\GroupUserInfoTreeNode.cs" />
+    <Compile Include="Models\AuthRoleInfoModel.cs" />
+    <Compile Include="Models\AuthGroupInfoModel.cs" />
+    <Compile Include="Models\AuthUserInfoModel.cs" />
+    <Compile Include="Models\AuthAppInfoModel.cs" />
+    <Compile Include="Models\AppFunctionInfoTreeNode.cs" />
+    <Compile Include="Models\AuthFunctionInfoModel.cs" />
+    <Compile Include="Models\GridQueryModel.cs" />
+    <Compile Include="Models\JqGridDataModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\SerialDefineInfoModel.cs" />
+    <Compile Include="Services\CacheKeyManagerService.cs" />
+    <Compile Include="Services\AuthManagerService.cs" />
+    <Compile Include="Services\OperationSupportDataAccessFactory.cs" />
+    <Compile Include="Dtos\CfgDefinitionVersion.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CfgManagerService.cs" />
+    <Compile Include="Services\SerialNumberDefineService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Config\ConfigManagerTreeList.cshtml" />
+    <Content Include="Views\Shared\_HtmlPager.cshtml" />
+    <Content Include="Views\Shared\_HtmlPagerEmpty.cshtml" />
+    <Content Include="Views\Config\CfgDefinitionView.cshtml" />
+    <Content Include="Views\Config\CfgDefinitionVersionView.cshtml" />
+    <Content Include="Views\Config\CfgDefinitionEdit.cshtml" />
+    <Content Include="Views\Config\CfgDefinitionVersionEdit.cshtml" />
+    <Content Include="Views\Config\GetCfgDefinitionItemListIndex.cshtml" />
+    <Content Include="Views\Config\_CfgDefinitionItemTable.cshtml" />
+    <Content Include="Views\Config\ConfigItemManagerList.cshtml" />
+    <Content Include="Views\Config\ConfigEnvManagerList.cshtml" />
+    <Content Include="Views\Config\_CfgEnvTable.cshtml" />
+    <Content Include="Views\Config\CfgEnvEdit.cshtml" />
+    <Content Include="Views\Config\_CfgItemTable.cshtml" />
+    <Content Include="Views\Config\CfgItemVerAdd.cshtml" />
+    <Content Include="Views\Config\CfgItemVerEnvAdd.cshtml" />
+    <Content Include="Views\Config\CfgItemAdd.cshtml" />
+    <Content Include="Views\Config\CfgItemEdit.cshtml" />
+    <Content Include="Views\Config\CfgItemVerEdit.cshtml" />
+    <Content Include="Views\Config\CfgItemVerEnvEdit.cshtml" />
+    <Content Include="Views\Config\SelectCfgItemList.cshtml" />
+    <Content Include="Views\Config\GetCfgDefinitionVersionItemListIndex.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\SearchList.cshtml" />
+    <Content Include="Views\Auth\AppInfoList.cshtml" />
+    <Content Include="Views\Auth\AppInfoAdd.cshtml" />
+    <Content Include="Views\Auth\AppInfoEdit.cshtml" />
+    <Content Include="Views\Auth\AppFunctionInfoTreeList.cshtml" />
+    <Content Include="Views\Auth\FunctionInfoList.cshtml" />
+    <Content Include="Views\Auth\AppFunctionInfoAdd.cshtml" />
+    <Content Include="Views\Auth\AppFunctionInfoEdit.cshtml" />
+    <Content Include="Views\Auth\UserInfoList.cshtml" />
+    <Content Include="Views\Auth\UserInfoAdd.cshtml" />
+    <Content Include="Views\Auth\UserInfoEdit.cshtml" />
+    <Content Include="Views\Auth\GroupInfoList.cshtml" />
+    <Content Include="Views\Auth\GroupInfoAdd.cshtml" />
+    <Content Include="Views\Auth\GroupInfoEdit.cshtml" />
+    <Content Include="Views\Auth\RoleInfoList.cshtml" />
+    <Content Include="Views\Auth\RoleInfoAdd.cshtml" />
+    <Content Include="Views\Auth\RoleInfoEdit.cshtml" />
+    <Content Include="Views\Auth\GroupUserInfoTreeList.cshtml" />
+    <Content Include="Views\Auth\GroupUserInfoList.cshtml" />
+    <Content Include="Views\Auth\SelectAuthUserInfoToGroup.cshtml" />
+    <Content Include="Views\Auth\RoleUserInfoList.cshtml" />
+    <Content Include="Views\Auth\RoleUserInfoTreeList.cshtml" />
+    <Content Include="Views\Auth\SelectAuthUserInfoToRole.cshtml" />
+    <Content Include="Views\Auth\GroupRoleInfoTreeList.cshtml" />
+    <Content Include="Views\Auth\GroupRoleInfoList.cshtml" />
+    <Content Include="Views\Auth\SelectAuthRoleInfoToGroup.cshtml" />
+    <Content Include="Views\Auth\RoleFunctionInfoTreeList.cshtml" />
+    <Content Include="Views\Auth\RoleFunctionInfoList.cshtml" />
+    <Content Include="Views\CacheKey\AppInfoList.cshtml" />
+    <Content Include="Views\CacheKey\AppInfoAdd.cshtml" />
+    <Content Include="Views\CacheKey\AppInfoEdit.cshtml" />
+    <Content Include="Views\CacheKey\AppKeyItemInfoTreeList.cshtml" />
+    <Content Include="Views\CacheKey\AppKeyItemList.cshtml" />
+    <Content Include="Views\CacheKey\KeyItemInfoAdd.cshtml" />
+    <Content Include="Views\CacheKey\KeyItemInfoEdit.cshtml" />
+    <Content Include="Views\CacheKey\ValueTypeInfoList.cshtml" />
+    <Content Include="Views\CacheKey\ValueTypeEdit.cshtml" />
+    <Content Include="Views\CacheKey\ValueTypeAdd.cshtml" />
+    <Content Include="Views\CacheKey\CacheManagerEdit.cshtml" />
+    <Content Include="Views\CacheKey\AssInfoList.cshtml" />
+    <Content Include="Views\CacheKey\AssInfoAdd.cshtml" />
+    <Content Include="Views\CacheKey\AssInfoEdit.cshtml" />
+    <Content Include="Views\CacheKey\AssValueTypeInfoTreeList.cshtml" />
+    <Content Include="Views\Serial\SerialDefineAdd.cshtml" />
+    <Content Include="Views\Serial\SerialDefineEdit.cshtml" />
+    <Content Include="Views\Serial\SerialDefineList.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ik.Framework.Redis\Ik.Framework.Redis.csproj">
+      <Project>{a1da30a3-eca9-4171-86f0-ac379d7e6a58}</Project>
+      <Name>Ik.Framework.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ik.Service.Auth\Ik.Service.Auth.csproj">
+      <Project>{d1d11345-ec64-4029-b408-2c234a2ba8e5}</Project>
+      <Name>Ik.Service.Auth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ik.WebFramework\Ik.WebFramework.csproj">
+      <Project>{02370197-673d-4ded-a164-714dfd60ec55}</Project>
+      <Name>Ik.WebFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ik.Framework\Ik.Framework.csproj">
+      <Project>{fc039629-45d3-4bd4-8ecc-a3d18e842112}</Project>
+      <Name>Ik.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58089</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58089/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,41 @@
+﻿@model Ik.Framework.Common.Paging.IPagedList<Ik.ItAdmin.Web.Dtos.CfgDefinitionItem>
+@{
+    Layout = "";
+}
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="head"><input type="checkbox" /></td>
+        <td class="head">功能列</td>
+        <td class="head">数据项标识</td>
+        <td class="head">版本</td>
+        <td class="head">环境名称</td>
+        <td width="100%" class="head">数据值</td>
+        <td class="head">修改时间</td>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td class="check"><input name="codeids" value="@item.Id" type="checkbox" /></td>
+                <td class="link">
+                    <a style="font-family:Arial" href="#" onclick="showWiscoDialog('@Url.Content("~/config/CfgDefItemVerEnvValueView?id=" + item.Id)', 800, 500);">查看&nbsp;&nbsp;</a>|
+                    <a style="font-family:Arial" href="#" onclick="showWiscoDialog('@Url.Content("~/config/CfgItemVerEnvValueEdit?id=" + item.ItemVerEnvValId)', 800, 500);">修改&nbsp;&nbsp;</a>|
+                    @Ajax.ActionLink("删除", "CfgDefinitionItemDelete", new { id = item.Id }, new AjaxOptions { OnBegin = "onBeginCfgDefinitionItemDelete", OnSuccess = "onSuccessCfgDefinitionItemDelete" })
+                </td>
+                <td class="data">@item.Key</td>
+                <td class="data">@item.ItemVersion</td>
+                <td class="data">@item.EnvName</td>
+                <td class="data">@(item.Value.Length > 50 ? item.Value.Substring(0, 50) + "..." : item.Value)</td>
+        </tr>
+        }
+    }
+</table>
+
+@Html.Partial("_HtmlPager", Model)
+
+<script>
+    initWiscoGrid("wiscogrid1");
+</script>
+
