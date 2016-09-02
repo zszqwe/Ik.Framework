@@ -1670,6 +1670,7 @@
     <Compile Include="DataAccess\DataAccessTypeAttribute.cs" />
     <Compile Include="DataAccess\DataMapping\DataMappingContext.cs" />
     <Compile Include="DataAccess\DataMappingOutSqlTextAttribute.cs" />
+    <Compile Include="DataAccess\DataMapping\DataMappingInterceptionAttribute.cs" />
     <Compile Include="DataAccess\DataMapping\DataMappingTransactionScope.cs" />
     <Compile Include="DataAccess\DataMapping\DataMappingTransaction.cs" />
     <Compile Include="DataAccess\DataMapping\SqlMapLoader.cs" />

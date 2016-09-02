@@ -32,6 +32,7 @@ namespace Ik.Framework.DataAccess.DataMapping
         private Type _pagedListType = null;
         private DataAccessOutSqlTextConfig _outTypeConfig = null;
         private bool _isNotCanNullReturnValue = false;
+        private IDataMappingInterception _intercept = null;
 
         public DataAccessContext(DataMappingContext context, MethodInfo method, DataAccessOutSqlTextConfig outTypeConfig)
         {
@@ -148,6 +149,11 @@ namespace Ik.Framework.DataAccess.DataMapping
                     throw new DataAccessException("分页查询方法参数必须且只能是一个IPageParameter接口的对象");
                 }
             }
+            var interception = method.GetCustomAttribute<DataMappingInterceptionAttribute>();
+            if (interception != null)
+            {
+                _intercept = Activator.CreateInstance(interception.Intercept) as IDataMappingInterception;
+            }
         }
 
         private bool IsNullableType(Type theType)
@@ -164,16 +170,44 @@ namespace Ik.Framework.DataAccess.DataMapping
             switch (this._dataAccessType)
             {
                 case DataAccessType.Insert:
+                    if (this._intercept!=null)
+                    {
+                        this._intercept.BeforeExecute(this._method.Name, parameter);
+                    }
                     value = this._context.Writer.Insert(this._statementName, parameter);
+                    if (this._intercept != null)
+                    {
+                        this._intercept.EndExecute(this._method.Name, parameter, value);
+                    }
                     break;
                 case DataAccessType.Delete:
+                    if (this._intercept != null)
+                    {
+                        this._intercept.BeforeExecute(this._method.Name, parameter);
+                    }
                     value = this._context.Writer.Delete(this._statementName, parameter);
+                    if (this._intercept != null)
+                    {
+                        this._intercept.EndExecute(this._method.Name, parameter, value);
+                    }
                     break;
                 case DataAccessType.Update:
+                    if (this._intercept != null)
+                    {
+                        this._intercept.BeforeExecute(this._method.Name, parameter);
+                    }
                     value = this._context.Writer.Update(this._statementName, parameter);
+                    if (this._intercept != null)
+                    {
+                        this._intercept.EndExecute(this._method.Name, parameter, value);
+                    }
                     break;
                 case DataAccessType.SelectReadOnly:
                 case DataAccessType.SelectReadWrite:
+                    if (this._intercept != null)
+                    {
+                        this._intercept.BeforeExecute(this._method.Name, parameter);
+                    }
                     if (this._isIPagedList)
                     {
                         if (this._context.HasDataAccessTypeContext)
@@ -222,6 +256,10 @@ namespace Ik.Framework.DataAccess.DataMapping
                         {
                             throw new DataAccessException("返回值是一个不可空的对象，但是返回值为空，请使用可空对象定义返回值");
                         }
+                    }
+                    if (this._intercept != null)
+                    {
+                        this._intercept.EndExecute(this._method.Name, parameter, value);
                     }
                     break;
             }

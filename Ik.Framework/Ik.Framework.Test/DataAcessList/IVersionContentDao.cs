@@ -1,6 +1,7 @@
 ﻿
 
 using Ik.Framework.Common.Paging;
+using Ik.Framework.DataAccess.DataMapping;
 using Ik.Framework.Test.DataAcessList.VersionContents;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Ik.Framework.Test.DataAcessList
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-
+        [DataMappingInterception(typeof(myInterception))]
         IList<VersionContentDto> GetVersionContentListByCategoryCode(Guid categoryCode);
 
         IEnumerable<VersionContentDto> GetVersionContentListByCategoryCode2(Guid categoryCode);
@@ -29,5 +30,19 @@ namespace Ik.Framework.Test.DataAcessList
         VersionContentDto GetVersionContentByCode(Guid contentCode);
 
         IPagedList<VersionContentDto> GetVersionContentByPageList(ContentVersionParams filter);
+    }
+
+    public class myInterception : IDataMappingInterception
+    {
+
+        public void BeforeExecute(string methodName, object args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EndExecute(string methodName, object args, object value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
