@@ -19,7 +19,7 @@ namespace Ik.Framework.Common.Serialization
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static string XmlSerializer<T>(T serialObject) where T : class
+        public static string XmlSerializer<T>(T serialObject)
         {
             XmlSerializer ser = new XmlSerializer(typeof(T));
             MemoryStream mem = new MemoryStream();
@@ -35,35 +35,35 @@ namespace Ik.Framework.Common.Serialization
         /// <typeparam name="T">要XML反序列化成的类型</typeparam>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static T XmlDeserialize<T>(byte[] data) where T : class
+        public static T XmlDeserialize<T>(byte[] data)
         {
             var xs = new XmlSerializer(typeof(T));
             using (var stream = new MemoryStream(data))
             {
-                return xs.Deserialize(stream) as T;
+                return (T)xs.Deserialize(stream);
             }
         }
 
-        public static T XmlDeserialize<T>(Stream stream) where T : class
+        public static T XmlDeserialize<T>(Stream stream)
         {
             var xs = new XmlSerializer(typeof(T));
-            return xs.Deserialize(stream) as T;
+            return (T)xs.Deserialize(stream);
         }
 
-        public static T XmlDeserialize<T>(string xmlData) where T : class
+        public static T XmlDeserialize<T>(string xmlData)
         {
             using (StringReader sr = new StringReader(xmlData))
             {
                 var xs = new XmlSerializer(typeof(T));
-                return xs.Deserialize(sr) as T;
+                return (T)xs.Deserialize(sr);
             }
         }
 
-        public static T XmlDeserialize<T>(XmlNode section) where T : class
+        public static T XmlDeserialize<T>(XmlNode section) 
         {
             var ser = new XmlSerializer(typeof(T));
             var xmlReader = new XmlNodeReader(section);
-            return ser.Deserialize(xmlReader) as T;
+            return (T)ser.Deserialize(xmlReader);
         }
 
     }

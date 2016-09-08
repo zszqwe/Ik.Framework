@@ -273,7 +273,7 @@ namespace Ik.ItAdmin.Web.Services
                 var definitionVersion = GetCfgDefinitionVersion(id);
                 foreach (var item in itemList)
                 {
-                    service.Add(definitionVersion.Name, VersionHelper.FormatVersion(definitionVersion.Version), item.EnvKey, item.Key, item.Value);
+                    service.RawAdd(definitionVersion.Name, VersionHelper.FormatVersion(definitionVersion.Version), item.EnvKey, item.Key, item.Value);
                 }
             }
         }

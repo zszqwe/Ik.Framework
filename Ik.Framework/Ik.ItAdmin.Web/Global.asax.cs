@@ -45,8 +45,8 @@ namespace Ik.ItAdmin.Web
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            //ConfigManager.RemoteConfigService.ServiceException += RemoteConfigService_ServiceException;
-            //ConfigManager.RemoteConfigService.Start();
+            ConfigManager.RemoteConfigService.ServiceException += RemoteConfigService_ServiceException;
+            ConfigManager.RemoteConfigService.Start();
 
             LogManager.Initialize();
 
@@ -90,7 +90,7 @@ namespace Ik.ItAdmin.Web
 
             BufferServiceManager.DispatcherService.Stop();
 
-            //ConfigManager.RemoteConfigService.Stop();
+            ConfigManager.RemoteConfigService.Stop();
         }
     }
 }

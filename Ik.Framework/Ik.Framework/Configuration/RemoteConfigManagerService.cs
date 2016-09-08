@@ -67,7 +67,7 @@ namespace Ik.Framework.Configuration
             return false;
         }
 
-        public bool Add(string configName, Version ver,string envKey, string key, string value)
+        public bool RawAdd(string configName, Version ver,string envKey, string key, string rawStingValue)
         {
             if (!IsRunning)
             {
@@ -75,7 +75,7 @@ namespace Ik.Framework.Configuration
             }
             EnsureZooKeeperPath(configName.ToLower(), ver, envKey.ToLower(), key.ToLower());
             var path = BuildZooKeeperPath(configName.ToLower(), ver, envKey.ToLower(), key.ToLower());
-            var data = Encoding.UTF8.GetBytes(value);
+            var data = Encoding.UTF8.GetBytes(rawStingValue);
             try
             {
                 return _client.EnsureSetData(path, data);
@@ -94,16 +94,16 @@ namespace Ik.Framework.Configuration
             {
                 return false;
             }
+            byte[] data = null;
             var path = BuildZooKeeperPath(this._configInfo.ConfigName.ToLower(), this._configInfo.VersionInfo, this._envInfo.DeployKey.ToLower(), key.ToLower());
             try
             {
                 if (_client.EnsureExists(path, false))
                 {
-                    var data = _client.EnsureGetData(path);
-                    if (data != null)
+                    data = _client.EnsureGetData(path);
+                    if (data == null)
                     {
-                        value = Deserialize<T>(data);
-                        return true;
+                        return false;
                     }
                 }
                 else
@@ -111,11 +111,10 @@ namespace Ik.Framework.Configuration
                     var defautEnv = BuildZooKeeperPath(this._configInfo.ConfigName.ToLower(), this._configInfo.VersionInfo, _defaultEvnKey, key.ToLower());
                     if (_client.EnsureExists(defautEnv, false))
                     {
-                        var data = _client.EnsureGetData(defautEnv);
-                        if (data != null)
+                        data = _client.EnsureGetData(defautEnv);
+                        if (data == null)
                         {
-                            value = Deserialize<T>(data);
-                            return true;
+                            return false;
                         }
                     }
                 }
@@ -128,7 +127,40 @@ namespace Ik.Framework.Configuration
             {
                 logger.Warn(string.Format("配置获取失败，配置名称：{0}，配置版本：{1}，key：{2}", this._configInfo.ConfigName, this._configInfo.VersionInfo, key), ex);
             }
-
+            if (data != null)
+            {
+                var rawValue = Encoding.UTF8.GetString(data);
+                var type = typeof(T);
+                if (type == typeof(string) || type.IsValueType)
+                {
+                    if (!string.IsNullOrEmpty(rawValue))
+                    {
+                        if (type == typeof(string))
+                        {
+                            value = (T)((object)rawValue);
+                            return true;
+                        }
+                        if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+                        {
+                            value = (T)Convert.ChangeType(rawValue, type.GetGenericArguments()[0]);
+                        }
+                        else if (type.IsEnum)
+                        {
+                            value = (T)Enum.Parse(type, rawValue);
+                        }
+                        else
+                        {
+                            value = (T)Convert.ChangeType(rawValue, type);
+                        }
+                        return true;
+                    }
+                }
+                else
+                {
+                    value = XmlSerializerManager.XmlDeserialize<T>(rawValue);
+                    return true;
+                }
+            }
             return false;
         }
 
@@ -299,12 +331,48 @@ namespace Ik.Framework.Configuration
 
         private byte[] Serialize<T>(T value)
         {
-            return JsonSerializerManager.BsonSerialize(value);
+            var type = typeof(T);
+            string rawValue = null;
+            if (type == typeof(string) || type.IsValueType)
+            {
+                rawValue = value.ToString();
+            }
+            else
+            {
+                rawValue = XmlSerializerManager.XmlSerializer(value);
+            }
+            return Encoding.UTF8.GetBytes(rawValue);
         }
 
-        private T Deserialize<T>(byte[] value)
+        private T Deserialize<T>(byte[] data)
         {
-            return JsonSerializerManager.BsonDeSerialize<T>(value);
+            T value = default(T);
+            var type = typeof(T);
+            var rawValue = Encoding.UTF8.GetString(data);
+            if (type == typeof(string) || type.IsValueType)
+            {
+                if (!string.IsNullOrEmpty(rawValue))
+                {
+                    if (type == typeof(string))
+                    {
+                        value = (T)((object)rawValue);
+                    }
+                    if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+                    {
+                        value = (T)Convert.ChangeType(rawValue, type.GetGenericArguments()[0]);
+                    }
+                    else
+                    {
+                        value = (T)Convert.ChangeType(rawValue, type);
+                    }
+                }
+            }
+            else
+            {
+                value = XmlSerializerManager.XmlDeserialize<T>(rawValue);
+            }
+
+            return value;
         }
 
     }

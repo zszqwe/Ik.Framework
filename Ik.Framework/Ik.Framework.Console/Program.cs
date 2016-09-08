@@ -20,6 +20,7 @@ using Ik.Framework.DataAccess.DataMapping;
 using Ik.Framework.SerialNumber;
 using StackExchange.Redis;
 using Ik.Framework.Redis;
+using Ik.Framework.DataAccess;
 
 namespace Ik.Framework.Console
 {
@@ -27,15 +28,23 @@ namespace Ik.Framework.Console
     {
         static void Main(string[] args)
         {
+            ConfigManager.RemoteConfigService.ServiceException += ServiceException;
+            ConfigManager.RemoteConfigService.Start();
+            var rdString = ConfigManager.Instance.Get<string>("redis_connection");
+            var size = ConfigManager.Instance.Get<int>("default_page_size");
+            var ct = ConfigManager.Instance.Get<SerialNumberCreateType>("default_sn_cr_type");
+            var ds = ConfigManager.Instance.Get<DataSourcesConfig>("dataSourcesDefines");
+            var dt = ConfigManager.Instance.Get<DateTime>("default_datetime");
+            ConfigManager.RemoteConfigService.Stop();
             //13fe0162a4754954:Zp2015Zp2015@13fe0162a4754954.m.cnhza.kvstore.aliyuncs.com:6379
-            string connstring = "172.16.0.151:6379,password=inkey.123";
+            //string connstring = "172.16.0.151:6379,password=inkey.123";
             //string connstring = "13fe0162a4754954.m.cnhza.kvstore.aliyuncs.com:6379,password=13fe0162a4754954:Zp2015Zp2015";
             //System.Console.WriteLine(connstring);
-            RedisManager.DefaultConnectionString = connstring;
-            RedisManager cache = new RedisManager();
-            string key1 = "api_keyTest";
-            cache.Remove(key1);
-            cache.RawAdd(key1, new MyUserInfo { UserId = 10, UserName = "name1" });
+            //RedisManager.DefaultConnectionString = connstring;
+            //RedisManager cache = new RedisManager();
+            //string key1 = "api_keyTest";
+            //cache.Remove(key1);
+            //cache.RawAdd(key1, new MyUserInfo { UserId = 10, UserName = "name1" });
 
             //cache.Add(key1, "test");
             //string vstring = cache.Get<string>(key1);
@@ -172,15 +181,16 @@ namespace Ik.Framework.Console
             //ConfigManager.RemoteConfigService.Stop();
         }
 
+        private static void ServiceException(object sender, ErrorEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         static void DistributedEventService_ServiceException(object sender, ErrorEventArgs e)
         {
             System.Console.WriteLine(e.Exception.ToString());
         }
 
-        //static void ServiceException(object sender, Inkey.Framework.ErrorEventArgs e)
-        //{
-        //    Console.WriteLine(e.Exception.ToString());
-        //}
     }
 
     [Serializable]
